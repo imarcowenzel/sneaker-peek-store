@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="158.07812"
+   zoomAndPan="magnify"
+   viewBox="0 0 118.55859 121.58594"
+   height="162.11459"
+   preserveAspectRatio="xMidYMid"
+   version="1.0"
+   id="svg38"
+   sodipodi:docname="SNEAKER (S).svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview38"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="2.016"
+     inkscape:cx="271.57738"
+     inkscape:cy="62.003968"
+     inkscape:window-width="1920"
+     inkscape:window-height="1014"
+     inkscape:window-x="0"
+     inkscape:window-y="199"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg38" />
+  <defs
+     id="defs1">
+    <g
+       id="g1" />
+    <clipPath
+       id="df1fd9356d">
+      <path
+         d="M 20.992188,132.88672 H 139.55078 V 254.47266 H 20.992188 Z m 0,0"
+         clip-rule="nonzero"
+         id="path1" />
+    </clipPath>
+  </defs>
+  <g
+     id="g41"
+     transform="translate(-20.992188,-132.88672)">
+    <g
+       clip-path="url(#df1fd9356d)"
+       id="g2">
+      <path
+         fill="#000000"
+         d="M 20.992188,132.88672 H 139.55078 V 254.68359 H 20.992188 Z m 0,0"
+         fill-opacity="1"
+         fill-rule="nonzero"
+         id="path2" />
+    </g>
+    <g
+       fill="#ffffff"
+       fill-opacity="1"
+       id="g5">
+      <g
+         transform="translate(46.30966,237.52535)"
+         id="g4">
+        <g
+           id="g3">
+          <path
+             d="M 23.484375,-52.3125 C 22.359375,-52.5 21.75,-53.15625 21.65625,-54.28125 v -18.703125 c 0.1875,-1.21875 0.796875,-1.875 1.828125,-1.96875 h 37.125 v -14.34375 l -32.765625,-0.5625 c -11.53125,-0.28125 -18.796875,3.84375 -21.796875,12.375 -0.84375,2.53125 -1.265625,5.296875 -1.265625,8.296875 v 11.25 c 0,12.84375 6.75,19.640625 20.25,20.390625 0.9375,0.09375 1.828125,0.140625 2.671875,0.140625 h 17.15625 c 1.125,0.1875 1.734375,0.84375 1.828125,1.96875 v 19.125 c -0.1875,1.21875 -0.796875,1.875 -1.828125,1.96875 h -38.25 V 0 l 34.03125,0.5625 c 12.65625,0.375 20.0625,-4.40625 22.21875,-14.34375 0.46875,-1.96875 0.703125,-4.03125 0.703125,-6.1875 v -11.8125 C 63.5625,-42.5625 58.5,-49.125 48.375,-51.46875 45.9375,-52.03125 43.3125,-52.3125 40.5,-52.3125 Z m 0,0"
+             id="path3" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
