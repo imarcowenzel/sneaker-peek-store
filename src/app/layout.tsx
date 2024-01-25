@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Work_Sans } from "next/font/google";
+import { Poppins } from "next/font/google";
 
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import "./globals.css";
 import MobileNavbar from "@/components/mobile-navbar";
 
-const work = Work_Sans({ subsets: ["latin"], weight: ["400", "500", "700"] });
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
 export const metadata: Metadata = {
   title: "Sneaker Peek",
@@ -20,10 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={work.className}>
+      <body className={poppins.className}>
         <Navbar />
         <MobileNavbar />
-        <main className="flex min-h-[100dvh] flex-1 flex-col">{children}</main>
+        <main className="h-full bg-[#f2f4f6]">{children}</main>
         <Footer />
       </body>
     </html>

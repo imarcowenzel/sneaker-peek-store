@@ -18,7 +18,7 @@ const MobileMenuButton: React.FC<MobileMenuButtonProps> = ({
     <motion.button
       onClick={() => toggleMenu()}
       animate={isOpen ? "open" : "closed"}
-      className="flex flex-col space-y-1 text-white border-[1px] border-cyan-600 p-2"
+      className="flex flex-col space-y-1 border-[1px] border-cyan-600 p-2 text-white"
       aria-label="Toggle Menu"
     >
       <motion.span
