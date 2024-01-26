@@ -6,6 +6,7 @@ import { useCycle } from "framer-motion";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import MobileMenu from "./mobile-menu";
+import Link from "next/link";
 
 const MobileNavbar = () => {
   const [isOpen, toggleMenu] = useCycle(false, true);
@@ -38,15 +39,16 @@ const MobileNavbar = () => {
   }, [isOpen]);
 
   return (
-    <nav className="lg:hidden">
-      <header className="flex items-center justify-between px-5 py-4">
-        <Image
-          src="/main-logo.svg"
-          width={100}
-          height={100}
-          className="h-full"
-          alt="Logo"
-        />
+    <nav className="md:hidden">
+      <header className="flex items-center justify-between px-5 py-3">
+        <Link href="/">
+          <Image
+            src="/main-logo.svg"
+            height={50}
+            width={100}
+            alt="Sneaker Peek Logo"
+          />
+        </Link>
         <MobileMenuButton toggleMenu={toggleMenu} isOpen={isOpen} />
       </header>
       <MobileMenu isOpen={isOpen} closeOnCurrent={closeOnCurrent} />

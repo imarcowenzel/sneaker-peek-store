@@ -1,5 +1,18 @@
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
+export const navMenu = [
+  {
+    title: "not-logged",
+    items: [
+      { label: "HOME", href: "/" },
+      { label: "SHOP", href: "/shop" },
+      { label: "MY ACCOUNT", href: "/my-account" },
+      { label: "ABOUT", href: "/about" },
+      { label: "CONTACT", href: "/contact" },
+    ],
+  },
+];
+
 export const footerMenu = [
   {
     title: "Categories",
