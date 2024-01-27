@@ -37,7 +37,7 @@ const Footer = () => {
 
       <div>
         <p className="text-center text-sm text-gray-600">
-          2023 &copy; Developed by{" "}
+          2024 &copy; Developed by{" "}
           <Link
             href={"https://github.com/imarcowenzel"}
             target="_blank"

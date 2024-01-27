@@ -50,11 +50,11 @@ export const menuItemVariants = {
 
 export const menuItemContentVariants = {
   open: {
-    y: "0%",
+    x: "0%",
     opacity: 1,
   },
   closed: {
-    y: "25%",
+    x: "-25%",
     opacity: 0,
   },
 };

@@ -4,11 +4,11 @@ export const navMenu = [
   {
     title: "not-logged",
     items: [
-      { label: "HOME", href: "/" },
-      { label: "SHOP", href: "/shop" },
-      { label: "MY ACCOUNT", href: "/my-account" },
-      { label: "ABOUT", href: "/about" },
-      { label: "CONTACT", href: "/contact" },
+      { label: "Home", href: "/" },
+      { label: "Shop", href: "/shop" },
+      { label: "My account", href: "/my-account" },
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" },
     ],
   },
 ];

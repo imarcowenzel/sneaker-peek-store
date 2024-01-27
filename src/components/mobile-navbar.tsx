@@ -1,12 +1,13 @@
 "use client";
 
-import Image from "next/image";
-import MobileMenuButton from "./mobile-menu-button";
 import { useCycle } from "framer-motion";
-import { useEffect } from "react";
-import { usePathname } from "next/navigation";
-import MobileMenu from "./mobile-menu";
+import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
+
+import MobileMenu from "./mobile-menu";
+import MobileMenuButton from "./mobile-menu-button";
 
 const MobileNavbar = () => {
   const [isOpen, toggleMenu] = useCycle(false, true);

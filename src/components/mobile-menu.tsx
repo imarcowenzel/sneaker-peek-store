@@ -6,6 +6,7 @@ import {
   menuItemContentVariants,
   menuItemVariants,
 } from "@/lib/motion/variants";
+import { navMenu } from "@/constants";
 
 type MobileMenuProps = {
   isOpen: boolean;
@@ -27,18 +28,22 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, closeOnCurrent }) => {
             initial="closed"
             animate="open"
             exit="closed"
-            className="h-full touch-none overflow-hidden bg-white px-5 py-10"
+            className="h-[calc(100dvh-61.25px)] touch-none overflow-hidden bg-white px-5 py-10"
           >
             <motion.div
               variants={menuItemContentVariants}
-              className="flex flex-col gap-y-10"
+              className="flex flex-col gap-y-8"
             >
-              <Link
-                href="/"
-                className="flex items-center gap-x-3 text-3xl text-black"
-              >
-                Example
-              </Link>
+              {navMenu.map((menu) =>
+                menu.items.map((item) => (
+                  <Link
+                    href={item.href}
+                    className="flex items-center gap-x-3 text-gray-600"
+                  >
+                    {item.label}
+                  </Link>
+                )),
+              )}
             </motion.div>
           </motion.div>
         </MotionConfig>

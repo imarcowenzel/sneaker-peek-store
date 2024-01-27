@@ -8,7 +8,7 @@ const Menu = () => {
       <ul className="flex gap-x-8 text-sm ">
         {navMenu.map((menu) =>
           menu.items.map((item) => (
-            <li>
+            <li className="hover:text-gray-600 uppercase transition-all ease-in-out duration-500">
               <Link href={item.href}>{item.label}</Link>
             </li>
           )),
