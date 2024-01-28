@@ -1,12 +1,14 @@
+"use client";
+
 import { AnimatePresence, MotionConfig, motion } from "framer-motion";
-import { Search, Settings } from "lucide-react";
 import Link from "next/link";
 
+import { navMenu } from "@/constants";
 import {
   menuItemContentVariants,
   menuItemVariants,
 } from "@/lib/motion/variants";
-import { navMenu } from "@/constants";
+import { useState } from "react";
 
 type MobileMenuProps = {
   isOpen: boolean;
@@ -14,6 +16,12 @@ type MobileMenuProps = {
 };
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, closeOnCurrent }) => {
+  const [showSubMenu, setShowSubMenu] = useState(false);
+
+  const toggleSubMenu = () => {
+    setShowSubMenu(!showSubMenu);
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -32,17 +40,45 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, closeOnCurrent }) => {
           >
             <motion.div
               variants={menuItemContentVariants}
-              className="flex flex-col gap-y-8"
+              className="flex flex-col gap-y-6"
             >
               {navMenu.map((menu) =>
-                menu.items.map((item) => (
-                  <Link
-                    href={item.href}
-                    className="flex items-center gap-x-3 text-gray-600"
-                  >
-                    {item.label}
-                  </Link>
-                )),
+                menu.items.map((item) => {
+                  if (!item.hasSubMenu) {
+                    return (
+                      <Link
+                        href={item.href}
+                        className="flex items-center gap-x-3 text-gray-600"
+                      >
+                        {item.label}
+                      </Link>
+                    );
+                  } else {
+                    return (
+                      <div className="flex justify-center gap-y-3 text-gray-600 flex-col cursor-pointer" onClick={toggleSubMenu}>
+                        <div className="flex justify-between">
+                        {item.label}
+                        <p>
+                          {
+                            showSubMenu ? "-" : "+"
+                          }
+                        </p>
+                        </div>
+                        <ul key={menu.title} className={showSubMenu ? "flex flex-col gap-y-2 bg-[#f2f4f6] w-full pl-4 py-2" : "hidden"}>
+                          <li>
+                            <Link href="/orders">Orders</Link>
+                          </li>
+                          <li>
+                            <Link href="/addresses">Addresses</Link>
+                          </li>
+                          <li>
+                            <Link href="/account-details">Account Details</Link>
+                          </li>
+                        </ul>
+                      </div>
+                    );
+                  }
+                }),
               )}
             </motion.div>
           </motion.div>

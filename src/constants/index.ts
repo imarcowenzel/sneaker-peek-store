@@ -6,7 +6,7 @@ export const navMenu = [
     items: [
       { label: "Home", href: "/" },
       { label: "Shop", href: "/shop" },
-      { label: "My account", href: "/my-account" },
+      { label: "My account", href: "/my-account", hasSubMenu: true },
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
     ],
