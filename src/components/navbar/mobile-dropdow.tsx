@@ -14,9 +14,9 @@ const MobileDropdown: React.FC<MobileDropdownProps> = ({
   showSubMenu,
 }) => {
   return (
-    <ul className={showSubMenu ? "flex flex-col gap-y-4 py-3 pl-4" : "hidden"}>
+    <ul className={showSubMenu ? "flex flex-col gap-y-4 py-3 pl-10 bg-[#EFEFEF]" : "hidden"}>
       {subMenu.map((subMenuItem, i) => (
-        <li key={i} className="text-xs text-cyan-600 hover:text-gray-600">
+        <li key={i} className="text-sm text-cyan-600 hover:text-gray-600">
           <Link href={subMenuItem.href}>{subMenuItem.label}</Link>
         </li>
       ))}

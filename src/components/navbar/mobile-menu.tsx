@@ -32,11 +32,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, closeOnCurrent }) => {
             initial="closed"
             animate="open"
             exit="closed"
-            className="h-[calc(100dvh-61.25px)] z-50 touch-none overflow-hidden bg-white px-8 py-10"
+            className="h-[calc(100dvh-61.25px)] z-50 touch-none overflow-hidden bg-white py-10"
           >
             <motion.ul
               variants={menuItemContentVariants}
-              className="flex flex-col gap-y-6 text-cyan-600"
+              className="flex flex-col gap-y-6 "
             >
               {menuItems.map((item,i) => (
                 <MobileMenuItems key={i} item={item} />

@@ -42,7 +42,7 @@ const MobileMenuItems: React.FC<MobileMenuItemsProps> = ({ item }) => {
             aria-haspopup="menu"
             aria-expanded={showSubMenu ? "true" : "false"}
             onClick={toggleSubMenu}
-            className="flex items-center justify-between"
+            className="flex items-center justify-between px-8"
           >
             {item.label}
             <span>
@@ -56,7 +56,7 @@ const MobileMenuItems: React.FC<MobileMenuItemsProps> = ({ item }) => {
       ) : (
         <li
           key={item.label}
-          className="flex items-center gap-x-3 text-cyan-600 hover:text-gray-600"
+          className="flex items-center gap-x-3 text-cyan-600 hover:text-gray-600 px-8"
         >
           <Link href={item.href}>{item.label}</Link>
         </li>
