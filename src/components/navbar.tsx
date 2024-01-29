@@ -13,7 +13,6 @@ const Navbar: React.FC = () => {
           alt="Sneaker Peek Logo"
         />
       </Link>
-
       <Menu />
     </header>
   );

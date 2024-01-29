@@ -40,20 +40,20 @@ const MobileNavbar = () => {
   }, [isOpen]);
 
   return (
-    <nav className="md:hidden">
-      <header className="flex items-center justify-between px-5 py-3">
+    <header className="md:hidden">
+      <div className="flex items-center justify-between px-5 py-3">
         <Link href="/">
           <Image
             src="/main-logo.svg"
-            height={50}
             width={100}
+            height={50}
             alt="Sneaker Peek Logo"
           />
         </Link>
         <MobileMenuButton toggleMenu={toggleMenu} isOpen={isOpen} />
-      </header>
+      </div>
       <MobileMenu isOpen={isOpen} closeOnCurrent={closeOnCurrent} />
-    </nav>
+    </header>
   );
 };
 

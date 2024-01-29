@@ -1,6 +1,5 @@
-import React from "react";
-import MenuItems from "./menu-items";
 import Link from "next/link";
+import React from "react";
 
 interface DropdownProps {
   depthLevel: number;
