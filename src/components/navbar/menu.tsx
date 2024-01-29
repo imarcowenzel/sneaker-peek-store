@@ -1,7 +1,7 @@
 import { ShoppingBag } from "lucide-react";
 import Link from "next/link";
 
-import { menuItems } from "@/constants";
+import { menuItems } from "@/config";
 import MenuItems from "./menu-items";
 
 const Menu = () => {

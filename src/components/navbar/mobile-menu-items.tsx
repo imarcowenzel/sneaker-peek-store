@@ -34,7 +34,7 @@ const MobileMenuItems: React.FC<MobileMenuItemsProps> = ({ item }) => {
     <>
       {item.subMenu ? (
         <li
-          className="flex cursor-pointer flex-col justify-center gap-y-3 text-gray-600"
+          className="flex cursor-pointer flex-col justify-center gap-y-3 text-cyan-600 hover:text-gray-600"
           onClick={toggleSubMenu}
         >
           <button
@@ -56,7 +56,7 @@ const MobileMenuItems: React.FC<MobileMenuItemsProps> = ({ item }) => {
       ) : (
         <li
           key={item.label}
-          className="flex items-center gap-x-3 text-gray-600"
+          className="flex items-center gap-x-3 text-cyan-600 hover:text-gray-600"
         >
           <Link href={item.href}>{item.label}</Link>
         </li>

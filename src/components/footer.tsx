@@ -1,4 +1,4 @@
-import { footerMenu, footerSocialMedias } from "@/constants";
+import { footerMenu, footerSocialMedias } from "@/config";
 import Link from "next/link";
 
 const Footer = () => {

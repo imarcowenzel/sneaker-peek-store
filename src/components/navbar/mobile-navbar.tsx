@@ -6,10 +6,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-import MobileMenu from "./mobile-menu";
-import MobileMenuButton from "./mobile-menu-button";
+import MobileMenu from "@/components/navbar/mobile-menu";
+import MobileMenuButton from "@/components/navbar/mobile-menu-button";
 
 const MobileNavbar = () => {
+
   const [isOpen, toggleMenu] = useCycle(false, true);
   const pathname = usePathname();
 
@@ -41,6 +42,7 @@ const MobileNavbar = () => {
 
   return (
     <header className="md:hidden">
+
       <div className="flex items-center justify-between px-5 py-3">
         <Link href="/">
           <Image
@@ -52,6 +54,7 @@ const MobileNavbar = () => {
         </Link>
         <MobileMenuButton toggleMenu={toggleMenu} isOpen={isOpen} />
       </div>
+      
       <MobileMenu isOpen={isOpen} closeOnCurrent={closeOnCurrent} />
     </header>
   );
