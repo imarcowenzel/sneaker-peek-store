@@ -58,7 +58,7 @@ const MenuItems: React.FC<MenuItemsProps> = ({ items, depthLevel }) => {
       ref={liRef}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className="relative uppercase hover:text-gray-600"
+      className="relative uppercase hover:text-gray-600 transition duration-500 ease-in-out"
     >
 
       {items.subMenu ? (

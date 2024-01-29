@@ -26,7 +26,7 @@ const Dropdown: React.FC<DropdownProps> = ({
         <li key={i} className="w-full">
           <Link
             href={submenu.href}
-            className="h-full hover:text-gray-600"
+            className="h-full hover:text-gray-600 transition duration-500 ease-in-out"
           >
             {submenu.label}
           </Link>
