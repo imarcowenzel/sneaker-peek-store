@@ -3,7 +3,7 @@
 import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 import Link from "next/link";
 
-import { navMenu } from "@/constants";
+import { menuItems } from "@/constants";
 import {
   menuItemContentVariants,
   menuItemVariants,
@@ -42,44 +42,47 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, closeOnCurrent }) => {
               variants={menuItemContentVariants}
               className="flex flex-col gap-y-6"
             >
-              {navMenu.map((menu) =>
-                menu.items.map((item) => {
-                  if (!item.hasSubMenu) {
-                    return (
-                      <Link
-                        href={item.href}
-                        className="flex items-center gap-x-3 text-gray-600"
-                      >
+              {menuItems.map((item) => {
+                if (!item.subMenu) {
+                  return (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      className="flex items-center gap-x-3 text-gray-600"
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                } else {
+                  return (
+                    <div
+                      className="flex cursor-pointer flex-col justify-center gap-y-3 text-gray-600"
+                      onClick={toggleSubMenu}
+                    >
+                      <div className="flex justify-between">
                         {item.label}
-                      </Link>
-                    );
-                  } else {
-                    return (
-                      <div className="flex justify-center gap-y-3 text-gray-600 flex-col cursor-pointer" onClick={toggleSubMenu}>
-                        <div className="flex justify-between">
-                        {item.label}
-                        <p>
-                          {
-                            showSubMenu ? "-" : "+"
-                          }
-                        </p>
-                        </div>
-                        <ul key={menu.title} className={showSubMenu ? "flex flex-col gap-y-2 bg-[#f2f4f6] w-full pl-4 py-2" : "hidden"}>
-                          <li>
-                            <Link href="/orders">Orders</Link>
-                          </li>
-                          <li>
-                            <Link href="/addresses">Addresses</Link>
-                          </li>
-                          <li>
-                            <Link href="/account-details">Account Details</Link>
-                          </li>
-                        </ul>
+                        <p>{showSubMenu ? "-" : "+"}</p>
                       </div>
-                    );
-                  }
-                }),
-              )}
+                      <ul
+                        key={item.label}
+                        className={
+                          showSubMenu
+                            ? "flex w-full flex-col gap-y-2 bg-[#f2f4f6] py-2 pl-4"
+                            : "hidden"
+                        }
+                      >
+                        {item.subMenu.map((subMenuItem) => (
+                          <li key={subMenuItem.label}>
+                            <Link href={subMenuItem.href}>
+                              {subMenuItem.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  );
+                }
+              })}
             </motion.div>
           </motion.div>
         </MotionConfig>

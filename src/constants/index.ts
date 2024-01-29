@@ -1,16 +1,19 @@
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
-export const navMenu = [
+export const menuItems = [
+  { label: "Home", href: "/" },
+  { label: "Shop", href: "/shop" },
   {
-    title: "not-logged",
-    items: [
-      { label: "Home", href: "/" },
-      { label: "Shop", href: "/shop" },
-      { label: "My account", href: "/my-account", hasSubMenu: true },
-      { label: "About", href: "/about" },
-      { label: "Contact", href: "/contact" },
+    label: "My account",
+    href: "/my-account",
+    subMenu: [
+      { label: "Orders", href: "/orders" },
+      { label: "Addresses", href: "/addresses" },
+      { label: "Account", href: "/account-details" },
     ],
   },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const footerMenu = [
