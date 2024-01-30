@@ -19,11 +19,11 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   return (
     <ul
-      className={`absolute -left-2 top-6 z-50 py-6 pl-6 pr-32 flex-col gap-y-8 bg-white text-cyan-600 shadow-lg ${dropdown ? "flex" : "hidden"}`}
+      className={`absolute -left-2  top-6 z-50 flex-col bg-white text-cyan-600 shadow-lg ${dropdown ? "flex" : "hidden"}`}
     >
 
       {subMenus.map((submenu, i) => (
-        <li key={i} className="w-full">
+        <li key={i} className={`w-full py-5 pl-6 pr-32 ${i !== subMenus.length - 1 && "border-b-2"}`}>
           <Link
             href={submenu.href}
             className="h-full hover:text-gray-600 transition duration-500 ease-in-out"

@@ -1,9 +1,10 @@
 "use client";
 
+import { ChevronDown, ChevronUp } from "lucide-react";
 import Link from "next/link";
 import React, { MutableRefObject, useEffect, useRef, useState } from "react";
-import Dropdown from "./dropdown";
-import { ChevronDown, ChevronUp } from "lucide-react";
+
+import Dropdown from "@/components/navbar/dropdown";
 
 interface MenuItemsProps {
   items:
@@ -25,7 +26,6 @@ interface MenuItemsProps {
 
 const MenuItems: React.FC<MenuItemsProps> = ({ items, depthLevel }) => {
   const [dropdown, setDropdown] = useState(false);
-
   let liRef: MutableRefObject<HTMLLIElement | null> = useRef(null);
 
   // Effect to handle closing the dropdown when clicking outside
@@ -64,6 +64,7 @@ const MenuItems: React.FC<MenuItemsProps> = ({ items, depthLevel }) => {
           onMouseLeave={onMouseLeave}
           className="relative uppercase transition duration-500 ease-in-out hover:text-gray-600"
         >
+
           <button
             type="button"
             aria-haspopup="menu"
@@ -80,6 +81,7 @@ const MenuItems: React.FC<MenuItemsProps> = ({ items, depthLevel }) => {
             subMenus={items.subMenu}
             dropdown={dropdown}
           />
+          
         </li>
       ) : (
         <li className="uppercase transition duration-500 ease-in-out hover:text-gray-600">
