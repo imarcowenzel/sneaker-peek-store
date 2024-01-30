@@ -1,7 +1,9 @@
+import Hero from "@/components/hero-section";
+
 export default function Home() {
   return (
-    <header>
-      <h1>Sneaker Peek</h1>
-    </header>
+    <section className="flex h-[100dvh] flex-col items-center bg-white">
+      <Hero />
+    </section>
   );
 }
