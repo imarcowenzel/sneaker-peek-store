@@ -1,8 +1,7 @@
-import { ShoppingBag } from "lucide-react";
-import Link from "next/link";
-
+import MenuItems from "@/components/navbar/menu-items";
 import { menuItems } from "@/config";
-import MenuItems from "./menu-items";
+import ShoppingCartIcon from "./shopping-cart-icon";
+
 
 const Menu = () => {
   return (
@@ -14,17 +13,8 @@ const Menu = () => {
         })}
       </ul>
 
-      <div className="">
-        <Link
-          href="/shopping-bag"
-          className="relative flex items-center gap-x-2 font-bold"
-        >
-          <p>$0.00</p>
-          <ShoppingBag />
-          <p className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-cyan-600 p-1 text-[10px] text-white">
-            0
-          </p>
-        </Link>
+      <div>
+        <ShoppingCartIcon />
       </div>
     </nav>
   );

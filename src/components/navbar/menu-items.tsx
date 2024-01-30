@@ -28,9 +28,8 @@ const MenuItems: React.FC<MenuItemsProps> = ({ items, depthLevel }) => {
 
   let liRef: MutableRefObject<HTMLLIElement | null> = useRef(null);
 
-   // Effect to handle closing the dropdown when clicking outside
+  // Effect to handle closing the dropdown when clicking outside
   useEffect(() => {
-
     const handler = (event: any) => {
       // Check if the dropdown is open and if the click was outside the menu item
       if (dropdown && liRef.current && !liRef.current.contains(event.target)) {
@@ -49,27 +48,28 @@ const MenuItems: React.FC<MenuItemsProps> = ({ items, depthLevel }) => {
   }, [dropdown]);
 
   // Event handlers to show and hide the dropdown
-  const onMouseEnter = () => {window.innerWidth > 768 && setDropdown(true);};
-  const onMouseLeave = () => {window.innerWidth > 768 && setDropdown(false);};
+  const onMouseEnter = () => {
+    window.innerWidth > 768 && setDropdown(true);
+  };
+  const onMouseLeave = () => {
+    window.innerWidth > 768 && setDropdown(false);
+  };
 
   return (
-
-    <li
-      ref={liRef}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      className="relative uppercase hover:text-gray-600 transition duration-500 ease-in-out"
-    >
-
+    <>
       {items.subMenu ? (
-        <>
-
+        <li
+          ref={liRef}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          className="relative uppercase transition duration-500 ease-in-out hover:text-gray-600"
+        >
           <button
             type="button"
             aria-haspopup="menu"
             aria-expanded={dropdown ? "true" : "false"}
             onClick={() => setDropdown((prev) => !prev)}
-            className="flex gap-x-4 items-center uppercase"
+            className="flex items-center gap-x-4 uppercase"
           >
             {items.label}
             {dropdown ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
@@ -80,14 +80,13 @@ const MenuItems: React.FC<MenuItemsProps> = ({ items, depthLevel }) => {
             subMenus={items.subMenu}
             dropdown={dropdown}
           />
-
-        </>
+        </li>
       ) : (
-        <Link href={items.href}>{items.label}</Link>
+        <li className="uppercase transition duration-500 ease-in-out hover:text-gray-600">
+          <Link href={items.href}>{items.label}</Link>
+        </li>
       )}
-
-    </li>
-
+    </>
   );
 };
 

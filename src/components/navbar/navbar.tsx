@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Navbar: React.FC = () => {
   return (
-    <header className="hidden h-full items-center justify-between px-9 py-4 md:flex">
+    <header className="hidden items-center justify-between px-9 py-4 md:flex">
       <Link href="/">
         <Image
           src="/main-logo.svg"

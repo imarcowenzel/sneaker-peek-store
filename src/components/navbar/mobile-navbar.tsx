@@ -9,6 +9,7 @@ import { useEffect } from "react";
 
 import MobileMenu from "@/components/navbar/mobile-menu";
 import MobileMenuButton from "@/components/navbar/mobile-menu-button";
+import ShoppingCartIcon from "./shopping-cart-icon";
 
 const MobileNavbar = () => {
   const [isOpen, toggleMenu] = useCycle(false, true);
@@ -52,12 +53,7 @@ const MobileNavbar = () => {
           />
         </Link>
         <div className="flex items-center gap-x-4">
-          <Link href="/cart" className="relative">
-            <ShoppingBag className=" text-cyan-600" />
-            <p className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-cyan-600 p-1 text-[10px] text-white font-bold">
-              0
-            </p>
-          </Link>
+          <ShoppingCartIcon />
           <MobileMenuButton toggleMenu={toggleMenu} isOpen={isOpen} />
         </div>
       </div>
