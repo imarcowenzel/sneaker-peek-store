@@ -21,16 +21,18 @@ interface MobileMenuItemsProps {
           href: string;
         }[];
       };
-    closeOnCurrent: (href: string) => void
+  closeOnCurrent: (href: string) => void;
 }
 
-const MobileMenuItems: React.FC<MobileMenuItemsProps> = ({ item, closeOnCurrent }) => {
+const MobileMenuItems: React.FC<MobileMenuItemsProps> = ({
+  item,
+  closeOnCurrent,
+}) => {
   const [showSubMenu, setShowSubMenu] = useState(false);
 
   const toggleSubMenu = () => {
     setShowSubMenu(!showSubMenu);
   };
-
 
   return (
     <>
@@ -44,7 +46,7 @@ const MobileMenuItems: React.FC<MobileMenuItemsProps> = ({ item, closeOnCurrent 
             aria-haspopup="menu"
             onClick={() => closeOnCurrent(item.href)}
             aria-expanded={showSubMenu ? "true" : "false"}
-            className="flex items-center justify-between px-8 uppercase text-lg"
+            className="flex items-center justify-between px-8 text-lg uppercase"
           >
             {item.label}
             <span>
@@ -53,16 +55,16 @@ const MobileMenuItems: React.FC<MobileMenuItemsProps> = ({ item, closeOnCurrent 
           </button>
 
           <MobileDropdown subMenu={item.subMenu} showSubMenu={showSubMenu} />
-
         </li>
       ) : (
         <li
           key={item.label}
-          className="flex items-center gap-x-3 text-cyan-600 hover:text-gray-600 px-8 uppercase transition duration-500 ease-in-out text-lg"
+          className="flex items-center gap-x-3 px-8 text-lg uppercase text-cyan-600 transition duration-500 ease-in-out hover:text-gray-600"
         >
-          <Link href={item.href}>{item.label}</Link>
+          <Link href={item.href} onClick={() => closeOnCurrent(item.href)}>
+            {item.label}
+          </Link>
         </li>
-
       )}
     </>
   );

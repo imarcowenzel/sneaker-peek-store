@@ -38,7 +38,7 @@ export const menuItemVariants = {
     },
   },
   closed: {
-    x: "-110%",
+    x: "-100%",
     opacity: 0,
     transition: {
       when: "afterChildren",
@@ -54,7 +54,7 @@ export const menuItemContentVariants = {
     opacity: 1,
   },
   closed: {
-    x: "-25%",
+    x: "75%",
     opacity: 0,
   },
 };
