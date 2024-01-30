@@ -1,6 +1,7 @@
 "use client";
 
 import { useCycle } from "framer-motion";
+import { ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -8,7 +9,6 @@ import { useEffect } from "react";
 
 import MobileMenu from "@/components/navbar/mobile-menu";
 import MobileMenuButton from "@/components/navbar/mobile-menu-button";
-import { ShoppingBag } from "lucide-react";
 
 const MobileNavbar = () => {
 
@@ -45,7 +45,7 @@ const MobileNavbar = () => {
     <header className="md:hidden">
 
       <div className="flex items-center justify-between px-5 py-3">
-        <Link href="/">
+        <Link href="/" onClick={() => closeOnCurrent("/")}>
           <Image
             src="/main-logo.svg"
             width={100}

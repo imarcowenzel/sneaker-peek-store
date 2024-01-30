@@ -1,5 +1,3 @@
-"use client";
-
 import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 
 import { menuItems } from "@/config";
@@ -15,9 +13,7 @@ type MobileMenuProps = {
 };
 
 const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, closeOnCurrent }) => {
-
   return (
-
     <AnimatePresence>
       {isOpen && (
         <MotionConfig
@@ -26,24 +22,26 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, closeOnCurrent }) => {
             bounce: 0,
           }}
         >
-
           <motion.nav
             variants={menuItemVariants}
             initial="closed"
             animate="open"
             exit="closed"
-            className="h-[calc(100dvh-61.25px)] z-50 touch-none overflow-hidden bg-white py-10"
+            className="absolute z-50 h-[calc(100dvh)] w-full touch-none overflow-hidden bg-white py-10"
           >
             <motion.ul
               variants={menuItemContentVariants}
               className="flex flex-col gap-y-6 "
             >
-              {menuItems.map((item,i) => (
-                <MobileMenuItems key={i} item={item} />
+              {menuItems.map((item, i) => (
+                <MobileMenuItems
+                  key={i}
+                  item={item}
+                  closeOnCurrent={closeOnCurrent}
+                />
               ))}
             </motion.ul>
           </motion.nav>
-
         </MotionConfig>
       )}
     </AnimatePresence>

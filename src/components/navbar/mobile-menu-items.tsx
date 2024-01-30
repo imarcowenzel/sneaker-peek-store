@@ -21,14 +21,16 @@ interface MobileMenuItemsProps {
           href: string;
         }[];
       };
+    closeOnCurrent: (href: string) => void
 }
 
-const MobileMenuItems: React.FC<MobileMenuItemsProps> = ({ item }) => {
+const MobileMenuItems: React.FC<MobileMenuItemsProps> = ({ item, closeOnCurrent }) => {
   const [showSubMenu, setShowSubMenu] = useState(false);
 
   const toggleSubMenu = () => {
     setShowSubMenu(!showSubMenu);
   };
+
 
   return (
     <>
@@ -40,8 +42,8 @@ const MobileMenuItems: React.FC<MobileMenuItemsProps> = ({ item }) => {
           <button
             type="button"
             aria-haspopup="menu"
+            onClick={() => closeOnCurrent(item.href)}
             aria-expanded={showSubMenu ? "true" : "false"}
-            onClick={toggleSubMenu}
             className="flex items-center justify-between px-8 uppercase text-lg"
           >
             {item.label}
