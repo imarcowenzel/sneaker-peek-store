@@ -22,7 +22,7 @@ const Menu = () => {
         >
           <p>$0.00</p>
           <ShoppingBag />
-          <p className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full border-2 border-cyan-600 bg-cyan-600 p-1 text-xs text-white">
+          <p className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-cyan-600 p-1 text-[10px] text-white">
             0
           </p>
         </Link>

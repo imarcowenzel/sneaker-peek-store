@@ -11,7 +11,6 @@ import MobileMenu from "@/components/navbar/mobile-menu";
 import MobileMenuButton from "@/components/navbar/mobile-menu-button";
 
 const MobileNavbar = () => {
-
   const [isOpen, toggleMenu] = useCycle(false, true);
   const pathname = usePathname();
 
@@ -43,7 +42,6 @@ const MobileNavbar = () => {
 
   return (
     <header className="md:hidden">
-
       <div className="flex items-center justify-between px-5 py-3">
         <Link href="/" onClick={() => closeOnCurrent("/")}>
           <Image
@@ -53,12 +51,17 @@ const MobileNavbar = () => {
             alt="Sneaker Peek Logo"
           />
         </Link>
-        <div className="flex gap-x-4 items-center">
-        <ShoppingBag className="text-cyan-600" />
-        <MobileMenuButton toggleMenu={toggleMenu} isOpen={isOpen} />
+        <div className="flex items-center gap-x-4">
+          <Link href="/cart" className="relative">
+            <ShoppingBag className=" text-cyan-600" />
+            <p className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-cyan-600 p-1 text-[10px] text-white font-bold">
+              0
+            </p>
+          </Link>
+          <MobileMenuButton toggleMenu={toggleMenu} isOpen={isOpen} />
         </div>
       </div>
-      
+
       <MobileMenu isOpen={isOpen} closeOnCurrent={closeOnCurrent} />
     </header>
   );
