@@ -42,11 +42,11 @@ const MobileMenuItems: React.FC<MobileMenuItemsProps> = ({ item }) => {
             aria-haspopup="menu"
             aria-expanded={showSubMenu ? "true" : "false"}
             onClick={toggleSubMenu}
-            className="flex items-center justify-between px-8 uppercase"
+            className="flex items-center justify-between px-8 uppercase text-lg"
           >
             {item.label}
             <span>
-              {showSubMenu ? <Minus size={10} /> : <Plus size={10} />}
+              {showSubMenu ? <Minus size={14} /> : <Plus size={14} />}
             </span>
           </button>
 

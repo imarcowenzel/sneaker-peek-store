@@ -8,6 +8,7 @@ import { useEffect } from "react";
 
 import MobileMenu from "@/components/navbar/mobile-menu";
 import MobileMenuButton from "@/components/navbar/mobile-menu-button";
+import { ShoppingBag } from "lucide-react";
 
 const MobileNavbar = () => {
 
@@ -52,7 +53,10 @@ const MobileNavbar = () => {
             alt="Sneaker Peek Logo"
           />
         </Link>
+        <div className="flex gap-x-4 items-center">
+        <ShoppingBag className="text-cyan-600" />
         <MobileMenuButton toggleMenu={toggleMenu} isOpen={isOpen} />
+        </div>
       </div>
       
       <MobileMenu isOpen={isOpen} closeOnCurrent={closeOnCurrent} />
