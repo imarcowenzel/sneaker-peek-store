@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={poppins.className}>
         <Navbar />
         <MobileNavbar />
-        <main className="h-full bg-[#f2f4f6] ">{children}</main>
+        <main className="h-full min-w-[375px] bg-[#f2f4f6]">{children}</main>
         <Footer />
       </body>
     </html>

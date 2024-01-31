@@ -1,61 +1,66 @@
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 export const menuItems = [
-  { label: "Home", href: "/" },
-  { label: "Shop", href: "/shop" },
+  { key: 1, label: "Home", href: "/" },
+  { key: 2, label: "Shop", href: "/shop" },
   {
+    key: 3, 
     label: "My account",
     href: "/my-account",
     subMenu: [
-      { label: "Orders", href: "/orders" },
-      { label: "Addresses", href: "/addresses" },
-      { label: "Account", href: "/account-details" },
+      { key: 31, label: "Orders", href: "/orders" },
+      { key: 32, label: "Addresses", href: "/addresses" },
+      { key: 33, label: "Account", href: "/account-details" },
     ],
   },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { key: 4, label: "About", href: "/about" },
+  { key: 5, label: "Contact", href: "/contact" },
 ];
 
 export const footerMenu = [
   {
+    key: 1,
     title: "Categories",
     items: [
-      { label: "Running Shoes", href: "running" },
-      { label: "Yoga Shoes", href: "yoga" },
-      { label: "Sports Shoes", href: "sports" },
-      { label: "Casual Shoes", href: "casual" },
+      { key: 11, label: "Running Shoes", href: "running" },
+      { key: 12, label: "Yoga Shoes", href: "yoga" },
+      { key: 13, label: "Sports Shoes", href: "sports" },
+      { key: 14, label: "Casual Shoes", href: "casual" },
     ],
   },
   {
+    key: 2,
     title: "Business",
     items: [
-      { label: "Company Profile", href: "company-profile" },
-      { label: "Social Responsibility", href: "social-responsibility" },
-      { label: "Brand Kit", href: "brand-kit" },
-      { label: "Media", href: "media" },
+      { key: 21, label: "Company Profile", href: "company-profile" },
+      { key: 22, label: "Social Responsibility", href: "social-responsibility" },
+      { key: 23, label: "Brand Kit", href: "brand-kit" },
+      { key: 24, label: "Media", href: "media" },
     ],
   },
   {
+    key: 3,
     title: "About",
     items: [
-      { label: "Board of Directors", href: "board-of-directors" },
-      { label: "Careers", href: "careers" },
-      { label: "Numbers Speak", href: "numbers-speak" },
+      { key: 31, label: "Board of Directors", href: "board-of-directors" },
+      { key: 32, label: "Careers", href: "careers" },
+      { key: 33, label: "Numbers Speak", href: "numbers-speak" },
     ],
   },
   {
+    key: 4,
     title: "Useful Links",
     items: [
-      { label: "Return Policies", href: "return-policies" },
-      { label: "Announcements", href: "announcements" },
-      { label: "Have issues?", href: "contact-support" },
-      { label: "Media Kit", href: "media-kit" },
+      { key: 41, label: "Return Policies", href: "return-policies" },
+      { key: 42, label: "Announcements", href: "announcements" },
+      { key: 43, label: "Have issues?", href: "contact-support" },
+      { key: 44, label: "Media Kit", href: "media-kit" },
     ],
   },
 ];
 
 export const footerSocialMedias = [
-  { label: FaInstagram, href: "instagram.com" },
-  { label: FaTwitter, href: "x.com" },
-  { label: FaYoutube, href: "youtube.com" },
+  { key: 1, label: FaInstagram, href: "https://instagram.com" },
+  { key: 2, label: FaTwitter, href: "https://twitter.com" },
+  { key: 3, label: FaYoutube, href: "https://youtube.com" },
 ];

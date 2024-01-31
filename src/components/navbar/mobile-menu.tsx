@@ -33,9 +33,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, closeOnCurrent }) => {
               variants={menuItemContentVariants}
               className="flex flex-col gap-y-6 "
             >
-              {menuItems.map((item, i) => (
+              {menuItems.map((item) => (
                 <MobileMenuItems
-                  key={i}
+                  key={item.key}
                   item={item}
                   closeOnCurrent={closeOnCurrent}
                 />

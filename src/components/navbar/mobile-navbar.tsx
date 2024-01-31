@@ -1,15 +1,13 @@
 "use client";
 
 import { useCycle } from "framer-motion";
-import { ShoppingBag } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 import MobileMenu from "@/components/navbar/mobile-menu";
 import MobileMenuButton from "@/components/navbar/mobile-menu-button";
-import ShoppingCartIcon from "./shopping-cart-icon";
+import ShoppingCartIcon from "@/components/navbar/shopping-cart-icon";
+import Logo from "./logo";
 
 const MobileNavbar = () => {
   const [isOpen, toggleMenu] = useCycle(false, true);
@@ -44,14 +42,7 @@ const MobileNavbar = () => {
   return (
     <header className="md:hidden">
       <div className="flex items-center justify-between px-5 py-3">
-        <Link href="/" onClick={() => closeOnCurrent("/")}>
-          <Image
-            src="/main-logo.svg"
-            width={100}
-            height={50}
-            alt="Sneaker Peek Logo"
-          />
-        </Link>
+        <Logo width={100} height={50} closeOnCurrent={closeOnCurrent} />
         <div className="flex items-center gap-x-4">
           <ShoppingCartIcon />
           <MobileMenuButton toggleMenu={toggleMenu} isOpen={isOpen} />

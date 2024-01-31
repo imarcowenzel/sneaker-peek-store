@@ -9,14 +9,17 @@ import MobileDropdown from "./mobile-dropdow";
 interface MobileMenuItemsProps {
   item:
     | {
+        key: number;
         label: string;
         href: string;
         subMenu?: undefined;
       }
     | {
+        key: number;
         label: string;
         href: string;
         subMenu: {
+          key: number;
           label: string;
           href: string;
         }[];
@@ -58,7 +61,7 @@ const MobileMenuItems: React.FC<MobileMenuItemsProps> = ({
         </li>
       ) : (
         <li
-          key={item.label}
+          key={item.key}
           className="flex items-center gap-x-3 px-8 text-lg uppercase text-cyan-600 transition duration-500 ease-in-out hover:text-gray-600"
         >
           <Link href={item.href} onClick={() => closeOnCurrent(item.href)}>

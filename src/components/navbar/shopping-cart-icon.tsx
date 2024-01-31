@@ -1,5 +1,6 @@
 import { ShoppingBag } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
   Sheet,
@@ -9,7 +10,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Button } from "../ui/button";
 
 const ShoppingCartIcon = () => {
   return (
@@ -21,15 +21,16 @@ const ShoppingCartIcon = () => {
         </p>
       </SheetTrigger>
       <SheetContent className="flex flex-col justify-between">
-        {/* TODO: customize and style the cart sheet if a item is at cart*/}
         <SheetHeader>
           <SheetTitle className="font-normal">Shopping cart</SheetTitle>
           <Separator className="h-[2px]" />
         </SheetHeader>
-        <SheetDescription className="p-2 flex justify-center items-center">
+        <SheetDescription className="p-2 flex justify-center items-center">\
+        {/* TODO: customize and style the cart sheet if a item is at the cart*/}
           No products in the cart.
         </SheetDescription>
         <Button variant={"ghost"} className="hover:bg-gray-600 hover:text-white w-full">
+          {/* TODO: customize and style the cart sheet if a item is at the cart*/}
           CONTINUE SHOPPING
         </Button>
       </SheetContent>

@@ -1,18 +1,10 @@
-import Image from "next/image";
-import Menu from "./menu";
-import Link from "next/link";
+import Logo from "@/components/navbar/logo";
+import Menu from "@/components/navbar/menu";
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
   return (
     <header className="hidden items-center justify-between px-9 py-4 md:flex">
-      <Link href="/">
-        <Image
-          src="/main-logo.svg"
-          width={120}
-          height={20}
-          alt="Sneaker Peek Logo"
-        />
-      </Link>
+      <Logo width={120} height={20} />
       <Menu />
     </header>
   );

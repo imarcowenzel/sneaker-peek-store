@@ -18,21 +18,21 @@ const MobileMenuButton: React.FC<MobileMenuButtonProps> = ({
     <motion.button
       onClick={() => toggleMenu()}
       animate={isOpen ? "open" : "closed"}
-      className="flex flex-col justify-between space-y-1 text-cyan-600 h-5"
+      className="flex flex-col justify-between space-y-1"
       aria-label="Toggle Menu"
     >
       <motion.span
         variants={menuButtonTopVariants}
         className="block h-[3px] w-6 bg-cyan-600"
-      ></motion.span>
+      />
       <motion.span
         variants={menuButtonMiddleVariants}
         className="block h-[3px] w-6  bg-cyan-600"
-      ></motion.span>
+      />
       <motion.span
         variants={menuButtonBottomVariants}
         className="block h-[3px] w-6  bg-cyan-600"
-      ></motion.span>
+      />
     </motion.button>
   );
 };

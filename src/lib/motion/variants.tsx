@@ -4,7 +4,7 @@ export const menuButtonTopVariants = {
   },
   open: {
     rotate: 45,
-    y: 8.5,
+    y: 7.5,
   },
 };
 
@@ -23,7 +23,7 @@ export const menuButtonBottomVariants = {
   },
   open: {
     rotate: -45,
-    y: -8.5,
+    y: -7.5,
   },
 };
 

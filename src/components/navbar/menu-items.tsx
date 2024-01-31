@@ -1,90 +1,62 @@
-"use client";
-
-import { ChevronDown, ChevronUp } from "lucide-react";
 import Link from "next/link";
-import React, { MutableRefObject, useEffect, useRef, useState } from "react";
+import React from "react";
 
-import Dropdown from "@/components/navbar/dropdown";
+import {
+  NavigationMenuContent,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 
 interface MenuItemsProps {
   items:
     | {
+        key: number;
         label: string;
         href: string;
         subMenu?: undefined;
       }
     | {
+        key: number;
         label: string;
         href: string;
         subMenu: {
+          key: number;
           label: string;
           href: string;
         }[];
       };
-  depthLevel: number;
 }
 
-const MenuItems: React.FC<MenuItemsProps> = ({ items, depthLevel }) => {
-  const [dropdown, setDropdown] = useState(false);
-  let liRef: MutableRefObject<HTMLLIElement | null> = useRef(null);
-
-  // Effect to handle closing the dropdown when clicking outside
-  useEffect(() => {
-    const handler = (event: any) => {
-      // Check if the dropdown is open and if the click was outside the menu item
-      if (dropdown && liRef.current && !liRef.current.contains(event.target)) {
-        setDropdown(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handler);
-    document.addEventListener("touchstart", handler);
-
-    return () => {
-      // Cleanup: remove the event listeners when the component is unmounted
-      document.removeEventListener("mousedown", handler);
-      document.removeEventListener("touchstart", handler);
-    };
-  }, [dropdown]);
-
-  // Event handlers to show and hide the dropdown
-  const onMouseEnter = () => {
-    window.innerWidth > 768 && setDropdown(true);
-  };
-  const onMouseLeave = () => {
-    window.innerWidth > 768 && setDropdown(false);
-  };
-
+const MenuItems: React.FC<MenuItemsProps> = ({ items }) => {
   return (
     <>
       {items.subMenu ? (
-        <li
-          ref={liRef}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
-          className="relative uppercase transition duration-500 ease-in-out hover:text-gray-600"
-        >
-
-          <button
-            type="button"
-            aria-haspopup="menu"
-            aria-expanded={dropdown ? "true" : "false"}
-            onClick={() => setDropdown((prev) => !prev)}
-            className="flex items-center gap-x-4 uppercase"
-          >
+        <li key={items.key}>
+          <NavigationMenuTrigger className="font-normal p-0 uppercase transition duration-500 ease-in-out hover:text-gray-600">
             {items.label}
-            {dropdown ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-          </button>
-
-          <Dropdown
-            depthLevel={depthLevel}
-            subMenus={items.subMenu}
-            dropdown={dropdown}
-          />
-          
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="flex-col bg-white text-cyan-600 shadow-lg">
+              {items.subMenu.map((subMenuItem, i) => (
+                <li
+                  key={subMenuItem.key}
+                  className={`py-5 pl-6 pr-32 ${i !== items.subMenu.length - 1 && "border-b-2"}`}
+                >
+                  <Link
+                    href={subMenuItem.href}
+                    className="h-full uppercase text-sm transition duration-500 ease-in-out hover:text-gray-600"
+                  >
+                    {subMenuItem.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </NavigationMenuContent>
         </li>
       ) : (
-        <li className="uppercase transition duration-500 ease-in-out hover:text-gray-600">
+        <li
+          key={items.key}
+          className="uppercase transition duration-500 ease-in-out hover:text-gray-600"
+        >
           <Link href={items.href}>{items.label}</Link>
         </li>
       )}
