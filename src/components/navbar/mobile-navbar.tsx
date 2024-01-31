@@ -4,10 +4,10 @@ import { useCycle } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
+import Logo from "@/components/navbar/logo";
 import MobileMenu from "@/components/navbar/mobile-menu";
 import MobileMenuButton from "@/components/navbar/mobile-menu-button";
 import ShoppingCartIcon from "@/components/navbar/shopping-cart-icon";
-import Logo from "./logo";
 
 const MobileNavbar = () => {
   const [isOpen, toggleMenu] = useCycle(false, true);
@@ -40,7 +40,7 @@ const MobileNavbar = () => {
   }, [isOpen]);
 
   return (
-    <header className="md:hidden">
+    <header className="z-50 md:hidden">
       <div className="flex items-center justify-between px-5 py-3">
         <Logo width={100} height={50} closeOnCurrent={closeOnCurrent} />
         <div className="flex items-center gap-x-4">
@@ -48,7 +48,6 @@ const MobileNavbar = () => {
           <MobileMenuButton toggleMenu={toggleMenu} isOpen={isOpen} />
         </div>
       </div>
-
       <MobileMenu isOpen={isOpen} closeOnCurrent={closeOnCurrent} />
     </header>
   );

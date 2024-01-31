@@ -1,11 +1,11 @@
 import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 
+import MobileMenuItems from "@/components/navbar/mobile-menu-items";
 import { menuItems } from "@/config";
 import {
   menuItemContentVariants,
   menuItemVariants,
 } from "@/lib/motion/variants";
-import MobileMenuItems from "./mobile-menu-items";
 
 type MobileMenuProps = {
   isOpen: boolean;
@@ -27,7 +27,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, closeOnCurrent }) => {
             initial="closed"
             animate="open"
             exit="closed"
-            className="absolute z-50 h-[calc(100dvh)] w-full touch-none overflow-hidden bg-white py-10"
+            className="absolute h-[calc(100dvh)] w-full touch-none overflow-hidden bg-white py-10"
           >
             <motion.ul
               variants={menuItemContentVariants}

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 
 import {
   Accordion,
@@ -9,7 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import MobileDropdown from "./mobile-dropdow";
+import MobileDropdown from "@/components/navbar/mobile-dropdow";
 
 interface MobileMenuItemsProps {
   item:
@@ -42,10 +42,10 @@ const MobileMenuItems: React.FC<MobileMenuItemsProps> = ({
         <li className="flex cursor-pointer flex-col justify-center gap-y-3 text-cyan-600 hover:text-gray-600">
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1" className="border-none">
-              <AccordionTrigger className="flex items-center justify-between px-8 py-0 pb-3 text-lg font-normal uppercase">
+              <AccordionTrigger className="flex items-center justify-between px-8 py-0 text-lg font-normal uppercase">
                 {item.label}
               </AccordionTrigger>
-              <AccordionContent className="py-0">
+              <AccordionContent className="py-0 pt-3">
                 <MobileDropdown subMenu={item.subMenu} />
               </AccordionContent>
             </AccordionItem>

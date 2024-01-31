@@ -25,7 +25,7 @@ const ShoppingCartIcon = () => {
           <SheetTitle className="font-normal">Shopping cart</SheetTitle>
           <Separator className="h-[2px]" />
         </SheetHeader>
-        <SheetDescription className="p-2 flex justify-center items-center">\
+        <SheetDescription className="p-2 flex justify-center items-center">
         {/* TODO: customize and style the cart sheet if a item is at the cart*/}
           No products in the cart.
         </SheetDescription>

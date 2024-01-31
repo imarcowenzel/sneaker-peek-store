@@ -4,7 +4,7 @@ export const menuItems = [
   { key: 1, label: "HOME", href: "/" },
   { key: 2, label: "SHOP", href: "/shop" },
   {
-    key: 3, 
+    key: 3,
     label: "MY ACCOUNT",
     href: "/my-account",
     subMenu: [
@@ -33,7 +33,11 @@ export const footerMenu = [
     title: "Business",
     items: [
       { key: 21, label: "Company Profile", href: "company-profile" },
-      { key: 22, label: "Social Responsibility", href: "social-responsibility" },
+      {
+        key: 22,
+        label: "Social Responsibility",
+        href: "social-responsibility",
+      },
       { key: 23, label: "Brand Kit", href: "brand-kit" },
       { key: 24, label: "Media", href: "media" },
     ],
@@ -63,4 +67,71 @@ export const footerSocialMedias = [
   { key: 1, label: FaInstagram, href: "https://instagram.com" },
   { key: 2, label: FaTwitter, href: "https://twitter.com" },
   { key: 3, label: FaYoutube, href: "https://youtube.com" },
+];
+
+export const carouselShoes = [
+  {
+    key: 1,
+    photo: "/aqua-shoes.jpg",
+    title: "Air Prox X3 Aqua",
+    href: "/",
+    category: "Running Shoes",
+    price: 58.0,
+  },
+  {
+    key: 2,
+    photo: "/orange-shoes.jpg",
+    title: "Air Prox X3 Orange",
+    href: "/",
+    category: "Running Shoes",
+    price: 62.0,
+  },
+  {
+    key: 3,
+    photo: "/whole-blue-shoes.jpg",
+    title: "Air Prox X3 Whole Blue",
+    href: "/",
+    category: "Running Shoes",
+    price: 62.0,
+  },
+  {
+    key: 4,
+    photo: "/yellow-shoes.jpg",
+    title: "Air Prox X3 Yellow",
+    href: "/",
+    category: "Running Shoes",
+    price: 58.0,
+  },
+  {
+    key: 5,
+    photo: "/whole-green-shoes.jpg",
+    title: "Air Prox X3 Whole Green",
+    href: "/",
+    category: "Running Shoes",
+    price: 58.0,
+  },
+  {
+    key: 6,
+    photo: "/green-shoes.jpg",
+    title: "Air Prox X3 Green",
+    href: "/",
+    category: "Running Shoes",
+    price: 58.0,
+  },
+  {
+    key: 7,
+    photo: "/red-shoes.jpg",
+    title: "Air Prox X3 Red",
+    href: "/",
+    category: "Running Shoes",
+    price: 62.0,
+  },
+  {
+    key: 8,
+    photo: "/blue-shoes.jpg",
+    title: "Air Prox X3 Blue",
+    href: "/",
+    category: "Running Shoes",
+    price: 55.0,
+  },
 ];

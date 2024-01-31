@@ -1,0 +1,56 @@
+import React from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { carouselShoes } from "@/config";
+import Image from "next/image";
+
+const CarouselSection = () => {
+  return (
+    <div className="pr-30 pb-50 pl-30 xl:py-100 xl:pb-120 flex flex-col items-center gap-y-10 p-20 lg:p-12 xl:py-24">
+
+      <div className="flex flex-col items-center font-bold italic">
+        <h1 className="text-5xl lg:text-8xl">UNBELIEVABLE</h1>
+        <h2 className="text-3xl lg:text-4xl">SPEED. COMFORT.</h2>
+      </div>
+
+      <Carousel>
+        <CarouselContent className="w-full max-w-xs md:max-w-2xl xl:max-w-6xl 2xl:max-w-7xl">
+          {carouselShoes.map((shoe) => (
+            <CarouselItem
+              key={shoe.key}
+              className="flex flex-col md:basis-1/3 lg:basis-1/4"
+            >
+              <div className="w-full">
+                <Image
+                  src={shoe.photo}
+                  alt={shoe.title}
+                  height={1000}
+                  width={1000}
+                />
+
+                <div className="flex flex-col items-center gap-y-2 py-12 bg-gray-100">
+                  <p className="text-xs">{shoe.category}</p>
+
+                  <h2 className="text-sm font-bold">{shoe.title}</h2>
+
+                  <p className="text-xs font-bold text-green-600">
+                    ${shoe.price}.00
+                  </p>
+                </div>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+    </div>
+  );
+};
+
+export default CarouselSection;
