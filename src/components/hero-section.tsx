@@ -26,11 +26,11 @@ const Hero = () => {
           alt="Hero Image"
           width={3000}
           height={3000}
-          className="z-10 h-auto max-w-full"
+          className="z-10 h-auto max-w-full border-2"
         />
         <Button
           variant={"ghost"}
-          className="absolute bottom-16 w-fit rounded-full text-xs shadow-lg"
+          className="absolute z-10 bottom-16 w-fit rounded-full text-xs shadow-lg"
         >
           <Link
             href="/shop"

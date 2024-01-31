@@ -2,29 +2,22 @@
 
 import MenuItems from "@/components/navbar/menu-items";
 import ShoppingCartIcon from "@/components/navbar/shopping-cart-icon";
-import { menuItems } from "@/config";
 import {
   NavigationMenu,
-  NavigationMenuItem,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import { menuItems } from "@/config";
 
 const Menu = () => {
   return (
-    <nav className="flex items-center gap-x-8">
-      <NavigationMenu>
-        <NavigationMenuList>
-          <NavigationMenuItem>
-            <ul className="flex items-center gap-x-8 text-sm text-cyan-600">
-              {menuItems.map((items) => (
-                <MenuItems key={items.key} items={items} />
-              ))}
-            </ul>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
+    <NavigationMenu className="hidden items-center justify-between gap-x-8 md:flex">
+      <NavigationMenuList className="flex items-center gap-x-8 text-sm text-cyan-600">
+        {menuItems.map((item) => {
+          return <MenuItems key={item.key} items={item} />;
+        })}
+      </NavigationMenuList>
       <ShoppingCartIcon />
-    </nav>
+    </NavigationMenu>
   );
 };
 

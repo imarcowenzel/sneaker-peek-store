@@ -3,7 +3,7 @@ import Menu from "@/components/navbar/menu";
 
 const Navbar = () => {
   return (
-    <header className="hidden items-center justify-between px-9 py-4 md:flex">
+    <header className="hidden z-20 items-center justify-between px-9 py-4 md:flex">
       <Logo width={120} height={20} />
       <Menu />
     </header>

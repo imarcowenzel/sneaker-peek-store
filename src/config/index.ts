@@ -1,20 +1,20 @@
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 export const menuItems = [
-  { key: 1, label: "Home", href: "/" },
-  { key: 2, label: "Shop", href: "/shop" },
+  { key: 1, label: "HOME", href: "/" },
+  { key: 2, label: "SHOP", href: "/shop" },
   {
     key: 3, 
-    label: "My account",
+    label: "MY ACCOUNT",
     href: "/my-account",
     subMenu: [
-      { key: 31, label: "Orders", href: "/orders" },
-      { key: 32, label: "Addresses", href: "/addresses" },
-      { key: 33, label: "Account", href: "/account-details" },
+      { key: 31, label: "ORDERS", href: "/orders" },
+      { key: 32, label: "ADDRESSES", href: "/addresses" },
+      { key: 33, label: "ACCOUNT", href: "/account-details" },
     ],
   },
-  { key: 4, label: "About", href: "/about" },
-  { key: 5, label: "Contact", href: "/contact" },
+  { key: 4, label: "ABOUT", href: "/about" },
+  { key: 5, label: "CONTACT", href: "/contact" },
 ];
 
 export const footerMenu = [
