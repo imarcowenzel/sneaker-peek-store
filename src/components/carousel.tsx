@@ -19,7 +19,7 @@ const CarouselSection = () => {
       </div>
 
       <Carousel>
-        <CarouselContent className="w-full max-w-xs md:max-w-2xl xl:max-w-6xl 2xl:max-w-7xl">
+        <CarouselContent className="w-full max-w-[275px] md:max-w-2xl xl:max-w-6xl 2xl:max-w-7xl">
           {carouselShoes.map((shoe) => (
             <CarouselItem
               key={shoe.key}
