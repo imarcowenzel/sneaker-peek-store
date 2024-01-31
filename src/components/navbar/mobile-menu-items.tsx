@@ -1,9 +1,14 @@
 "use client";
 
-import { Minus, Plus } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import MobileDropdown from "./mobile-dropdow";
 
 interface MobileMenuItemsProps {
@@ -31,33 +36,20 @@ const MobileMenuItems: React.FC<MobileMenuItemsProps> = ({
   item,
   closeOnCurrent,
 }) => {
-  const [showSubMenu, setShowSubMenu] = useState(false);
-
-  const toggleSubMenu = () => {
-    setShowSubMenu(!showSubMenu);
-  };
-
   return (
     <>
       {item.subMenu ? (
-        <li
-          className="flex cursor-pointer flex-col justify-center gap-y-3 text-cyan-600 hover:text-gray-600"
-          onClick={toggleSubMenu}
-        >
-          <button
-            type="button"
-            aria-haspopup="menu"
-            onClick={() => closeOnCurrent(item.href)}
-            aria-expanded={showSubMenu ? "true" : "false"}
-            className="flex items-center justify-between px-8 text-lg uppercase"
-          >
-            {item.label}
-            <span>
-              {showSubMenu ? <Minus size={14} /> : <Plus size={14} />}
-            </span>
-          </button>
-
-          <MobileDropdown subMenu={item.subMenu} showSubMenu={showSubMenu} />
+        <li className="flex cursor-pointer flex-col justify-center gap-y-3 text-cyan-600 hover:text-gray-600">
+          <Accordion type="single" collapsible>
+            <AccordionItem value="item-1" className="border-none">
+              <AccordionTrigger className="flex items-center justify-between px-8 py-0 pb-3 text-lg font-normal uppercase">
+                {item.label}
+              </AccordionTrigger>
+              <AccordionContent className="py-0">
+                <MobileDropdown subMenu={item.subMenu} />
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </li>
       ) : (
         <li

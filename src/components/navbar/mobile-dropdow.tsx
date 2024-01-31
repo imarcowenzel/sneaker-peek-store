@@ -7,21 +7,11 @@ interface MobileDropdownProps {
     label: string;
     href: string;
   }[];
-  showSubMenu: boolean;
 }
 
-const MobileDropdown: React.FC<MobileDropdownProps> = ({
-  subMenu,
-  showSubMenu,
-}) => {
+const MobileDropdown: React.FC<MobileDropdownProps> = ({ subMenu }) => {
   return (
-    <ul
-      className={
-        showSubMenu
-          ? "flex flex-col gap-y-4 bg-[#efefef] py-3 pl-10 uppercase"
-          : "hidden"
-      }
-    >
+    <ul className={"flex flex-col gap-y-4 bg-[#efefef] py-3 pl-10 uppercase"}>
       {subMenu.map((subMenuItem) => (
         <li
           key={subMenuItem.key}
