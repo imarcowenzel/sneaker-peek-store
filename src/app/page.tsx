@@ -1,5 +1,6 @@
 import CarouselSection from "@/components/carousel";
 import Hero from "@/components/hero-section";
+import Stock from "@/components/stock";
 import Topics from "@/components/topics";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <CarouselSection />
       <Topics />
+      <Stock />
     </section>
   );
 }
