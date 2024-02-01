@@ -3,9 +3,9 @@
 import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
 
 const Hero = () => {
   const [backgroundSize, setBackgroundSize] = useState("cover");
@@ -66,7 +66,7 @@ const Hero = () => {
               <div className="transition">
                 <Button
                   variant={"ghost"}
-                  className="z-10 w-fit rounded-full bg-white text-xs shadow-lg"
+                  className="z-10 w-fit py-5 px-8 rounded-full bg-white text-xs shadow-lg lg:text-sm"
                 >
                   <Link
                     href="/shop"

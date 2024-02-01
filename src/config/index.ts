@@ -140,21 +140,25 @@ export const topics = [
   {
     key: 1,
     title: "Research",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non reiciendis sunt quisquam deserunt nostrum maxime!"
+    description:
+      "Lorem ipsum dolor sit amet, consec tetur elit. Ut elit tellus, luctus nec ullam corper.",
   },
   {
     key: 2,
     title: "Idea & Concept",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non reiciendis sunt quisquam deserunt nostrum maxime!"
+    description:
+      "Lorem ipsum dolor sit amet, consec tetur elit. Ut elit tellus, luctus nec ullam corper.",
   },
   {
     key: 3,
     title: "Design & Production",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non reiciendis sunt quisquam deserunt nostrum maxime!"
+    description:
+      "Lorem ipsum dolor sit amet, consec tetur elit. Ut elit tellus, luctus nec ullam corper.",
   },
   {
     key: 4,
     title: "Sales & Support",
-    description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non reiciendis sunt quisquam deserunt nostrum maxime!"
+    description:
+      "Lorem ipsum dolor sit amet, consec tetur elit. Ut elit tellus, luctus nec ullam corper.",
   },
 ];

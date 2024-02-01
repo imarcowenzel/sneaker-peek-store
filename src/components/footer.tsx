@@ -4,12 +4,13 @@ import { footerMenu, footerSocialMedias } from "@/config";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col gap-y-20 border-t-2 border-t-white bg-[#f2f4f6] px-5 py-12 lg:py-24">
-      <div className="flex flex-col gap-y-3 md:flex-row md:justify-evenly">
+    <footer className="flex w-full flex-col gap-y-20 border-t-2 border-t-white bg-[#f2f4f6] px-5 py-12 lg:px-20 lg:py-24">
+
+      <div className="flex flex-col gap-y-8 md:flex-row md:justify-between">
         {footerMenu.map((menuItem) => (
-          <div className="flex flex-col gap-y-3" key={menuItem.title}>
-            <h1 className="text-base font-bold">{menuItem.title}</h1>
-            <ul className="flex flex-col gap-y-1 text-sm">
+          <div className="flex flex-col gap-y-2" key={menuItem.title}>
+            <h1 className="text-base font-bold lg:text-lg">{menuItem.title}</h1>
+            <ul className="flex flex-col gap-y-1 text-sm lg:text-base">
               {menuItem.items.map((item) => (
                 <li
                   key={item.key}
@@ -23,14 +24,19 @@ const Footer = () => {
         ))}
 
         <div className="flex flex-col gap-y-3">
-          <h1 className="text-base font-bold">Follow Us</h1>
+          <h1 className="text-base font-bold lg:text-lg">Follow Us</h1>
           <ul className="flex gap-x-4 text-sm">
             {footerSocialMedias.map((social) => (
               <li
                 key={social.key}
                 className="cursor-pointer bg-gray-300 p-2 hover:bg-cyan-600 hover:text-white"
+                aria-label={`Visit Sneaker Peek's profile on ${social.href}`}
               >
-                <Link href={social.href}>
+                <Link
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <social.label />
                 </Link>
               </li>
@@ -40,7 +46,7 @@ const Footer = () => {
       </div>
 
       <div>
-        <p className="text-center text-sm">
+        <p className="text-center text-sm lg:text-base">
           2024 &copy; Developed by{" "}
           <Link
             href={"https://github.com/imarcowenzel"}
@@ -54,6 +60,7 @@ const Footer = () => {
         </p>
       </div>
     </footer>
+    
   );
 };
 
