@@ -13,7 +13,7 @@ import Image from "next/image";
 
 const CarouselSection = () => {
   return (
-    <div className="pr-30 pb-50 pl-30 xl:py-100 xl:pb-120 flex flex-col items-center gap-y-10 p-20 lg:p-12 xl:py-24">
+    <div className="w-full pb-50 px-30 xl:py-100 xl:pb-120 flex flex-col items-center gap-y-10 p-20 lg:p-12 xl:py-24">
       <div className="flex flex-col items-center font-bold italic">
         <h1 className="text-5xl lg:text-8xl">UNBELIEVABLE</h1>
         <h2 className="text-3xl lg:text-4xl">SPEED. COMFORT.</h2>
