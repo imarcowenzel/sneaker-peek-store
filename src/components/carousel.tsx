@@ -27,6 +27,10 @@ const CarouselSection = () => {
             delay: 3000,
           }),
         ]}
+        opts={{
+          align: "start",
+          loop: true,
+        }}
       >
         <CarouselContent className="w-full max-w-[275px] md:max-w-2xl xl:max-w-6xl 2xl:max-w-7xl">
           {carouselShoes.map((shoe) => (
