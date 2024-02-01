@@ -2,7 +2,7 @@ import { topics } from "@/config";
 
 const Topics = () => {
   return (
-    <div className="grid w-full gap-y-24 bg-[#efefef] p-3 py-14 md:grid-cols-2 md:p-8 md:py-14 lg:grid-cols-4 lg:gap-x-8 lg:px-24 lg:py-24">
+    <div className="grid w-full gap-y-24 bg-[#efefef] p-3 py-14 md:grid-cols-2 md:p-8 md:py-14 lg:grid-cols-4 lg:gap-x-8 lg:px-24 lg:py-24 2xl:px-72 2xl:py-40">
       {topics.map((topic) => (
         <div key={topic.key} className="relative flex flex-col gap-y-10 px-5">
           <h1 className="max-w-3xl text-2xl font-bold text-gray-800 md:text-center lg:max-w-5xl xl:max-w-7xl">

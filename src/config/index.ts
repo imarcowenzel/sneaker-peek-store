@@ -8,9 +8,9 @@ export const menuItems = [
     label: "MY ACCOUNT",
     href: "/my-account",
     subMenu: [
-      { key: 31, label: "ORDERS", href: "/orders" },
-      { key: 32, label: "ADDRESSES", href: "/addresses" },
-      { key: 33, label: "ACCOUNT", href: "/account-details" },
+      { key: 31, label: "ORDERS", href: "/my-account/orders" },
+      { key: 32, label: "ADDRESSES", href: "/my-account/addresses" },
+      { key: 33, label: "ACCOUNT", href: "/my-account/account-details" },
     ],
   },
   { key: 4, label: "ABOUT", href: "/about" },

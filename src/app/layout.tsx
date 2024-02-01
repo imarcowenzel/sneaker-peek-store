@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
 import Footer from "@/components/footer";
-import Navbar from "@/components/navbar/navbar";
-import "./globals.css";
 import MobileNavbar from "@/components/navbar/mobile-navbar";
+import Navbar from "@/components/navbar/navbar";
 import { cn } from "@/lib/utils";
+import "./globals.css";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "700"] });
 
@@ -30,7 +30,7 @@ export default function RootLayout({
         <main className="relative flex flex-col min-h-screen">
           <Navbar />
           <MobileNavbar />
-          <div className="h-full min-w-[375px] bg-[#f2f4f6]">{children}</div>
+          <div className="h-full min-w-[375px] bg-white">{children}</div>
           <Footer />
         </main>
       </body>

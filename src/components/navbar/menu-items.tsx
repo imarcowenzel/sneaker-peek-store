@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React from "react";
 
 import {
@@ -7,6 +6,7 @@ import {
   NavigationMenuLink,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { usePathname } from "next/navigation";
 import Dropdown from "./dropdown";
 
 interface MenuItemsProps {
@@ -30,13 +30,19 @@ interface MenuItemsProps {
 }
 
 const MenuItems: React.FC<MenuItemsProps> = ({ items }) => {
+  const pathname = usePathname();
+
   return (
     <>
       {
         // Conditional to subMenu
         items.subMenu ? (
           <NavigationMenuItem>
-            <NavigationMenuTrigger>{items.label}</NavigationMenuTrigger>
+            <NavigationMenuTrigger
+              className={`transition duration-500 ease-in-out hover:text-gray-600 ${items?.subMenu?.some((subMenu) => pathname === subMenu.href) ? "text-black" : ""}`}
+            >
+              {items.label}
+            </NavigationMenuTrigger>
             <NavigationMenuContent>
               <Dropdown items={items} />
             </NavigationMenuContent>
@@ -45,7 +51,7 @@ const MenuItems: React.FC<MenuItemsProps> = ({ items }) => {
           <NavigationMenuItem key={items.key}>
             <NavigationMenuLink
               href={items.href}
-              className="transition duration-500 ease-in-out hover:text-gray-600"
+              className={`transition duration-500 ease-in-out hover:text-gray-600 ${pathname === items.href ? "text-black" : ""}`}
             >
               {items.label}
             </NavigationMenuLink>
