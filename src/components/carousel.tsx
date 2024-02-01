@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Carousel,
@@ -32,7 +32,7 @@ const CarouselSection = () => {
               key={shoe.key}
               className="flex flex-col md:basis-1/3 lg:basis-1/4"
             >
-              <div className="w-full">
+              <div className="relative w-full">
                 <Image
                   src={shoe.photo}
                   alt={shoe.title}
