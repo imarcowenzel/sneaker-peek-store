@@ -41,7 +41,7 @@ const Hero = () => {
             <div className="my-5 w-full text-center duration-700">
               <h1
                 className="w-full whitespace-nowrap text-5xl font-bold text-white md:top-10 md:text-8xl lg:top-40 lg:text-[135px]"
-                style={{ textShadow: "0 0 25px rgba(47, 158, 226, 0.3)" }}
+                style={{ textShadow: "0 0 25px rgba(47, 158, 226, 0.6)"}}
               >
                 AirPro X3
               </h1>
