@@ -11,17 +11,15 @@ const Stock = () => {
           "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/stock.jpg')",
       }}
     >
+
       <div className="mx-auto flex max-w-3xl flex-col gap-y-9 text-white md:max-w-5xl md:items-center md:text-center lg:max-w-7xl">
-        <h3 className="text-2xl font-bold">Limited Stock Available!</h3>
-        <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
+        <h3 className="text-2xl font-black">Limited Stock Available!</h3>
+        <h1 className="text-4xl font-black md:text-5xl lg:text-6xl">
           AirPro X3. Turbocharged.
         </h1>
 
-        <p className="text-sm lg:text-base">
-          Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris
-          vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu
-          ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris
-          in erat justo.
+        <p className="text-sm lg:text-base leading-7 text-justify md:text-center md:px-12 xl:px-64">
+          Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo.
         </p>
 
         <Button
@@ -32,6 +30,7 @@ const Stock = () => {
           SHOP NOW
         </Button>
       </div>
+
     </div>
   );
 };

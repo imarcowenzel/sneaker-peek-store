@@ -7,7 +7,7 @@ import Navbar from "@/components/navbar/navbar";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
-const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "700"] });
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "700", "900"] });
 
 export const metadata: Metadata = {
   title: "Sneaker Peek",

@@ -19,12 +19,12 @@ const Hero = () => {
       }
     };
 
-    // Adiciona o event listener quando o componente é montado
+    // Add the event listener when the components is mounted
     handleResize();
 
     window.addEventListener("resize", handleResize);
 
-    // Remove o event listener quando o componente é desmontado
+    // Remove the event listener when components is unmounted
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -35,13 +35,11 @@ const Hero = () => {
       className="bg-center bg-no-repeat px-8 py-12 md:p-12 lg:bg-scroll"
       style={{ backgroundImage: 'url("/hero-bg.jpg")', backgroundSize }}
     >
-
       <div className="m-0 flex min-h-[1px] w-full max-w-[767px] flex-wrap content-start p-0 transition duration-300 md:max-w-[1024px] md:p-3 lg:max-w-[1200px]">
-
         {/* TITLE */}
         <div className="mb-5 w-full text-center duration-700">
           <h1
-            className="w-full whitespace-nowrap text-6xl font-bold text-white md:top-36 md:text-8xl lg:top-40 lg:text-[135px]"
+            className="w-full whitespace-nowrap text-6xl font-black text-white md:top-10 md:text-8xl lg:top-40 lg:text-[135px]"
             style={{ textShadow: "0 0 25px rgba(47, 158, 226, 0.6)" }}
           >
             AirPro X3

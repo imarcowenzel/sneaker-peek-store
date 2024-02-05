@@ -11,14 +11,14 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { carouselShoes } from "@/config";
+import Link from "next/link";
 
 const CarouselSection = () => {
   return (
-    <div className="px-30 xl:py-100 xl:pb-120 flex w-full flex-col items-center gap-y-10 py-14 md:pt-20 lg:p-12 xl:py-24">
-
-      <div className="flex flex-col items-center font-bold italic">
-        <h1 className="text-5xl lg:text-8xl">UNBELIEVABLE</h1>
-        <h2 className="text-3xl lg:text-4xl">SPEED. COMFORT.</h2>
+    <div className="flex w-full flex-col items-center gap-y-10 px-8 pb-14 pt-5 md:p-14 xl:px-0 xl:pb-32 xl:pt-24">
+      <div className="flex flex-col items-center font-black italic text-gray-700">
+        <h1 className="text-5xl md:text-[82px] lg:text-9xl">UNBELIEVABLE</h1>
+        <h2 className="text-3xl md:text-4xl lg:text-5xl">SPEED. COMFORT.</h2>
       </div>
 
       <Carousel
@@ -38,7 +38,8 @@ const CarouselSection = () => {
               key={shoe.key}
               className="flex flex-col md:basis-1/3 lg:basis-1/4"
             >
-              <div className="relative w-full">
+              {/* TODO: dynamic link to shoes */}
+              <Link href={"/"} className="relative w-full">
                 <Image
                   src={shoe.photo}
                   alt={shoe.title}
@@ -55,7 +56,8 @@ const CarouselSection = () => {
                     ${shoe.price}.00
                   </p>
                 </div>
-              </div>
+              </Link>
+              
             </CarouselItem>
           ))}
         </CarouselContent>
