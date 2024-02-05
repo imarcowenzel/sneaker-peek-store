@@ -69,7 +69,7 @@ export const footerSocialMedias = [
   { key: 3, label: FaYoutube, href: "https://youtube.com" },
 ];
 
-export const carouselShoes = [
+export const shoesData = [
   {
     key: 1,
     photo: "/aqua-shoes.jpg",
