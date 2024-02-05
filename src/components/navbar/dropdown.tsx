@@ -1,6 +1,6 @@
-import React from "react";
-import { NavigationMenuLink } from "../ui/navigation-menu";
+import { NavigationMenuLink } from "@/components/ui/navigation-menu";
 import Link from "next/link";
+import React from "react";
 
 interface DropdownProps {
   items: {

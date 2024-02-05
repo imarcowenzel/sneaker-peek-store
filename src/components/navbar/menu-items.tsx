@@ -1,13 +1,13 @@
+import { usePathname } from "next/navigation";
 import React from "react";
 
+import { Dropdown } from "@/components/navbar";
 import {
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { usePathname } from "next/navigation";
-import Dropdown from "./dropdown";
 
 interface MenuItemsProps {
   items:

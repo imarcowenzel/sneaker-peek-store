@@ -4,10 +4,12 @@ import { useCycle } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-import Logo from "@/components/navbar/logo";
-import MobileMenu from "@/components/navbar/mobile-menu";
-import MobileMenuButton from "@/components/navbar/mobile-menu-button";
-import ShoppingCartIcon from "@/components/navbar/shopping-cart-icon";
+import {
+  Logo,
+  MobileMenu,
+  MobileMenuButton,
+  ShoppingCartIcon,
+} from "@/components/navbar";
 
 const MobileNavbar = () => {
   const [isOpen, toggleMenu] = useCycle(false, true);

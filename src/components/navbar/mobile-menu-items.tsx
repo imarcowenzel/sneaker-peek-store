@@ -9,7 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import MobileDropdown from "@/components/navbar/mobile-dropdow";
+import { MobileDropdown } from "@/components/navbar";
 
 interface MobileMenuItemsProps {
   item:

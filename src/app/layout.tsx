@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
-import Footer from "@/components/footer";
-import MobileNavbar from "@/components/navbar/mobile-navbar";
-import Navbar from "@/components/navbar/navbar";
+import { Footer } from "@/components";
+import { MobileNavbar, Navbar } from "@/components/navbar";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
-const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "700", "900"] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "700", "900"],
+});
 
 export const metadata: Metadata = {
   title: "Sneaker Peek",
@@ -27,7 +29,7 @@ export default function RootLayout({
           poppins.className,
         )}
       >
-        <div className="relative flex flex-col min-h-screen">
+        <div className="relative flex min-h-screen flex-col">
           <Navbar />
           <MobileNavbar />
           <main className="h-full min-w-[375px] bg-white">{children}</main>

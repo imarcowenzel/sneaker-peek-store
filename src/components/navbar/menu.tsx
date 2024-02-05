@@ -1,7 +1,6 @@
 "use client";
 
-import MenuItems from "@/components/navbar/menu-items";
-import ShoppingCartIcon from "@/components/navbar/shopping-cart-icon";
+import { MenuItems, ShoppingCartIcon } from "@/components/navbar";
 import {
   NavigationMenu,
   NavigationMenuList,

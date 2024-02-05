@@ -1,9 +1,8 @@
-import Logo from "@/components/navbar/logo";
-import Menu from "@/components/navbar/menu";
+import { Logo, Menu } from "@/components/navbar";
 
 const Navbar = () => {
   return (
-    <header className="hidden z-20 items-center justify-between px-9 py-4 md:flex">
+    <header className="z-20 hidden items-center justify-between px-9 py-4 md:flex">
       <Logo width={120} height={20} />
       <Menu />
     </header>

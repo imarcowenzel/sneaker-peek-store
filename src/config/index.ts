@@ -136,7 +136,7 @@ export const carouselShoes = [
   },
 ];
 
-export const topics = [
+export const benefitsData = [
   {
     key: 1,
     title: "Research",

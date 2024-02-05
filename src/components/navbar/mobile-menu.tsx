@@ -1,6 +1,6 @@
 import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 
-import MobileMenuItems from "@/components/navbar/mobile-menu-items";
+import { MobileMenuItems } from "@/components/navbar";
 import { menuItems } from "@/config";
 import {
   menuItemContentVariants,

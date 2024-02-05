@@ -13,7 +13,7 @@ import {
 import { carouselShoes } from "@/config";
 import Link from "next/link";
 
-const CarouselSection = () => {
+const HomeCarousel = () => {
   return (
     <div className="flex w-full flex-col items-center gap-y-10 px-8 pb-14 pt-5 md:p-14 xl:px-0 xl:pb-32 xl:pt-24">
       <div className="flex flex-col items-center font-black italic text-gray-700">
@@ -57,7 +57,6 @@ const CarouselSection = () => {
                   </p>
                 </div>
               </Link>
-              
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -68,4 +67,4 @@ const CarouselSection = () => {
   );
 };
 
-export default CarouselSection;
+export default HomeCarousel;
