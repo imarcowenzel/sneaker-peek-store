@@ -77,6 +77,7 @@ export const shoesData = [
     href: "/",
     category: "Running Shoes",
     price: 58.0,
+    sizes: [10, 7, 8, 9]
   },
   {
     key: 2,
@@ -85,6 +86,7 @@ export const shoesData = [
     href: "/",
     category: "Running Shoes",
     price: 62.0,
+    sizes: [10, 7, 8, 9]
   },
   {
     key: 3,
@@ -93,6 +95,7 @@ export const shoesData = [
     href: "/",
     category: "Running Shoes",
     price: 62.0,
+    sizes: [10, 7, 8, 9]
   },
   {
     key: 4,
@@ -101,6 +104,7 @@ export const shoesData = [
     href: "/",
     category: "Running Shoes",
     price: 58.0,
+    sizes: [10, 7, 8, 9]
   },
   {
     key: 5,
@@ -109,6 +113,7 @@ export const shoesData = [
     href: "/",
     category: "Running Shoes",
     price: 58.0,
+    sizes: [10, 7, 8, 9]
   },
   {
     key: 6,
@@ -117,6 +122,7 @@ export const shoesData = [
     href: "/",
     category: "Running Shoes",
     price: 58.0,
+    sizes: [10, 7, 8, 9]
   },
   {
     key: 7,
@@ -125,6 +131,7 @@ export const shoesData = [
     href: "/",
     category: "Running Shoes",
     price: 62.0,
+    sizes: [10, 7, 8, 9]
   },
   {
     key: 8,
@@ -133,6 +140,7 @@ export const shoesData = [
     href: "/",
     category: "Running Shoes",
     price: 55.0,
+    sizes: [10, 7, 8, 9]
   },
 ];
 
