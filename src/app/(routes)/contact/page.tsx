@@ -11,13 +11,26 @@ const Contact = () => {
   return (
     <section className="flex min-h-[100dvh] flex-col items-center">
       {/* Hero */}
-      <div className="flex w-full flex-col px-8 pb-12 pt-20 lg:px-14 lg:pt-28 2xl:px-80 2xl:py-36">
-        <h1 className="text-[41px] font-bold text-gray-200 md:text-[82px] lg:text-[150px]">
-          get in touch
-        </h1>
-        <h1 className="-mt-4 text-4xl font-bold md:text-5xl lg:-mt-12 lg:text-6xl">
-          Contact Us
-        </h1>
+      <div className="px-5 pb-12 pt-20 transition duration-300 md:p-12 md:pt-24 lg:px-0 lg:py-36">
+        <div className="mx-auto max-w-3xl flex-wrap md:max-w-5xl lg:max-w-7xl">
+          <div className="w-full">
+            <div className="flex w-full flex-wrap content-center items-center">
+              <div className="w-full transition duration-300">
+                <h1 className="text-4xl font-black text-gray-200 md:text-7xl xl:text-[150px]">
+                  get in touch
+                </h1>
+              </div>
+
+              <div className="w-full text-left">
+                <div className="transition duration-300 md:-mt-3 lg:-mt-6">
+                  <h1 className="text-4xl font-black text-gray-800 md:text-5xl lg:text-6xl">
+                    Contact Us
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Quick Assist */}
