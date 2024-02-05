@@ -162,3 +162,30 @@ export const topics = [
       "Lorem ipsum dolor sit amet, consec tetur elit. Ut elit tellus, luctus nec ullam corper.",
   },
 ];
+
+export const contactAccordion = [
+  {
+    key: 1,
+    title: "Sed non mauris vitae erat consequat?",
+    description:
+      "I am item content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+  },
+  {
+    key: 2,
+    title: "Nam nec tellus a odio tincidunt auctor?",
+    description:
+      "I am item content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+  },
+  {
+    key: 3,
+    title: "Class aptent taciti sociosqu ad litora?",
+    description:
+      "I am item content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+  },
+  {
+    key: 4,
+    title: "Odio tincidunt auctor a ornare odio?",
+    description:
+      "I am item content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+  },
+];

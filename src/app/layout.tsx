@@ -27,12 +27,12 @@ export default function RootLayout({
           poppins.className,
         )}
       >
-        <main className="relative flex flex-col min-h-screen">
+        <div className="relative flex flex-col min-h-screen">
           <Navbar />
           <MobileNavbar />
-          <div className="h-full min-w-[375px] bg-white">{children}</div>
+          <main className="h-full min-w-[375px] bg-white">{children}</main>
           <Footer />
-        </main>
+        </div>
       </body>
     </html>
   );
