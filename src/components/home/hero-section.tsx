@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import ButtonLink from "../button-link";
 
 const Hero = () => {
   const [backgroundSize, setBackgroundSize] = useState("cover");
@@ -31,49 +32,31 @@ const Hero = () => {
   }, []);
 
   return (
-    <div
-      className="bg-center bg-no-repeat px-8 py-12 md:p-12 lg:bg-scroll"
+    <article
+      className="flex w-full justify-center bg-center bg-no-repeat px-8 py-12 md:p-12"
       style={{ backgroundImage: 'url("/hero-bg.jpg")', backgroundSize }}
     >
-      <div className="m-0 flex min-h-[1px] w-full max-w-[767px] flex-wrap content-start p-0 transition duration-300 md:max-w-[1024px] md:p-3 lg:max-w-[1200px]">
-        {/* TITLE */}
-        <div className="mb-5 w-full text-center duration-700">
-          <h1
-            className="w-full whitespace-nowrap text-6xl font-black text-white md:top-10 md:text-8xl lg:top-40 lg:text-[135px]"
-            style={{ textShadow: "0 0 25px rgba(47, 158, 226, 0.6)" }}
-          >
-            AirPro X3
-          </h1>
-        </div>
+      <div className="flex w-full max-w-[767px] flex-col items-center md:max-w-[1024px] lg:max-w-[1200px]">
+        <h1
+          className="text-6xl font-black text-white md:text-[110px] lg:text-[150px]"
+          style={{ textShadow: "0 0 25px rgba(47, 158, 226, 0.6)" }}
+        >
+          AirPro X3
+        </h1>
 
-        {/* IMAGE */}
-        <div className="-my-14 mb-5 w-full text-center transition duration-700 lg:-my-24 xl:-my-80">
-          <Image
-            src="/hero-shoe.png"
-            alt="Hero Image"
-            width={2000}
-            height={2000}
-            className="inline-block h-auto w-3/4 max-w-full align-middle lg:w-4/5 "
-          />
-        </div>
+        <Image
+          src="/hero-shoe.png"
+          alt="Hero Image"
+          width={2000}
+          height={2000}
+          className="-mt-10 w-3/4 max-w-full md:-mt-20 lg:-mt-64 lg:w-4/5 "
+        />
 
-        {/* BUTTON */}
-        <div className="w-full text-center transition lg:mt-16">
-          <Button
-            variant={"ghost"}
-            className="z-10 w-fit rounded-full bg-white px-8 py-5 text-xs shadow-lg lg:text-sm"
-          >
-            <Link
-              href="/shop"
-              className="flex justify-between gap-x-4 rounded-full"
-            >
-              <ArrowRightIcon size={13} />
-              SHOP COLLECTION
-            </Link>
-          </Button>
-        </div>
+        <ButtonLink href="/shop" className="lg:-mt-40"> 
+          SHOP COLLECTION
+        </ButtonLink>
       </div>
-    </div>
+    </article>
   );
 };
 

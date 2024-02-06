@@ -1,10 +1,12 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import ButtonLink from "../button-link";
 
 const LimitedStockBanner = () => {
   return (
     <div
-      className="w-full bg-cover bg-fixed bg-center px-8 py-14 lg:px-40 xl:py-36 2xl:p-14"
+      className="w-full bg-cover bg-center px-8 py-14 lg:bg-fixed lg:px-40 xl:py-36 2xl:p-14"
       style={{
         backgroundImage:
           "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/stock.jpg')",
@@ -21,13 +23,10 @@ const LimitedStockBanner = () => {
           ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris
           in erat justo.
         </p>
-        <Button
-          variant={"ghost"}
-          className="flex w-fit gap-x-2 rounded-full bg-white px-8 py-4 text-xs text-black lg:gap-x-4 lg:text-sm"
-        >
-          <ArrowRight size={14} />
+
+        <ButtonLink href="/shop" className="text-black hover:bg-cyan-600">
           SHOP NOW
-        </Button>
+        </ButtonLink>
       </div>
     </div>
   );

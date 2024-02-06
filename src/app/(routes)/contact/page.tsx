@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Accordion,
   AccordionContent,
@@ -8,8 +7,10 @@ import {
 import { contactAccordion } from "@/config";
 
 const Contact = () => {
+  
   return (
-    <section className="flex min-h-[100dvh] flex-col items-center">
+    <section className="flex min-h-[100dvh] flex-col">
+
       {/* Hero */}
       <div className="px-5 pb-12 pt-20 transition duration-300 md:p-12 md:pt-24 lg:px-0 lg:py-36">
         <div className="mx-auto max-w-3xl flex-wrap md:max-w-5xl lg:max-w-7xl">

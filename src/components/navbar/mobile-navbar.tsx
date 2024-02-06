@@ -42,7 +42,7 @@ const MobileNavbar = () => {
   }, [isOpen]);
 
   return (
-    <header className="z-50 md:hidden">
+    <header className="z-50 lg:hidden">
       <div className="flex items-center justify-between px-5 py-3">
         <Logo width={100} height={50} closeOnCurrent={closeOnCurrent} />
         <div className="flex items-center gap-x-4">
