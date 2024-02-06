@@ -1,12 +1,9 @@
 "use client";
 
-import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import { Button } from "@/components/ui/button";
-import ButtonLink from "../button-link";
+import { ButtonLink } from "@/components";
 
 const Hero = () => {
   const [backgroundSize, setBackgroundSize] = useState("cover");
@@ -52,7 +49,7 @@ const Hero = () => {
           className="-mt-10 w-3/4 max-w-full md:-mt-20 lg:-mt-64 lg:w-4/5 "
         />
 
-        <ButtonLink href="/shop" className="lg:-mt-40"> 
+        <ButtonLink href="/shop" className="lg:-mt-40">
           SHOP COLLECTION
         </ButtonLink>
       </div>

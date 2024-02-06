@@ -171,7 +171,7 @@ export const benefitsData = [
   },
 ];
 
-export const contactAccordion = [
+export const contactData = [
   {
     key: 1,
     title: "Sed non mauris vitae erat consequat?",

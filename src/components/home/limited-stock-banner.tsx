@@ -1,7 +1,4 @@
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import ButtonLink from "../button-link";
+import { ButtonLink } from "@/components";
 
 const LimitedStockBanner = () => {
   return (
