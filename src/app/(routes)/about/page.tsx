@@ -1,4 +1,10 @@
 import { Banner, Benefits, ButtonLink } from "@/components";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About - Sneaker Peek",
+  description: "A sneaker shop",
+};
 
 const About = () => {
   const data = [

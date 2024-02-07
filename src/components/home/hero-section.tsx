@@ -1,39 +1,11 @@
-"use client";
-
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 import { ButtonLink } from "@/components";
 
 const Hero = () => {
-  const [backgroundSize, setBackgroundSize] = useState("cover");
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 767 && window.innerWidth < 1024) {
-        setBackgroundSize("1100px auto");
-      } else {
-        setBackgroundSize("cover");
-      }
-    };
-
-    // Add the event listener when the components is mounted
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-
-    // Remove the event listener when components is unmounted
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
-    <article
-      className="flex w-full justify-center bg-center bg-no-repeat px-8 py-12 md:p-12"
-      style={{ backgroundImage: 'url("/hero-bg.jpg")', backgroundSize }}
-    >
-      <div className="flex w-full max-w-[767px] flex-col items-center md:max-w-[1024px] lg:max-w-[1200px]">
+    <article className="flex w-full justify-center bg-[url('/hero-bg.jpg')] bg-cover bg-center bg-no-repeat px-8 py-12 md:p-12 lg:bg-scroll lg:p-24">
+      <div className="flex w-full max-w-3xl flex-col items-center md:max-w-5xl lg:max-w-7xl">
         <h1
           className="text-6xl font-black text-white md:text-[110px] lg:text-[150px]"
           style={{ textShadow: "0 0 25px rgba(47, 158, 226, 0.6)" }}
@@ -44,13 +16,15 @@ const Hero = () => {
         <Image
           src="/hero-shoe.png"
           alt="Hero Image"
-          width={2000}
-          height={2000}
-          className="-mt-10 w-3/4 max-w-full md:-mt-20 lg:-mt-64 lg:w-4/5 "
+          width={1200}
+          height={1200}
+          priority
+          loading="eager"
+          className="-mt-10 w-3/4 md:-mt-20 lg:-mt-64 lg:w-4/5 "
         />
 
         <ButtonLink href="/shop" className="lg:-mt-40">
-          SHOP COLLECTION
+          shop collection
         </ButtonLink>
       </div>
     </article>

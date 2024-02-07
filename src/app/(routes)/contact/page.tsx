@@ -6,13 +6,17 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { contactData } from "@/config";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact - Sneaker Peek",
+  description: "A sneaker shop",
+};
 
 const Contact = () => {
-  
   return (
     <section className="flex min-h-[100dvh] flex-col">
-
-    <Banner title="Contact Us" subtitle="get in touch" />
+      <Banner title="Contact Us" subtitle="get in touch" />
 
       {/* Quick Assist */}
       <div className="flex w-full flex-col gap-y-14 bg-[#f2f4f6] px-5 py-12">

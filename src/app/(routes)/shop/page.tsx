@@ -1,6 +1,15 @@
-import { shoesData } from "@/config";
+import { Grid2X2, Settings2, TableProperties } from "lucide-react";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Sheet,
   SheetContent,
@@ -9,14 +18,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Filter, Grid2X2, Settings2, TableProperties } from "lucide-react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { shoesData } from "@/config";
+
+export const metadata: Metadata = {
+  title: "Shop - Sneaker Peek",
+  description: "A sneaker shop",
+};
 
 const Shop = () => {
   return (
