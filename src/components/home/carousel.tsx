@@ -15,9 +15,9 @@ import { shoesData } from "@/config";
 
 const HomeCarousel = () => {
   return (
-    <article className="flex w-full flex-col items-center px-8 pb-14 pt-5  md:p-14 lg:px-0 lg:pb-32 lg:pt-24">
+    <article className="flex w-full flex-col items-center px-8 pb-14 pt-5 md:p-14 lg:px-0 lg:pb-32 lg:pt-24">
 
-      <div className="flex w-full max-w-3xl items-center flex-col gap-y-5 md:max-w-5xl md:gap-y-8 lg:gap-y-14 lg:max-w-7xl">
+      <div className="flex w-full max-w-3xl flex-col items-center gap-y-5 md:max-w-5xl md:gap-y-8 lg:max-w-7xl lg:gap-y-14">
 
         <div className="flex flex-col items-center font-black uppercase italic text-gray-700">
           <h1 className="text-5xl md:text-8xl lg:text-9xl">unbelievable</h1>
@@ -35,7 +35,7 @@ const HomeCarousel = () => {
             loop: true,
           }}
         >
-          <CarouselContent className="w-full max-w-[375px] md:max-w-xl md:gap-y-5 lg:max-w-3xl xl:max-w-6xl">
+          <CarouselContent className="w-full max-w-[285px] md:max-w-xl md:gap-y-5 lg:max-w-3xl xl:max-w-6xl">
             {shoesData.map((shoe) => (
               <CarouselItem
                 key={shoe.key}
@@ -66,8 +66,8 @@ const HomeCarousel = () => {
           <CarouselPrevious />
           <CarouselNext />
         </Carousel>
-      </div>
 
+      </div>
     </article>
   );
 };
