@@ -42,19 +42,17 @@ const HomeCarousel = () => {
                 className="flex flex-col md:basis-1/3 lg:basis-1/4"
               >
                 {/* TODO: dynamic link to shoes */}
-                <Link href={"/"} className="relative w-full">
+                <Link href={"/"} className="w-full">
                   <Image
                     src={shoe.photo}
                     alt={shoe.title}
-                    height={1000}
-                    width={1000}
+                    height={400}
+                    width={400}
                   />
 
                   <div className="flex flex-col items-center gap-y-2 bg-gray-100 py-12">
                     <p className="text-xs">{shoe.category}</p>
-
                     <h2 className="text-sm font-bold">{shoe.title}</h2>
-
                     <p className="text-xs font-bold text-green-600">
                       ${shoe.price}.00
                     </p>

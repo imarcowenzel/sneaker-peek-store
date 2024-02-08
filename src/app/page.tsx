@@ -1,4 +1,4 @@
-import { Benefits, Hero, HomeCarousel, LimitedStockBanner } from "@/components";
+import { Benefits, Hero, HomeCarousel, BannerWithBg } from "@/components";
 
 export default function Home() {
   return (
@@ -6,7 +6,7 @@ export default function Home() {
       <Hero />
       <HomeCarousel />
       <Benefits className="px-3 md:px-8 xl:px-24" />
-      <LimitedStockBanner />
+      <BannerWithBg />
     </section>
   );
 }

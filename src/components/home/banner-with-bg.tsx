@@ -1,16 +1,13 @@
 import { ButtonLink } from "@/components";
 
-const LimitedStockBanner = () => {
+const BannerWithBg = () => {
   return (
     <div
-      className="w-full bg-cover bg-center px-8 py-14 lg:bg-fixed lg:px-40 xl:py-36 2xl:p-14"
-      style={{
-        backgroundImage:
-          "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/stock.jpg')",
-      }}
+      className="w-full bg-cover bg-center px-8 py-14 lg:bg-fixed md:p-14 md:px-0 lg:px-40"
+      style={{backgroundImage: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/stock.jpg')"}}
     >
       <div className="mx-auto flex max-w-3xl flex-col gap-y-9 text-white md:max-w-5xl md:items-center md:text-center lg:max-w-7xl">
-        <h3 className="text-2xl font-black">Limited Stock Available!</h3>
+        <h3 className="text-2xl font-black ">Limited Stock Available!</h3>
         <h1 className="text-4xl font-black md:text-5xl lg:text-6xl">
           AirPro X3. Turbocharged.
         </h1>
@@ -20,13 +17,12 @@ const LimitedStockBanner = () => {
           ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris
           in erat justo.
         </p>
-
         <ButtonLink href="/shop" className="text-black hover:bg-cyan-600">
-          SHOP NOW
+          Shop Now
         </ButtonLink>
       </div>
     </div>
   );
 };
 
-export default LimitedStockBanner;
+export default BannerWithBg;
