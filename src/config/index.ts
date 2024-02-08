@@ -77,7 +77,7 @@ export const shoesData = [
     href: "/",
     category: "Running Shoes",
     price: 58.0,
-    sizes: [10, 7, 8, 9]
+    sizes: [10, 7, 8, 9],
   },
   {
     key: 2,
@@ -86,7 +86,7 @@ export const shoesData = [
     href: "/",
     category: "Running Shoes",
     price: 62.0,
-    sizes: [10, 7, 8, 9]
+    sizes: [10, 7, 8, 9],
   },
   {
     key: 3,
@@ -95,7 +95,7 @@ export const shoesData = [
     href: "/",
     category: "Running Shoes",
     price: 62.0,
-    sizes: [10, 7, 8, 9]
+    sizes: [10, 7, 8, 9],
   },
   {
     key: 4,
@@ -104,7 +104,7 @@ export const shoesData = [
     href: "/",
     category: "Running Shoes",
     price: 58.0,
-    sizes: [10, 7, 8, 9]
+    sizes: [10, 7, 8, 9],
   },
   {
     key: 5,
@@ -113,7 +113,7 @@ export const shoesData = [
     href: "/",
     category: "Running Shoes",
     price: 58.0,
-    sizes: [10, 7, 8, 9]
+    sizes: [10, 7, 8, 9],
   },
   {
     key: 6,
@@ -122,7 +122,7 @@ export const shoesData = [
     href: "/",
     category: "Running Shoes",
     price: 58.0,
-    sizes: [10, 7, 8, 9]
+    sizes: [10, 7, 8, 9],
   },
   {
     key: 7,
@@ -131,7 +131,7 @@ export const shoesData = [
     href: "/",
     category: "Running Shoes",
     price: 62.0,
-    sizes: [10, 7, 8, 9]
+    sizes: [10, 7, 8, 9],
   },
   {
     key: 8,
@@ -140,7 +140,7 @@ export const shoesData = [
     href: "/",
     category: "Running Shoes",
     price: 55.0,
-    sizes: [10, 7, 8, 9]
+    sizes: [10, 7, 8, 9],
   },
 ];
 
@@ -171,7 +171,7 @@ export const benefitsData = [
   },
 ];
 
-export const contactData = [
+export const contactAccordionData = [
   {
     key: 1,
     title: "Sed non mauris vitae erat consequat?",
@@ -195,5 +195,41 @@ export const contactData = [
     title: "Odio tincidunt auctor a ornare odio?",
     description:
       "I am item content. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+  },
+];
+
+export const contactPhoneData = [
+  {
+    key: 1,
+    phone: "1 800 755 60 20",
+    description: "Payment Queries",
+  },
+  {
+    key: 2,
+    phone: "1 800 755 60 21",
+    description: "Shipping/Delivery",
+  },
+  {
+    key: 2,
+    phone: "1 800 755 60 22",
+    description: "Other Queries",
+  },
+];
+
+export const contactDetailsData = [
+  {
+    key: 1,
+    title: "Our Hours",
+    description: `10:00 AM - 22.00 PM <br /> Monday - Friday`,
+  },
+  {
+    key: 2,
+    title: "Location",
+    description: "212 7th St SE, Washington, DC 20003, USA",
+  },
+  {
+    key: 3,
+    title: "Contact Us",
+    description: "Phone: 1 800 755 60 20 <br /> Email: contact@company.com",
   },
 ];
