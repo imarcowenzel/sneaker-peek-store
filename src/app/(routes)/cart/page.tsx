@@ -1,8 +1,6 @@
-import { ButtonLink } from "@/components";
 import { Button } from "@/components/ui/button";
 import { AlertCircle } from "lucide-react";
 import Link from "next/link";
-import React from "react";
 
 const Cart = () => {
   return (

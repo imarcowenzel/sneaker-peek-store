@@ -88,7 +88,7 @@ const Shop = () => {
               key={shoe.key}
               className="mb-9 flex w-full flex-col gap-y-3 pb-4"
             >
-              <Link href="/">
+              <Link href={`/product/${shoe.key}`}>
                 <Image
                   src={shoe.photo}
                   alt={shoe.title}
