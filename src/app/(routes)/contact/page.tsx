@@ -12,7 +12,6 @@ import {
   contactDetailsData,
   contactPhoneData,
 } from "@/config";
-import { Cog, CreditCard, Truck } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contact - Sneaker Peek",
@@ -21,7 +20,7 @@ export const metadata: Metadata = {
 
 const Contact = () => {
   return (
-    <section className="flex min-h-[100dvh] flex-col">
+    <section className="flex min-w-[375px] flex-col bg-white">
       <Banner title="Contact Us" subtitle="get in touch" />
 
       {/* Quick Assist */}
@@ -86,7 +85,7 @@ const Contact = () => {
       </article>
 
       <article className="flex w-full justify-center bg-[#f2f4f6] px-8 py-14 md:p-14">
-        <div className="flex w-full max-w-3xl flex-col items-center justify-between gap-y-12 md:max-w-5xl md:flex-row md:gap-x-12 xl:gap-x-36 md:gap-y-0 lg:max-w-7xl">
+        <div className="flex w-full max-w-3xl flex-col items-center justify-between gap-y-12 md:max-w-5xl md:flex-row md:gap-x-12 md:gap-y-0 lg:max-w-7xl xl:gap-x-36">
           <iframe
             loading="lazy"
             src="https://maps.google.com/maps?q=212%207th%20St%20SE%2C%20Washington%2C%20DC%2020003%2C%20USA&amp;t=m&amp;z=12&amp;output=embed&amp;iwloc=near"

@@ -26,7 +26,7 @@ const About = () => {
   ];
 
   return (
-    <section className="min-h-[100dvh]">
+    <section className="min-w-[375px] bg-white">
       <Banner title="About Us" subtitle="know us more" />
 
       <article className="px-5 py-8 md:p-12">

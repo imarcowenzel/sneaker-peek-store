@@ -27,7 +27,7 @@ export default function RootLayout({
         <div className="flex h-full min-h-[100dvh] flex-col">
           <Navbar />
           <MobileNavbar />
-          <main className="min-w-[375px] bg-white">{children}</main>
+          {children}
           <Footer />
         </div>
       </body>

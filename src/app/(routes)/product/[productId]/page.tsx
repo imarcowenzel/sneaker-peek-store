@@ -11,9 +11,9 @@ const Product = ({ params }: { params: { productId: number } }) => {
   }
 
   return (
-    <article className="flex h-full justify-center bg-[#f2f4f6]">
+    <main className="flex items-center justify-center bg-[#f2f4f6] h-full min-w-[375px]">
 
-      <div className="flex h-full w-full flex-col lg:flex-row gap-y-7 bg-white px-3 md:px-8 py-5 md:py-8 lg:gap-y-8 lg:px-9 lg:py-12 xl:px-24 xl:py-20">
+      <div className="flex flex-col gap-y-7 bg-white px-5 py-5 md:px-8 lg:flex-row lg:gap-x-7 lg:px-9 lg:py-12 xl:px-24 xl:py-20">
 
         <div>
           {/* TODO: lupa */}
@@ -22,6 +22,7 @@ const Product = ({ params }: { params: { productId: number } }) => {
             alt={selectedShoe.title}
             height={1200}
             width={1200}
+            className="h-full"
           />
         </div>
         <div className="flex flex-col gap-y-3 lg:gap-y-4">
@@ -48,7 +49,7 @@ const Product = ({ params }: { params: { productId: number } }) => {
           </form>
         </div>
       </div>
-    </article>
+    </main>
   );
 };
 
