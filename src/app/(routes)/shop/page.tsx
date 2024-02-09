@@ -32,7 +32,7 @@ const Shop = () => {
       <div className="my-0 w-full p-5 lg:p-8 lg:max-w-[1360px]">
 
         {/* Filter and Sorting Bar */}
-        <div className="fixed bottom-0 left-0 right-0 z-50 w-full md:static ">
+        <div className="fixed bottom-0 left-0 right-0 z-40 w-full md:static ">
           <div className="flex w-full items-center justify-between border-[1px] border-black border-opacity-10 bg-[#f8f8f8] px-5 py-3 md:p-0 md:border-none md:bg-transparent">
             <Sheet>
 
