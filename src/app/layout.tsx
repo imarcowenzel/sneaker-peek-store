@@ -23,13 +23,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full">
-      <body
-        className={cn(
-          "relative h-full font-sans antialiased",
-          poppins.className,
-        )}
-      >
-        <div className="relative flex min-h-screen flex-col">
+      <body className={cn("h-full antialiased", poppins.className)}>
+        <div className="flex h-full min-h-[100dvh] flex-col">
           <Navbar />
           <MobileNavbar />
           <main className="h-full min-w-[375px] bg-white">{children}</main>
