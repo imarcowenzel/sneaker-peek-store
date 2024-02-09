@@ -1,3 +1,4 @@
+import { Cog, CreditCard, Truck } from "lucide-react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 export const menuItems = [
@@ -201,16 +202,19 @@ export const contactAccordionData = [
 export const contactPhoneData = [
   {
     key: 1,
+    icon: CreditCard,
     phone: "1 800 755 60 20",
     description: "Payment Queries",
   },
   {
     key: 2,
+    icon: Truck,
     phone: "1 800 755 60 21",
     description: "Shipping/Delivery",
   },
   {
     key: 2,
+    icon: Cog,
     phone: "1 800 755 60 22",
     description: "Other Queries",
   },
@@ -219,16 +223,19 @@ export const contactPhoneData = [
 export const contactDetailsData = [
   {
     key: 1,
+
     title: "Our Hours",
-    description: `10:00 AM - 22.00 PM <br /> Monday - Friday`,
+    description: "10:00 AM - 22.00 PM <br /> Monday - Friday",
   },
   {
     key: 2,
+
     title: "Location",
     description: "212 7th St SE, Washington, DC 20003, USA",
   },
   {
     key: 3,
+
     title: "Contact Us",
     description: "Phone: 1 800 755 60 20 <br /> Email: contact@company.com",
   },

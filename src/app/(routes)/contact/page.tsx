@@ -31,7 +31,7 @@ const Contact = () => {
             Quick Assist
           </h1>
 
-          <div className="grid w-full grid-cols-1 md:grid-cols-2 md:gap-x-12 lg:max-w-5xl xl:max-w-7xl">
+          <div className="grid w-full grid-cols-1 gap-y-8 md:grid-cols-2 md:gap-x-12 md:gap-y-0 lg:max-w-5xl xl:max-w-7xl">
             <Accordion type="single" collapsible className="w-full">
               {contactAccordionData.map((contactData) => (
                 <AccordionItem
@@ -69,11 +69,11 @@ const Contact = () => {
       </article>
 
       {/* Contact Details */}
-      <article className="flex w-full justify-center bg-[#f2f4f6] px-8 pb-14 pt-10 md:px-14 md:pb-14 lg:pb-48 lg:pt-32">
+      <article className="flex w-full justify-center bg-[#f2f4f6] px-8 pb-14 pt-10 md:px-14 md:pb-14 lg:pb-32 lg:pt-20">
         <div className="flex w-full max-w-5xl flex-col items-center justify-evenly gap-y-12 md:flex-row">
           {contactPhoneData.map((data) => (
             <div key={data.key} className="flex flex-col items-center gap-y-2">
-              <CreditCard className="h-14 w-14 text-cyan-600" />
+              <data.icon className="h-14 w-14 text-cyan-600" />
               <div className="flex flex-col items-center">
                 <p className="text-xl font-black text-gray-800 lg:text-3xl">
                   {data.phone}
@@ -85,8 +85,8 @@ const Contact = () => {
         </div>
       </article>
 
-      <article className="w-full bg-[#f2f4f6] px-8 py-14 md:p-14 flex justify-center">
-        <div className="flex flex-col w-full max-w-3xl md:max-w-5xl lg:max-w-7xl md:flex-row items-center justify-between md:gap-x-32">
+      <article className="flex w-full justify-center bg-[#f2f4f6] px-8 py-14 md:p-14">
+        <div className="flex w-full max-w-3xl flex-col items-center justify-between gap-y-12 md:max-w-5xl md:flex-row md:gap-x-12 xl:gap-x-36 md:gap-y-0 lg:max-w-7xl">
           <iframe
             loading="lazy"
             src="https://maps.google.com/maps?q=212%207th%20St%20SE%2C%20Washington%2C%20DC%2020003%2C%20USA&amp;t=m&amp;z=12&amp;output=embed&amp;iwloc=near"
@@ -94,7 +94,7 @@ const Contact = () => {
             aria-label="212 7th St SE, Washington, DC 20003, USA"
             className="h-full w-full"
           />
-          <div className="flex w-full flex-col gap-y-12 p-8 pt-12 md:p-0">
+          <div className="flex w-full flex-col gap-y-12 ">
             <h1 className="text-4xl font-black">Contact Details</h1>
 
             {contactDetailsData.map((data) => (
