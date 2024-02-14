@@ -22,14 +22,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full">
-      <body className={cn("h-full antialiased", poppins.className)}>
-        <div className="flex h-full min-h-[100dvh] flex-col">
+    <html lang="en" >
+      <body className={cn("antialiased bg-[#f2f4f6]", poppins.className)}>
           <Navbar />
           <MobileNavbar />
           {children}
           <Footer />
-        </div>
       </body>
     </html>
   );
