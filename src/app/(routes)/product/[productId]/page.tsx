@@ -14,18 +14,9 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
 import { shoesData } from "@/config";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { ZoomIn } from "lucide-react";
 import Image from "next/image";
-import { useForm } from "react-hook-form";
-import { Serializer } from "v8";
-import { z } from "zod";
-
-const formSchema = z.object({
-  sizes: z.string().refine((value) => ["10", "7", "8", "9"].includes(value), {
-    message: "Username must be at least 2 characters.",
-  }),
-});
+import Link from "next/link";
 
 const Product = ({ params }: { params: { productId: number } }) => {
   const selectedShoe = shoesData.find((shoe) => shoe.key == params.productId);
@@ -33,20 +24,6 @@ const Product = ({ params }: { params: { productId: number } }) => {
   if (!selectedShoe) {
     return <NotFound />;
   }
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-  });
-
-  const onSubmit = (data) => console.log(data);
-
-  console.log(errors);
 
   return (
     <main className="mx-auto flex max-w-full items-center justify-center lg:max-w-7xl">
@@ -106,107 +83,50 @@ const Product = ({ params }: { params: { productId: number } }) => {
                 sed.
               </p>
 
-              <Form {...form}>
-                <form className="space-y-8" onSubmit={handleSubmit(onSubmit)}>
-                  <div className="flex gap-x-4 pt-2">
-                    <FormField
-                      control={form.control}
-                      name="sizes"
-                      render={({ field }) => (
-                        <FormItem className="flex gap-x-2 pt-2">
-                          <RadioGroup className="flex">
-                            {selectedShoe.sizes.map((size, i) => (
-                              <div
-                                key={i}
-                                className="hover:border-black transition duration-500 ease-in-out flex items-center justify-center space-x-2 border-[1px] px-3 py-2"
-                              >
-                                <Label
-                                  htmlFor={JSON.stringify(size)}
-                                  className="relative "
-                                >
-                                  <RadioGroupItem
-                                    value={JSON.stringify(size)}
-                                    id={JSON.stringify(size)}
-                                    className="absolute left-0 top-0 opacity-0"
-                                  />
-                                  {size}
-                                </Label>
-                              </div>
-                            ))}
-                          </RadioGroup>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
+              <form className="space-y-8">
+                <div className="flex gap-x-2 pt-2">
+                  <RadioGroup className="flex">
+                    {selectedShoe.sizes.map((size, i) => (
+                      <div
+                        key={i}
+                        className="flex items-center justify-center space-x-2 border-[1px] px-3 py-2 transition duration-500 ease-in-out hover:border-black"
+                      >
+                        <Label
+                          htmlFor={JSON.stringify(size)}
+                          className="relative "
+                        >
+                          <RadioGroupItem
+                            value={JSON.stringify(size)}
+                            id={JSON.stringify(size)}
+                            className="absolute left-0 top-0 opacity-0"
+                          />
+                          {size}
+                        </Label>
+                      </div>
+                    ))}
+                  </RadioGroup>
+                </div>
 
-                  <Separator />
-                  {/* <FormField
-                    control={form.control}
-                    name="username"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormControl>
-                          <div className="flex gap-x-2 pt-2">
-                            <label className="relative flex min-h-[24px] min-w-[24px] cursor-pointer items-center justify-center border-[1px] border-[#00000020] bg-white text-xs">
-                              <input
-                                type="number"
-                                className="absolute left-0 top-0 z-10 h-full w-full opacity-0"
-                              />
-                            </label>
-                          </div>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  /> */}
-                  <Button type="submit" className="w-full uppercase">
-                    Add to cart
-                  </Button>
-                </form>
-              </Form>
+                <Separator />
+             
+                <Button type="submit" className="w-full uppercase">
+                  Add to cart
+                </Button>
+              </form>
 
               <Separator />
-              <div>
-                <p>SKU: n/a</p>
-                <p>Category: Running Shoes</p>
+              <div className="flex items-center gap-x-6 text-xs lg:text-sm">
+                <p className="uppercase">sku: n/a</p>
+                <div className="flex gap-x-1 text-xs">
+                  <p>Category:</p>
+                  <Link href="/" className="text-cyan-600">
+                    Running Shoes
+                  </Link>
+                </div>
               </div>
             </div>
           </section>
-          <section>
-            {/* <Tabs defaultValue="description" className="border-t-2">
-              <TabsList>
-                <TabsTrigger value="description">Description</TabsTrigger>
-                <TabsTrigger value="additional-information">
-                  Additional Information
-                </TabsTrigger>
-                <TabsTrigger value="review">Review (0)</TabsTrigger>
-              </TabsList>
-              <TabsContent value="description">
-                <p>
-                  Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non
-                  mauris vitae erat consequat auctor eu in elit. Class aptent
-                  taciti sociosqu ad litora torquent per conubia nostra, per
-                  inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu
-                  felis dapibus condimentum sit amet a augue. Sed non neque elit
-                  sed.
-                </p>
-              </TabsContent>
-              <TabsContent value="additional-information">
-                <table className="w-full border-[1px]">
-                  <tbody className="table-row-group align-middle border-inherit border-separate ">
-                    <tr>
-                      <th className="border-r-[1px]">Size</th>
-                      <td>20</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </TabsContent>
-              <TabsContent value="review">
-                There are no reviews yet.
-              </TabsContent>
-            </Tabs> */}
-          </section>
+          <section></section>
         </div>
       </div>
     </main>
