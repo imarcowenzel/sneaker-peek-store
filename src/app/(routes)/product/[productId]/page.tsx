@@ -1,5 +1,9 @@
 "use client";
 
+import { ZoomIn } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+
 import NotFound from "@/app/not-found";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,16 +13,13 @@ import {
   DialogHeader,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Form, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
 import { shoesData } from "@/config";
-import { ZoomIn } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
 
 const Product = ({ params }: { params: { productId: number } }) => {
+
   const selectedShoe = shoesData.find((shoe) => shoe.key == params.productId);
 
   if (!selectedShoe) {
