@@ -1,35 +1,29 @@
-import { NavigationMenuLink } from "@/components/ui/navigation-menu";
 import Link from "next/link";
-import React from "react";
 
-interface DropdownProps {
-  items: {
-    key: number;
-    label: string;
-    href: string;
-    subMenu: {
-      key: number;
-      label: string;
-      href: string;
-    }[];
-  };
-}
+import { NavigationMenuLink } from "@/components/ui/navigation-menu";
+import { MenuItem } from "./menu-items";
 
-const Dropdown: React.FC<DropdownProps> = ({ items }) => {
+const Dropdown = ({ items }: { items: MenuItem }) => {
   return (
-    <ul className="bg-white text-cyan-600 shadow-lg">
-      {items.subMenu.map((subMenuItem, i) => (
-        <li className={`${i !== items.subMenu.length - 1 && "border-b-2"}`}>
-          <NavigationMenuLink asChild>
-            <Link
-              className="flex h-full w-full flex-col rounded-md py-5 pl-6 pr-32 text-sm transition duration-500 ease-in-out hover:text-gray-600"
-              href={subMenuItem.href}
-            >
-              {subMenuItem.label}
-            </Link>
-          </NavigationMenuLink>
-        </li>
-      ))}
+    <ul className="bg-white text-primary shadow-lg">
+      {items?.subMenu?.map((item, i) => {
+
+        const isLastItem = i === (items.subMenu?.length ?? 0) - 1;
+        const borderClass = isLastItem ? "" : "border-b-2";
+
+        return (
+          <li key={item.key} className={borderClass}>
+            <NavigationMenuLink asChild>
+              <Link
+                href={item.href}
+                className="flex h-full w-full flex-col rounded-md py-5 pl-6 pr-32 text-sm transition duration-500 ease-in-out hover:text-gray-600"
+              >
+                {item.label}
+              </Link>
+            </NavigationMenuLink>
+          </li>
+        );
+      })}
     </ul>
   );
 };

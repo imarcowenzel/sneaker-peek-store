@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
-import { Footer } from "@/components";
-import { MobileNavbar, Navbar } from "@/components/navbar";
-import { cn } from "@/lib/utils";
+import Footer from "@/components/footer";
+
+import MobileNavbar from "@/components/navbar/mobile-navbar";
+import Navbar from "@/components/navbar/navbar";
+import ToastProvider from "@/providers/toast-provider";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -22,12 +24,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" >
-      <body className={cn("antialiased bg-[#f2f4f6]", poppins.className)}>
-          <Navbar />
-          <MobileNavbar />
-          {children}
-          <Footer />
+    <html lang="en">
+      <body className={poppins.className}>
+        <ToastProvider />
+        <Navbar />
+        <MobileNavbar />
+        {children}
+        <Footer />
       </body>
     </html>
   );

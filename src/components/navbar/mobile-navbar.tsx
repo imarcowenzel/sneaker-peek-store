@@ -3,13 +3,11 @@
 import { useCycle } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+import Logo from "./logo";
+import ShoppingCartIcon from "./shopping-cart-icon";
+import MobileMenuButton from "./mobile-menu-button";
+import MobileMenu from "./mobile-menu";
 
-import {
-  Logo,
-  MobileMenu,
-  MobileMenuButton,
-  ShoppingCartIcon,
-} from "@/components/navbar";
 
 const MobileNavbar = () => {
   const [isOpen, toggleMenu] = useCycle(false, true);

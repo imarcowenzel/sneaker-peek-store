@@ -240,3 +240,21 @@ export const contactDetailsData = [
     description: "Phone: 1 800 755 60 20 <br /> Email: contact@company.com",
   },
 ];
+
+export const aboutData = [
+  {
+    key: 1,
+    title: "SPEED",
+    photo: "/speed.jpg",
+  },
+  {
+    key: 2,
+    title: "QUALITY",
+    photo: "/quality.jpg",
+  },
+  {
+    key: 3,
+    title: "COMFORT",
+    photo: "/comfort.jpg",
+  },
+];

@@ -1,10 +1,13 @@
-import { ButtonLink } from "@/components";
+import ButtonLink from "@/components/button-link";
 
-const BannerWithBg = () => {
+const Banner = () => {
   return (
     <div
-      className="w-full bg-cover bg-center px-8 py-14 lg:bg-fixed md:p-14 md:px-0 lg:px-40"
-      style={{backgroundImage: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/stock.jpg')"}}
+      className="w-full bg-cover bg-center px-8 py-14 md:p-14 md:px-0 lg:bg-fixed lg:px-40"
+      style={{
+        backgroundImage:
+          "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/stock.jpg')",
+      }}
     >
       <div className="mx-auto flex max-w-3xl flex-col gap-y-9 text-white md:max-w-5xl md:items-center md:text-center lg:max-w-7xl">
         <h3 className="text-2xl font-black ">Limited Stock Available!</h3>
@@ -25,4 +28,4 @@ const BannerWithBg = () => {
   );
 };
 
-export default BannerWithBg;
+export default Banner;

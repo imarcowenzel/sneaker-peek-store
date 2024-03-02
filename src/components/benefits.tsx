@@ -1,11 +1,11 @@
-import { benefitsData } from "@/config";
 import { cn } from "@/lib/utils";
+import { benefitsData } from "@/utils/data";
 
 const Benefits = ({ className }: { className?: string }) => {
   return (
     <div
       className={cn(
-        "w-full bg-[#efefef] py-14 md:py-20 xl:py-28 2xl:px-80 2xl:py-40",
+        "w-full py-14 md:py-20 xl:py-28 2xl:px-80 2xl:py-40",
         className,
       )}
     >

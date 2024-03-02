@@ -1,14 +1,20 @@
-import qs from "query-string";
+"use server";
 
 import { Product } from "@/types";
+import qs from "query-string";
 
-const URL = `${process.env.NEXT_PUBLIC_API_URL}/products`;
+const URL = `${process.env.NEXT_PUBLIC_API_URL}/products/`;
 
-const getProducts = async (query: boolean): Promise<Product[]> => {
+interface Query {
+  isArchived?: boolean;
+}
+
+const getProducts = async (query: Query): Promise<Product[]> => {
   const url = qs.stringifyUrl({
     url: URL,
     query: {
-      isArchived: query,
+      isArchived: query?.isArchived,
+      
     },
   });
 

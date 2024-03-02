@@ -1,17 +1,14 @@
 import { Metadata } from "next";
 
-import { Banner } from "@/components";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import {
-  contactAccordionData,
-  contactDetailsData,
-  contactPhoneData,
-} from "@/config";
+import { contactAccordionData, contactDetailsData, contactPhoneData } from "@/utils/data";
+import Banner from "@/components/banner";
+
 
 export const metadata: Metadata = {
   title: "Contact - Sneaker Peek",
@@ -20,11 +17,11 @@ export const metadata: Metadata = {
 
 const Contact = () => {
   return (
-    <section className="flex min-w-[375px] flex-col bg-white">
+    <section className="flex min-w-[375px] flex-col">
       <Banner title="Contact Us" subtitle="get in touch" />
 
       {/* Quick Assist */}
-      <article className="flex w-full justify-center bg-[#f2f4f6] px-5 py-12 md:p-12 lg:px-0 lg:py-32">
+      <article className="flex w-full justify-center px-5 py-12 md:p-12 lg:px-0 lg:py-32">
         <div className="flex w-full max-w-5xl flex-col items-center gap-y-5 md:gap-y-10">
           <h1 className="text-center text-4xl font-bold md:text-5xl 2xl:text-6xl">
             Quick Assist
@@ -68,11 +65,11 @@ const Contact = () => {
       </article>
 
       {/* Contact Details */}
-      <article className="flex w-full justify-center bg-[#f2f4f6] px-8 pb-14 pt-10 md:px-14 md:pb-14 lg:pb-32 lg:pt-20">
+      <article className="flex w-full justify-center px-8 pb-14 pt-10 md:px-14 md:pb-14 lg:pb-32 lg:pt-20">
         <div className="flex w-full max-w-5xl flex-col items-center justify-evenly gap-y-12 md:flex-row">
           {contactPhoneData.map((data) => (
             <div key={data.key} className="flex flex-col items-center gap-y-2">
-              <data.icon className="h-14 w-14 text-cyan-600" />
+              <data.icon className="h-14 w-14 text-primary" />
               <div className="flex flex-col items-center">
                 <p className="text-xl font-black text-gray-800 lg:text-3xl">
                   {data.phone}
@@ -84,7 +81,7 @@ const Contact = () => {
         </div>
       </article>
 
-      <article className="flex w-full justify-center bg-[#f2f4f6] px-8 py-14 md:p-14">
+      <article className="flex w-full justify-center  px-8 py-14 md:p-14">
         <div className="flex w-full max-w-3xl flex-col items-center justify-between gap-y-12 md:max-w-5xl md:flex-row md:gap-x-12 md:gap-y-0 lg:max-w-7xl xl:gap-x-36">
           <iframe
             loading="lazy"

@@ -1,5 +1,9 @@
-import { Banner, BannerWithBg, Benefits, ButtonLink } from "@/components";
 import { Metadata } from "next";
+
+import Banner from "@/components/banner";
+import Benefits from "@/components/benefits";
+import ButtonLink from "@/components/button-link";
+import { aboutData } from "@/utils/data";
 
 export const metadata: Metadata = {
   title: "About - Sneaker Peek",
@@ -7,26 +11,11 @@ export const metadata: Metadata = {
 };
 
 const About = () => {
-  const data = [
-    {
-      key: 1,
-      title: "SPEED",
-      photo: "/speed.jpg",
-    },
-    {
-      key: 2,
-      title: "QUALITY",
-      photo: "/quality.jpg",
-    },
-    {
-      key: 3,
-      title: "COMFORT",
-      photo: "/comfort.jpg",
-    },
-  ];
 
   return (
-    <section className="min-w-[375px] bg-white">
+
+    <section className="min-w-[375px]">
+
       <Banner title="About Us" subtitle="know us more" />
 
       <article className="px-5 py-8 md:p-12">
@@ -43,7 +32,8 @@ const About = () => {
         </div>
       </article>
 
-      <article className="w-full bg-[#efefef] bg-cover bg-fixed bg-center px-8 py-14 lg:px-40 xl:py-36 2xl:p-14">
+      <article className="w-full bg-cover bg-fixed bg-center px-8 py-14 lg:px-40 xl:py-36 2xl:p-14">
+
         <Benefits />
         <div className="mx-auto flex max-w-3xl flex-col gap-y-9 md:max-w-5xl md:items-center md:text-center lg:max-w-7xl">
           <h3 className="text-2xl font-black text-gray-800">History</h3>
@@ -59,10 +49,11 @@ const About = () => {
           </p>
           <ButtonLink href="/about">KNOW MORE</ButtonLink>
         </div>
+        
       </article>
 
       <article className="grid grid-cols-1 md:grid-cols-3">
-        {data.map(({ key, title, photo }) => (
+        {aboutData.map(({ key, title, photo }) => (
           <div
             key={key}
             className="flex bg-cover bg-bottom bg-no-repeat"
@@ -77,6 +68,7 @@ const About = () => {
             </div>
           </div>
         ))}
+
       </article>
     </section>
   );

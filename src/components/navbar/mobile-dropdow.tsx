@@ -15,7 +15,7 @@ const MobileDropdown: React.FC<MobileDropdownProps> = ({ subMenu }) => {
       {subMenu.map((subMenuItem) => (
         <li
           key={subMenuItem.key}
-          className="text-sm text-cyan-600 transition duration-500 ease-in-out hover:text-gray-600"
+          className="text-sm text-primary transition duration-500 ease-in-out hover:text-gray-600"
         >
           <Link href={subMenuItem.href}>{subMenuItem.label}</Link>
         </li>

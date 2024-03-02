@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { ButtonLink } from "@/components";
+import ButtonLink from "@/components/button-link";
 
 const Hero = () => {
   return (
@@ -12,7 +12,6 @@ const Hero = () => {
         >
           AirPro X3
         </h1>
-
         <Image
           src="/hero-shoe.png"
           alt="Hero Image"
@@ -24,7 +23,7 @@ const Hero = () => {
         />
 
         <ButtonLink href="/shop" className="lg:-mt-40">
-          shop collection
+          Shop collection
         </ButtonLink>
       </div>
     </article>

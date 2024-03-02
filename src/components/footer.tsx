@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-import { footerMenu, footerSocialMedias } from "@/config";
+import { footerMenu, footerSocialMedias } from "@/utils/data";
 
 const Footer = () => {
   return (
-    <footer className="flex w-full flex-col gap-y-20 border-t-2 border-t-white bg-white px-5 py-12 lg:px-20 lg:py-24">
+    <footer className="flex w-full flex-col gap-y-20 border-t-2 border-t-white px-5 py-12 lg:px-20 lg:py-24">
 
       <div className="flex flex-col gap-y-8 md:flex-row md:justify-between">
         {footerMenu.map((menuItem) => (
@@ -14,7 +14,7 @@ const Footer = () => {
               {menuItem.items.map((item) => (
                 <li
                   key={item.key}
-                  className="transition-colors duration-500 ease-in-out hover:text-cyan-600"
+                  className="transition-colors duration-500 ease-in-out hover:text-primary"
                 >
                   <Link href={item.href}>{item.label}</Link>
                 </li>
