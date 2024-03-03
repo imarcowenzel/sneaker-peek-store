@@ -13,13 +13,12 @@ export const metadata: Metadata = {
 export const revalidate = 0;
 
 const Shop = async () => {
-  
   const products: Product[] = await getProducts({ isArchived: false });
 
   return (
     <section className="mx-auto flex max-w-full justify-center text-center">
       <div className="my-0 w-full p-5 lg:max-w-[1360px] lg:p-8">
-        <FilterSortBar />
+        <FilterSortBar products={products} />
         <ProductsCatalog products={products} />
       </div>
     </section>

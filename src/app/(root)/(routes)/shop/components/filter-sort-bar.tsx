@@ -17,24 +17,40 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { Product } from "@/types";
+import PriceFilterForm from "./price-filter-form";
 
-const FilterSortBar = () => {
+const FilterSortBar = ({ products }: { products: Product[] }) => {
+  const runningCategory = products.filter(
+    (product) => product.category.toLowerCase() === "running shoes",
+  );
+
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 w-full md:static ">
       <div className="flex w-full items-center justify-between border-[1px] border-black border-opacity-10 bg-[#f8f8f8] px-5 py-3 md:border-none md:bg-transparent md:p-0">
         <Sheet>
-          <SheetTrigger className="flex items-center justify-between gap-x-2 rounded-full px-4 py-2 text-sm font-bold text-gray-800 hover:bg-gray-800 hover:text-[#f2f4f6]">
-            <Settings2 size={14} /> FILTER
+          <SheetTrigger className="flex items-center justify-between gap-x-2 rounded-full px-4 py-2 text-sm font-medium uppercase text-gray-700 hover:bg-gray-700 hover:text-[#f2f4f6]">
+            <Settings2 size={14} />
+            Filter
           </SheetTrigger>
 
           <SheetContent side={"left"}>
             {/* TODO: customize */}
-            <SheetHeader>
-              <SheetTitle>Product categories</SheetTitle>
-              <SheetDescription>Running shoes</SheetDescription>
-              <SheetTitle>Filter by price</SheetTitle>
-              <SheetDescription>Running shoes</SheetDescription>
-            </SheetHeader>
+            <div className="flex flex-col gap-9 pt-5">
+              <div className="flex flex-col gap-5">
+                <h1 className="text-left text-xl font-bold">
+                  Product categories
+                </h1>
+                <div className="flex w-full items-center justify-between text-sm">
+                  <p className="text-primary">Running shoes</p>
+                  <p>({runningCategory.length})</p>
+                </div>
+              </div>
+              <div className="flex flex-col gap-5">
+                <h1 className="text-left text-xl font-bold">Filter by price</h1>
+                <PriceFilterForm />
+              </div>
+            </div>
           </SheetContent>
         </Sheet>
 
@@ -45,21 +61,11 @@ const FilterSortBar = () => {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="popularity">Sort by popularity</SelectItem>
-              <SelectItem value="rating">Sort by average rating</SelectItem>
               <SelectItem value="latest">Sort by latest</SelectItem>
               <SelectItem value="low">Sort by price: low to high</SelectItem>
               <SelectItem value="high">Sort by price: high to low</SelectItem>
             </SelectContent>
           </Select>
-
-          {/* TODO: MAKE DYNAMIC */}
-          <div className="flex gap-x-1">
-            <Grid2X2 size={20} className="cursor-pointer text-gray-700" />
-            <TableProperties
-              size={20}
-              className="cursor-pointer text-gray-700"
-            />
-          </div>
         </div>
       </div>
     </div>
