@@ -8,13 +8,14 @@ import axios from "axios";
 
 import { Button } from "@/components/ui/button";
 import useCart from "@/hooks/use-cart";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
 
 const Cart = () => {
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const seachParams = useSearchParams();
   const cart = useCart();
+  const router = useRouter();
   const items = useCart((state) => state.items);
   const removeAll = useCart((state) => state.removeAll);
 
@@ -55,8 +56,8 @@ const Cart = () => {
   }
 
   return (
-    <section className="flex h-full min-w-[375px] justify-center bg-[#f2f4f6] px-4 py-5 md:px-8 lg:px-9 lg:py-12 xl:px-24 xl:py-20">
-      <div className="flex w-full max-w-7xl flex-col gap-y-6 bg-white px-9 py-12 xl:px-28 xl:py-20">
+    <section className="flex h-full items-center justify-center px-4 py-5 md:px-8 lg:px-9 lg:py-12 xl:px-24 xl:py-20">
+      <div className="flex h-fit w-full max-w-7xl flex-col gap-y-6 bg-white px-3 py-12 xl:px-28 xl:py-20">
         <h1 className="text-3xl font-semibold">Cart</h1>
 
         {cart.items.length === 0 ? (
@@ -66,47 +67,65 @@ const Cart = () => {
               <p className="text-xs lg:text-sm">Your cart is current empty.</p>
             </div>
 
-            <Link href="/shop">
-              <Button className="rounded-full bg-gray-100 px-8 py-3 text-xs font-normal uppercase text-black lg:text-sm">
-                Return to shop
-              </Button>
-            </Link>
+            <Button
+              onClick={() => router.push("/shop")}
+              className="rounded-full bg-gray-100 px-8 py-3 text-xs font-normal uppercase text-black lg:text-sm"
+            >
+              Return to shop
+            </Button>
           </>
         ) : (
           <>
-            <table className="flex flex-col border">
-              <tr className="border">
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
-              </tr>
-              <tr>
-                {cart.items.map((item) => (
-                  <>
-                    <td className="flex items-center gap-3">
-                      <Image src={item.photo} alt="" width={60} height={60} />
-                      {item.name}
-                    </td>
-                    <td>{item.price}</td>
-                    <td>1</td>
-                    <td>{item.price}</td>
-                    <td>
-                      <X />
-                    </td>
-                  </>
-                ))}
-              </tr>
-            </table>
+            {cart.items.map((item) => (
+              <div className="border">
+                <div className="flex justify-end border-b p-4">
+                  <button onClick={() => cart.removeItem(item.id)}>
+                    <X width={14} height={14} />
+                  </button>
+                </div>
+                <div className="flex items-center justify-center border-b py-2">
+                  <Image src={item.photo} alt="" height={70} width={70} />
+                </div>
+                <div className="flex items-center justify-between border-b  p-4 text-sm">
+                  <p className="font-bold">Product:</p>
+                  <p className="text-primary">{item.name}</p>
+                </div>
+                <div className="flex items-center justify-between border-b  p-4 text-sm">
+                  <p className="font-bold">Price:</p>
+                  <p>${item.price}.00</p>
+                </div>
+                <div className="flex items-center justify-between border-b  p-4 text-sm">
+                  <p className="font-bold">Quantity:</p>
+                  {/* TODO: dynamic */}
+                  <p>1</p>
+                </div>
+                <div className="flex items-center justify-between p-4 text-sm">
+                  <p className="font-bold">Subtotal:</p>
+                  {/* TODO: dynamic */}
+                  <p>${item.price}.00</p>
+                </div>
+              </div>
+            ))}
 
-            <Link href="/shop">
-              <Button
-                onClick={onCheckout}
-                className="rounded-full bg-gray-100 px-8 py-3 text-xs font-normal uppercase text-black lg:text-sm"
-              >
-                Proceed to checkout
-              </Button>
-            </Link>
+            <div className="border">
+              <div className="flex justify-start border-b bg-gray-200 p-4">
+                <h1 className="font-bold ">Cart total</h1>
+              </div>
+
+              <div className="flex items-center justify-between border-b  p-4 text-sm">
+                <p className="font-bold">Total:</p>
+                {/* TODO: dynamic */}
+                <p>$50.00</p>
+              </div>
+              <div className="flex items-center justify-center border-b  p-4 text-sm">
+                <Button
+                  onClick={onCheckout}
+                  className="rounded-full bg-gray-100 px-8 py-3 text-xs font-normal uppercase text-black lg:text-sm"
+                >
+                  Proceed to checkout
+                </Button>
+              </div>
+            </div>
           </>
         )}
       </div>
