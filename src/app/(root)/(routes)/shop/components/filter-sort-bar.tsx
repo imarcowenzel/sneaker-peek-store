@@ -1,6 +1,6 @@
 "use client";
 
-import { Grid2X2, Settings2, TableProperties } from "lucide-react";
+import { Settings2 } from "lucide-react";
 
 import {
   Select,
@@ -12,20 +12,19 @@ import {
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
+  SheetTrigger
 } from "@/components/ui/sheet";
 import { Product } from "@/types";
 import PriceFilterForm from "./price-filter-form";
 
 const FilterSortBar = ({ products }: { products: Product[] }) => {
+  
   const runningCategory = products.filter(
     (product) => product.category.toLowerCase() === "running shoes",
   );
 
   return (
+    // TODO
     <div className="fixed bottom-0 left-0 right-0 z-40 w-full md:static ">
       <div className="flex w-full items-center justify-between border-[1px] border-black border-opacity-10 bg-[#f8f8f8] px-5 py-3 md:border-none md:bg-transparent md:p-0">
         <Sheet>
