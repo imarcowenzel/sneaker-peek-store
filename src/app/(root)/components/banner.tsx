@@ -10,8 +10,8 @@ const Banner = () => {
       }}
     >
       <div className="mx-auto flex max-w-3xl flex-col gap-y-9 text-white md:max-w-5xl md:items-center md:text-center lg:max-w-7xl">
-        <h3 className="text-2xl font-black ">Limited Stock Available!</h3>
-        <h1 className="text-4xl font-black md:text-5xl lg:text-6xl">
+        <h3 className="text-2xl font-bold ">Limited Stock Available!</h3>
+        <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
           AirPro X3. Turbocharged.
         </h1>
         <p className="text-justify text-sm leading-7 md:px-12 md:text-center lg:text-base 2xl:px-64">
