@@ -9,9 +9,11 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
 import useCart from "@/hooks/use-cart";
 import { Product } from "@/types";
+import { cn } from "@/lib/utils";
 
 const AddProductForm = ({ product }: { product: Product }) => {
-  const [quantity, setQuantity] = useState<number>(0);
+  const [quantity, setQuantity] = useState<number>(1);
+  const [selectedSize, setSize] = useState<string | null>(null);
 
   function increase() {
     setQuantity((prev) => Math.min(prev + 1, 100));
@@ -26,29 +28,40 @@ const AddProductForm = ({ product }: { product: Product }) => {
 
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
-    cart.addItem(product);
+    const selectedProduct = {
+      productId: product.id,
+      quantity,
+      selectedSize,
+    };
+    console.log(selectedProduct);
+    // cart.addItem(product);
   };
 
   return (
     <div className="space-y-8">
-      <div className="flex gap-x-2 pt-2">
-        <RadioGroup className="flex">
+      <div className="flex flex-col gap-3">
+        <div className="flex items-center gap-2 pt-2">
           {sizes.map((size, i) => (
             <div
               key={i}
-              className="flex cursor-pointer items-center justify-center space-x-2 border-[1px] px-[10px] py-[5px] text-xs transition duration-500 ease-in-out hover:border-black"
+              className={cn(
+                "flex cursor-pointer items-center justify-center space-x-2 border-[1px] px-[10px] py-[5px] text-xs transition duration-500 ease-in-out hover:border-black",
+                size === selectedSize && "border-black",
+              )}
+              onClick={() => setSize(size)}
             >
-              <Label htmlFor={size} className="relative text-xs">
-                <RadioGroupItem
-                  value={size}
-                  id={size}
-                  className="absolute left-0 top-0 opacity-0"
-                />
-                {size}
-              </Label>
+              {size}
             </div>
           ))}
-        </RadioGroup>
+        </div>
+        {selectedSize !== null && (
+          <p
+            onClick={() => setSize(null)}
+            className="cursor-pointer text-xs uppercase"
+          >
+            Clear
+          </p>
+        )}
       </div>
 
       <Separator />
@@ -69,6 +82,7 @@ const AddProductForm = ({ product }: { product: Product }) => {
             value={quantity}
             max={100}
             readOnly
+            onChange={(e) => setQuantity(parseFloat(e.target.value))}
           />
 
           <span
@@ -79,7 +93,12 @@ const AddProductForm = ({ product }: { product: Product }) => {
           </span>
         </div>
 
-        <Button onClick={onAddToCart} className="w-full uppercase">
+        <Button
+          onClick={onAddToCart}
+          disabled={selectedSize === null}
+          className="w-full uppercase"
+          variant="secondary"
+        >
           Add to cart
         </Button>
       </div>

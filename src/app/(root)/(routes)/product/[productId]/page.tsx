@@ -79,7 +79,7 @@ const Product = async ({ params }: { params: { productId: string } }) => {
             </div>
           </section>
 
-          <DescInfoReview />
+          <DescInfoReview product={product} />
         </div>
       </div>
     </main>
