@@ -4,15 +4,16 @@ import Link from "next/link";
 import getProduct from "@/actions/get-product";
 import { Separator } from "@/components/ui/separator";
 import AddProductForm from "./components/add-product-form";
+import DescInfoReview from "./components/desc-info-reviews";
 import ModalProduct from "./components/modal-product";
 
 const Product = async ({ params }: { params: { productId: string } }) => {
   const product = await getProduct(params.productId);
 
   return (
-    <main className="mx-auto flex max-w-full items-center justify-center lg:max-w-7xl">
+    <main className="mx-auto flex max-w-full items-center justify-center border lg:max-w-7xl">
       <div className="w-full lg:my-16">
-        <div className="flex flex-col gap-y-14 bg-white px-6 py-5 md:px-8 lg:px-9 lg:py-14 xl:px-24 xl:py-20">
+        <div className="flex  flex-col gap-y-14 bg-white px-6 py-5 md:px-8 lg:px-9 lg:py-14 xl:px-24 xl:py-20">
           <section className="flex w-full flex-col gap-y-4 lg:flex-row lg:gap-x-10 lg:gap-y-0">
             <div className="relative flex-1">
               {/* TODO: zoom effect */}
@@ -77,6 +78,8 @@ const Product = async ({ params }: { params: { productId: string } }) => {
               <AddProductForm product={product} />
             </div>
           </section>
+
+          <DescInfoReview />
         </div>
       </div>
     </main>
