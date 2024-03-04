@@ -28,13 +28,14 @@ const AddProductForm = ({ product }: { product: Product }) => {
 
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
+
     const selectedProduct = {
-      productId: product.id,
+      product,
       quantity,
       selectedSize,
     };
-    console.log(selectedProduct);
-    // cart.addItem(product);
+
+    cart.addItem(selectedProduct);
   };
 
   return (

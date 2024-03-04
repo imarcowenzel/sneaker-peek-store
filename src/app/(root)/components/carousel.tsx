@@ -38,7 +38,7 @@ const Carousel = ({ products }: { products: Product[] }) => {
         >
           <CarouselContent className="w-full max-w-[285px] md:max-w-xl md:gap-y-5 lg:max-w-3xl xl:max-w-6xl">
             {products &&
-              products.map((product) => <ProductItem product={product} />)}
+              products.map((product) => <ProductItem key={product.id} product={product} />)}
           </CarouselContent>
           <CarouselPrevious />
           <CarouselNext />

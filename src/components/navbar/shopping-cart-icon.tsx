@@ -1,6 +1,6 @@
 "use client";
 
-import { ShoppingBag, X } from "lucide-react";
+import { MinusIcon, PlusIcon, ShoppingBag, X } from "lucide-react";
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
@@ -14,13 +14,15 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import useCart from "@/hooks/use-cart";
+import { useRouter } from "next/navigation";
 
 const ShoppingCartIcon = () => {
   const cart = useCart();
+  const router = useRouter();
 
   return (
     <Sheet>
-      
+      {/* TRIGGER */}
       <SheetTrigger className="relative flex items-center gap-x-2 font-bold text-primary">
         <ShoppingBag />
         <p className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-cyan-600 p-1 text-[10px] text-white">
@@ -28,64 +30,98 @@ const ShoppingCartIcon = () => {
         </p>
       </SheetTrigger>
 
+      {/* CONTENT */}
       <SheetContent className="flex flex-col justify-between">
         <SheetHeader>
-          <SheetTitle className="font-normal">Shopping cart</SheetTitle>
+          <SheetTitle className="text-left text-base font-normal">
+            Shopping cart
+          </SheetTitle>
           <Separator className="h-[2px]" />
         </SheetHeader>
 
         <div className="flex flex-1 flex-col justify-between">
           {cart.items.length === 0 ? (
             <>
-              <SheetDescription className="flex items-center justify-center h-full">
-                {/* TODO: customize and style the cart sheet if no item is in the cart*/}
-                <span>No products in the cart.</span>
+              <SheetDescription className="flex h-full items-center justify-center">
+                <p>No products in the cart.</p>
               </SheetDescription>
               <Button
-                variant={"ghost"}
-                className="w-full hover:bg-gray-600 hover:text-white"
+                onClick={() => router.push("/shop")}
+                className="uppercase text-white"
               >
-                {/* TODO: customize and style the cart sheet if no item is in the cart*/}
-                CONTINUE SHOPPING
+                Continue shopping
               </Button>
             </>
           ) : (
             <>
-              <SheetDescription className="flex items-center justify-center p-2">
+              <SheetDescription className="flex flex-col items-center justify-center gap-5 py-2">
                 {/* TODO: customize and style the cart sheet if items are in the cart*/}
+
                 {cart.items.map((item) => (
                   <div className="flex w-full justify-between gap-3">
                     <div className="flex w-full justify-start gap-3">
-                      <Image src={item.photo} alt="" width={60} height={60} />
-                      <span className="font-semibold">{item.name}</span>
+                      <Image
+                        src={item?.product?.photo}
+                        alt=""
+                        width={60}
+                        height={60}
+                      />
+
+                      <div className="flex flex-col justify-between">
+                        <span className="text-xs font-medium">
+                          {item?.product?.name} - {item?.selectedSize}
+                        </span>
+                        {/* SIZE INPUT */}
+                        <div className="flex items-center">
+                          <span className="flex h-9 w-9 cursor-pointer items-center justify-center border text-lg">
+                            <MinusIcon className="h-4 w-4" />
+                          </span>
+
+                          <input
+                            type="number"
+                            pattern="^[0-9]+$"
+                            className="flex h-9 w-9 items-center justify-center border text-center text-sm outline-none"
+                            value={item.quantity}
+                            max={100}
+                            readOnly
+                          />
+
+                          <span className="flex h-9 w-9 cursor-pointer items-center justify-center border text-lg">
+                            <PlusIcon className="h-4 w-4" />
+                          </span>
+                        </div>
+                      </div>
                     </div>
+
                     <div className="flex flex-col items-end justify-between">
                       <button
-                        onClick={() => cart.removeItem(item.id)}
+                        onClick={() =>
+                          cart.removeItem(item?.product?.id, item?.selectedSize)
+                        }
                         className="cursor-pointer"
                       >
-                        <X width={16} height={16} />
+                        <X width={12} height={12} />
                       </button>
-                      <span>${item.price}.00</span>
+                      <span className="text-sm">
+                        ${parseFloat(item?.product?.price) * item.quantity}.00
+                      </span>
                     </div>
                   </div>
                 ))}
               </SheetDescription>
 
-              <div>
+              <div className="flex flex-col gap-2">
                 <Button
-                  variant={"ghost"}
-                  className="w-full hover:bg-gray-600 hover:text-white"
+                  onClick={() => router.push("/cart")}
+                  className="w-full uppercase text-white"
                 >
-                  {/* TODO: customize and style the cart sheet if items are in the cart*/}
-                  VIEW CART
+                  View cart
                 </Button>
                 <Button
-                  variant={"ghost"}
-                  className="w-full hover:bg-gray-600 hover:text-white"
+                  onClick={() => router.push("/checkout")}
+                  className="w-full uppercase text-white"
                 >
-                  {/* TODO: customize and style the cart sheet if items are in the cart*/}
-                  CHECKOUT
+                  Checkout
                 </Button>
               </div>
             </>

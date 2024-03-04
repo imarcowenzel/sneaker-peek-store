@@ -39,14 +39,14 @@ const Cart = () => {
   }
 
   const totalPrice = items.reduce((total, item) => {
-    return total + parseFloat(item.price);
+    return total + parseFloat(item.product.price);
   }, 0);
 
   async function onCheckout() {
     try {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
-        { productsIds: items.map((item) => item.id) },
+        { productsIds: items.map((item) => item.product.id) },
       );
       console.log(response);
       // window.location = response.data.url;
@@ -56,7 +56,7 @@ const Cart = () => {
   }
 
   return (
-    <section className="flex h-full items-center justify-center px-4 py-5 md:px-8 lg:px-9 lg:py-12 xl:px-24 xl:py-20">
+    <section className="flex items-center justify-center px-4 py-5 md:px-8 lg:px-9 lg:py-12 xl:px-24 xl:py-20">
       <div className="flex h-fit w-full max-w-7xl flex-col gap-y-6 bg-white px-3 py-12 xl:px-28 xl:py-20">
         <h1 className="text-3xl font-semibold">Cart</h1>
 
@@ -79,20 +79,20 @@ const Cart = () => {
             {cart.items.map((item) => (
               <div className="border">
                 <div className="flex justify-end border-b p-4">
-                  <button onClick={() => cart.removeItem(item.id)}>
+                  <button onClick={() => cart.removeItem(item.product.id, item.selectedSize)}>
                     <X width={14} height={14} />
                   </button>
                 </div>
                 <div className="flex items-center justify-center border-b py-2">
-                  <Image src={item.photo} alt="" height={70} width={70} />
+                  <Image src={item.product.photo} alt="" height={70} width={70} />
                 </div>
                 <div className="flex items-center justify-between border-b  p-4 text-sm">
                   <p className="font-bold">Product:</p>
-                  <p className="text-primary">{item.name}</p>
+                  <p className="text-primary">{item.product.name}</p>
                 </div>
                 <div className="flex items-center justify-between border-b  p-4 text-sm">
                   <p className="font-bold">Price:</p>
-                  <p>${item.price}.00</p>
+                  <p>${item.product.price}.00</p>
                 </div>
                 <div className="flex items-center justify-between border-b  p-4 text-sm">
                   <p className="font-bold">Quantity:</p>
@@ -102,7 +102,7 @@ const Cart = () => {
                 <div className="flex items-center justify-between p-4 text-sm">
                   <p className="font-bold">Subtotal:</p>
                   {/* TODO: dynamic */}
-                  <p>${item.price}.00</p>
+                  <p>${item.product.price}.00</p>
                 </div>
               </div>
             ))}
