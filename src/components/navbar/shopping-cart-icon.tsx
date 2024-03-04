@@ -15,10 +15,10 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import useCart from "@/hooks/use-cart";
+import Link from "next/link";
 
 const ShoppingCartIcon = () => {
   const cart = useCart();
-  const router = useRouter();
 
   return (
     <Sheet>
@@ -45,11 +45,8 @@ const ShoppingCartIcon = () => {
               <SheetDescription className="flex h-full items-center justify-center">
                 <p>No products in the cart.</p>
               </SheetDescription>
-              <Button
-                onClick={() => router.push("/shop")}
-                className="uppercase text-white"
-              >
-                Continue shopping
+              <Button className="uppercase text-white">
+                <Link href="/shop">Continue shopping</Link>
               </Button>
             </>
           ) : (
@@ -60,40 +57,42 @@ const ShoppingCartIcon = () => {
                 {cart.items.map((item) => (
                   <div className="flex w-full justify-between gap-3">
                     <div className="flex w-full flex-nowrap justify-start gap-3">
+
                       <Image
                         src={item?.product?.photo}
                         alt=""
                         width={60}
                         height={60}
+                        className="flex-[1]"
                       />
 
-                      <div className="flex flex-col justify-between gap-1">
-                        <span className="text-xs font-medium ">
+                      <div className="flex flex-col justify-between gap-1 flex-[2]">
+                        <span className="text-xs md:text-sm font-medium lg:text-base">
                           {item?.product?.name}
                         </span>
-                        <span className="text-xs font-medium ">
+                        <span className="text-xs md:text-sm font-medium lg:text-base">
                           Size: {item?.selectedSize}
                         </span>
                         {/* QUANTITY INPUT */}
                         <div className="flex items-center">
-                          <span className="flex h-6 w-6 cursor-pointer items-center justify-center border text-lg">
-                            <MinusIcon className="h-3 w-3" />
+                          <span className="flex h-6 w-6  md:h-9 md:w-9 cursor-pointer items-center justify-center border text-lg">
+                            <MinusIcon className="h-3 w-3 md:h-4 md:w-4" />
                           </span>
 
                           <input
                             type="number"
                             pattern="^[0-9]+$"
-                            className="flex h-6 w-6 items-center justify-center border text-center text-xs outline-none"
+                            className="flex h-6 md:h-9 md:w-9 w-6 items-center justify-center border text-center text-xs md:text-sm lg:text-base outline-none"
                             value={item.quantity}
                             max={100}
-                            readOnly
                           />
 
-                          <span className="flex h-6 w-6 cursor-pointer items-center justify-center border text-lg">
-                            <PlusIcon className="h-3 w-3" />
+                          <span className="flex h-6 w-6  md:h-9 md:w-9 cursor-pointer items-center justify-center border text-lg">
+                            <PlusIcon className="h-3 w-3 md:h-4 md:w-4" />
                           </span>
                         </div>
                       </div>
+
                     </div>
 
                     <div className="flex flex-col items-end justify-between">
@@ -103,9 +102,9 @@ const ShoppingCartIcon = () => {
                         }
                         className="cursor-pointer"
                       >
-                        <X width={12} height={12} />
+                        <X className="w-3 h-3 md:w-4 md:h-4" />
                       </button>
-                      <span className="text-xs">
+                      <span className="text-xs md:text-sm lg:text-base">
                         ${parseFloat(item?.product?.price) * item.quantity}.00
                       </span>
                     </div>
@@ -114,17 +113,13 @@ const ShoppingCartIcon = () => {
               </SheetDescription>
 
               <div className="flex flex-col gap-2">
-                <Button
-                  onClick={() => router.push("/cart")}
-                  className="w-full uppercase text-white"
-                >
-                  View cart
+                <Button className="w-full uppercase text-white">
+                  <Link href="/checkout">View cart</Link>
                 </Button>
                 <Button
-                  onClick={() => router.push("/checkout")}
                   className="w-full uppercase text-white"
                 >
-                  Checkout
+                  <Link href="/checkout">Checkout</Link>
                 </Button>
               </div>
             </>
