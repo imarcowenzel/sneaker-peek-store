@@ -2,6 +2,7 @@
 
 import { MinusIcon, PlusIcon, ShoppingBag, X } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -14,7 +15,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import useCart from "@/hooks/use-cart";
-import { useRouter } from "next/navigation";
 
 const ShoppingCartIcon = () => {
   const cart = useCart();
@@ -59,7 +59,7 @@ const ShoppingCartIcon = () => {
 
                 {cart.items.map((item) => (
                   <div className="flex w-full justify-between gap-3">
-                    <div className="flex w-full justify-start gap-3">
+                    <div className="flex w-full flex-nowrap justify-start gap-3">
                       <Image
                         src={item?.product?.photo}
                         alt=""
@@ -67,27 +67,30 @@ const ShoppingCartIcon = () => {
                         height={60}
                       />
 
-                      <div className="flex flex-col justify-between">
-                        <span className="text-xs font-medium">
-                          {item?.product?.name} - {item?.selectedSize}
+                      <div className="flex flex-col justify-between gap-1">
+                        <span className="text-xs font-medium ">
+                          {item?.product?.name}
                         </span>
-                        {/* SIZE INPUT */}
+                        <span className="text-xs font-medium ">
+                          Size: {item?.selectedSize}
+                        </span>
+                        {/* QUANTITY INPUT */}
                         <div className="flex items-center">
-                          <span className="flex h-9 w-9 cursor-pointer items-center justify-center border text-lg">
-                            <MinusIcon className="h-4 w-4" />
+                          <span className="flex h-6 w-6 cursor-pointer items-center justify-center border text-lg">
+                            <MinusIcon className="h-3 w-3" />
                           </span>
 
                           <input
                             type="number"
                             pattern="^[0-9]+$"
-                            className="flex h-9 w-9 items-center justify-center border text-center text-sm outline-none"
+                            className="flex h-6 w-6 items-center justify-center border text-center text-xs outline-none"
                             value={item.quantity}
                             max={100}
                             readOnly
                           />
 
-                          <span className="flex h-9 w-9 cursor-pointer items-center justify-center border text-lg">
-                            <PlusIcon className="h-4 w-4" />
+                          <span className="flex h-6 w-6 cursor-pointer items-center justify-center border text-lg">
+                            <PlusIcon className="h-3 w-3" />
                           </span>
                         </div>
                       </div>
@@ -102,7 +105,7 @@ const ShoppingCartIcon = () => {
                       >
                         <X width={12} height={12} />
                       </button>
-                      <span className="text-sm">
+                      <span className="text-xs">
                         ${parseFloat(item?.product?.price) * item.quantity}.00
                       </span>
                     </div>
