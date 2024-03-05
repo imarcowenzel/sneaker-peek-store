@@ -39,7 +39,7 @@ const MobileMenuItems: React.FC<MobileMenuItemsProps> = ({
   return (
     <>
       {item.subMenu ? (
-        <li className="flex cursor-pointer flex-col justify-center gap-y-3 text-primary hover:text-gray-600">
+        <li className="flex cursor-pointer flex-col justify-center gap-y-3 text-secondary hover:text-primary">
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1" className="border-none">
               <AccordionTrigger className="flex items-center justify-between px-8 py-0 text-lg font-normal uppercase">
@@ -54,7 +54,7 @@ const MobileMenuItems: React.FC<MobileMenuItemsProps> = ({
       ) : (
         <li
           key={item.key}
-          className="flex items-center gap-x-3 px-8 text-lg uppercase text-primary transition duration-500 ease-in-out hover:text-gray-600"
+          className="flex items-center gap-x-3 px-8 text-lg uppercase text-secondary transition duration-500 ease-in-out hover:text-primary"
         >
           <Link href={item.href} onClick={() => closeOnCurrent(item.href)}>
             {item.label}

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 
 import getProducts from "@/actions/get-products";
+import NotFoundPage from "@/app/not-found";
 import { Product } from "@/types";
 import FilterSortBar from "./components/filter-sort-bar";
 import ProductsCatalog from "./components/products-catalog";
@@ -13,7 +14,10 @@ export const metadata: Metadata = {
 export const revalidate = 0;
 
 const ShopPage = async () => {
+
   const products: Product[] = await getProducts({ isArchived: false });
+
+  if (!products) return <NotFoundPage />
 
   return (
     <section className="mx-auto flex max-w-full justify-center text-center">

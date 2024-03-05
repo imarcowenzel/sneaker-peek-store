@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google";
 import Footer from "@/components/footer";
 import MobileNavbar from "@/components/navbar/mobile-navbar";
 import Navbar from "@/components/navbar/navbar";
+import MainContainer from "@/components/ui/container";
 import ToastProvider from "@/providers/toast-provider";
 import "./globals.css";
 
@@ -24,11 +25,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
+      <body className={poppins.className} >
         <ToastProvider />
         <Navbar />
         <MobileNavbar />
-        {children}
+        <MainContainer>{children}</MainContainer>
         <Footer />
       </body>
     </html>

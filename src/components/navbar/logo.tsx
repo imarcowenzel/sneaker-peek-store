@@ -22,6 +22,7 @@ const Logo: React.FC<LogoProps> = ({ width, height, closeOnCurrent }) => {
         src="/main-logo.svg"
         width={width}
         height={height}
+        priority
         alt="Sneaker Peek Logo"
         className="h-auto w-32"
       />

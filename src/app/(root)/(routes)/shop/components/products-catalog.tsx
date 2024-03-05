@@ -1,14 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { cn, formatter } from "@/lib/utils";
 import { Product } from "@/types";
-import { formatter } from "@/lib/utils";
-import { PanelRightClose } from "lucide-react";
 
 const ProductsCatalog = ({ products }: { products: Product[] }) => {
+
   return (
+
     <ul className="mt-8 grid grid-cols-2 gap-x-5 md:grid-cols-3 lg:grid-cols-4">
+
       {products.map((product: Product) => {
+        
         const price = formatter.format(product.price);
         const discount = formatter.format(product.discount);
 
@@ -31,27 +34,27 @@ const ProductsCatalog = ({ products }: { products: Product[] }) => {
             </Link>
 
             <div className="flex flex-col gap-y-1 px-4">
-              <span className="text-xs text-gray-500">{product.category}</span>
+
+              <span className="text-xs">{product.category}</span>
 
               <Link
                 href={`/product/${product.id}`}
-                className="text-sm font-semibold text-gray-700 md:text-base"
+                className="text-sm font-semibold md:text-base"
               >
                 {product.name}
               </Link>
 
-              {product.discount == 0 ? (
+              <div className="flex w-full justify-center gap-x-2">
+                <p
+                  className={cn(
+                    "hidden text-xs font-bold text-muted-foreground line-through lg:text-sm",
+                    product.discount > 0 && "inline",
+                  )}
+                >
+                  {discount}
+                </p>
                 <p className="text-xs font-bold lg:text-sm">{price}</p>
-              ) : (
-                <div className="flex w-full justify-center gap-x-2">
-                  <p className="text-xs font-bold text-muted-foreground line-through lg:text-sm">
-                    {price}
-                  </p>
-                  <p className="text-xs font-bold text-gray-700 lg:text-sm">
-                    {discount}
-                  </p>
-                </div>
-              )}
+              </div>
             </div>
           </li>
         );

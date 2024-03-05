@@ -5,7 +5,7 @@ import { MenuItem } from "./menu-items";
 
 const Dropdown = ({ items }: { items: MenuItem }) => {
   return (
-    <ul className="bg-white text-primary shadow-lg">
+    <ul className="bg-white text-secondary shadow-lg">
       {items?.subMenu?.map((item, i) => {
 
         const isLastItem = i === (items.subMenu?.length ?? 0) - 1;
@@ -16,7 +16,7 @@ const Dropdown = ({ items }: { items: MenuItem }) => {
             <NavigationMenuLink asChild>
               <Link
                 href={item.href}
-                className="flex h-full w-full flex-col rounded-md py-5 pl-6 pr-32 text-sm transition duration-500 ease-in-out hover:text-gray-600"
+                className="flex h-full w-full flex-col rounded-md py-5 pl-6 pr-32 text-sm transition duration-500 ease-in-out hover:text-primary"
               >
                 {item.label}
               </Link>

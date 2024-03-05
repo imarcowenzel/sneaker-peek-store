@@ -7,11 +7,11 @@ import useCart, { Item } from "@/hooks/use-cart";
 import { formatter } from "@/lib/utils";
 
 const CartItem = ({ item }: { item: Item }) => {
-    
   const cart = useCart();
 
-  const price = item.product.discount == 0 ? item.product.price : item.product.discount
-  const formattedPrice = formatter.format(price)
+  const price =
+    item.product.discount == 0 ? item.product.price : item.product.discount;
+  const formattedPrice = formatter.format(price);
 
   return (
     <>
@@ -28,12 +28,12 @@ const CartItem = ({ item }: { item: Item }) => {
       <div className="flex items-center justify-between border-b  p-4 text-sm">
         <p className="font-bold">Product:</p>
         <Link href={`/product/${item.product.id}`}>
-          <p className="text-primary">{item.product.name}</p>
+          <p className="text-secondary">{item.product.name}</p>
         </Link>
       </div>
       <div className="flex items-center justify-between border-b  p-4 text-sm">
         <p className="font-bold">Size:</p>
-        <p className="text-primary">{item.selectedSize}</p>
+        <p className="text-secondary">{item.selectedSize}</p>
       </div>
       <div className="flex items-center justify-between border-b  p-4 text-sm">
         <p className="font-bold">Price:</p>

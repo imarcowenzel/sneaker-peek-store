@@ -10,7 +10,7 @@ const EmptyCart = () => {
   return (
     <>
       <div className="flex w-full items-center gap-x-2 border-[1px] border-cyan-600 bg-[#f4f8ff] p-4">
-        <AlertCircle className="text-primary" />
+        <AlertCircle className="text-secondary" />
         <p className="text-xs lg:text-sm">Your cart is current empty.</p>
       </div>
 

@@ -27,7 +27,7 @@ const MenuItems = ({ items }: { items: MenuItem }) => {
           href={items.href}
           className={cn(
             pathname === items.href && "eact.FC<DropdownProps>text-black",
-            "transition duration-500 ease-in-out hover:text-gray-600",
+            "transition duration-500 ease-in-out hover:text-primary",
           )}
         >
           {items.label}
@@ -42,7 +42,7 @@ const MenuItems = ({ items }: { items: MenuItem }) => {
         className={cn(
           items?.subMenu?.some((subItem) => pathname === subItem.href) &&
             "text-black",
-          "transition duration-500 ease-in-out hover:text-gray-600",
+          "transition duration-500 ease-in-out hover:text-primary",
         )}
       >
         {items.label}

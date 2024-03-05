@@ -2,7 +2,7 @@ import ButtonLink from "@/components/button-link";
 
 const Banner = () => {
   return (
-    <div
+    <section
       className="w-full bg-cover bg-center px-8 py-14 md:p-14 md:px-0 lg:bg-fixed lg:px-40"
       style={{
         backgroundImage:
@@ -24,7 +24,7 @@ const Banner = () => {
           Shop Now
         </ButtonLink>
       </div>
-    </div>
+    </section>
   );
 };
 

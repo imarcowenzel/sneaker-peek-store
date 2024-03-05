@@ -14,7 +14,7 @@ const Footer = () => {
               {menuItem.items.map((item) => (
                 <li
                   key={item.key}
-                  className="transition-colors duration-500 ease-in-out hover:text-primary"
+                  className="transition-colors duration-500 ease-in-out hover:text-secondary"
                 >
                   <Link href={item.href}>{item.label}</Link>
                 </li>

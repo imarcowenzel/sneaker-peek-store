@@ -7,7 +7,7 @@ const Banner = ({ title, subtitle }: { title: string; subtitle: string }) => {
           <h1 className="text-4xl font-bold text-gray-200 md:text-7xl xl:text-[150px]">
             {subtitle}
           </h1>
-          <h1 className="text-4xl font-bold text-gray-800 md:-mt-3 md:text-5xl lg:-mt-6 lg:text-6xl">
+          <h1 className="text-4xl font-bold md:-mt-3 md:text-5xl lg:-mt-6 lg:text-6xl">
             {title}
           </h1>
         </div>

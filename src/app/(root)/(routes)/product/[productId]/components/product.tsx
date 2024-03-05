@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import { Separator } from "@/components/ui/separator";
 import { formatter } from "@/lib/utils";
@@ -8,6 +7,7 @@ import AddProduct from "./add-product-form";
 import ProductModal from "./product-modal";
 
 const Product = ({ product }: { product: ProductType }) => {
+  
   const price = formatter.format(product.price);
   const discount = formatter.format(product.discount);
 
@@ -28,15 +28,15 @@ const Product = ({ product }: { product: ProductType }) => {
       </div>
 
       <div className="flex flex-1 flex-col gap-y-3 lg:gap-y-4">
-        <p className="text-sm text-primary lg:text-base">{product.category}</p>
+        <p className="text-sm text-secondary lg:text-base">
+          {product.category}
+        </p>
 
-        <h1 className="text-3xl font-bold text-gray-800">{product.name}</h1>
+        <h1 className="text-3xl font-bold">{product.name}</h1>
 
         {product.discount == 0 ? (
           <div className="flex items-center gap-x-2">
-            <h3 className="text-xl font-semibold text-gray-800  lg:text-2xl  ">
-              {price}
-            </h3>
+            <h3 className="text-xl font-semibold  lg:text-2xl  ">{price}</h3>
             <p className="text-sm">+ Free Shipping</p>
           </div>
         ) : (
@@ -44,9 +44,7 @@ const Product = ({ product }: { product: ProductType }) => {
             <h3 className="text-xl font-semibold text-muted-foreground line-through lg:text-2xl">
               {price}
             </h3>
-            <h3 className="text-xl font-semibold text-gray-800 lg:text-2xl">
-              {discount}
-            </h3>
+            <h3 className="text-xl font-semibold lg:text-2xl">{discount}</h3>
             <p className="text-sm">+ Free Shipping</p>
           </div>
         )}
@@ -66,7 +64,7 @@ const Product = ({ product }: { product: ProductType }) => {
 
           <div className="flex gap-x-1 text-xs">
             <p>Category:</p>
-            <p className="text-primary">{product.category}</p>
+            <p className="text-secondary">{product.category}</p>
           </div>
         </div>
 

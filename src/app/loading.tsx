@@ -1,11 +1,12 @@
+import MainContainer from "@/components/ui/container";
 import { Loader } from "@/components/ui/loader";
 
-const Loading = () => {
+const LoadingPage = () => {
   return (
-    <section className="flex min-h-dvh items-center justify-center">
+    <MainContainer>
       <Loader />
-    </section>
+    </MainContainer>
   );
 };
 
-export default Loading;
+export default LoadingPage;

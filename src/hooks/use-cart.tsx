@@ -4,15 +4,17 @@ import { createJSONStorage, persist } from "zustand/middleware";
 
 import { Product } from "@/types";
 
+// Define the interface for the structure of items in the cart
 export interface Item {
   product: Product;
   quantity: number;
   selectedSize: string | null;
 }
-[];
 
+// Define the interface for the cart state
 interface CartProps {
   items: Item[];
+  totalPrice: number;
   addItem: (data: Item) => void;
   removeItem: (id: string, selectedSize: string | null) => void;
   removeAll: () => void;
@@ -20,13 +22,14 @@ interface CartProps {
   decreaseQuantity: (id: string, selectedSize: string | null) => void;
 }
 
-// TODO: routine to increase and decrease quantity
-
+// Create the cart state using Zustand with persistence middleware
 const useCart = create(
   persist<CartProps>(
     (set, get) => ({
       items: [],
+      totalPrice: 0,
 
+      // Add an item to the cart
       addItem: (data: Item) => {
         const currentItems = get().items;
 
@@ -40,58 +43,126 @@ const useCart = create(
           return toast("Item already in cart.");
         }
 
-        set({ items: [...get().items, data] });
+        // Calculate the price to be used (considering discount if applicable)
+        const productPrice =
+          data.product.discount > 0
+            ? data.product.discount
+            : data.product.price;
+
+        // Add the new item and update the totalPrice
+        set((state) => ({
+          items: [...state.items, data],
+          totalPrice: state.totalPrice + productPrice * data.quantity,
+        }));
+
         toast.success("Item added to cart.");
       },
+      // Increase the quantity of an item in the cart
       increaseQuantity: (id: string, selectedSize: string | null) => {
         set((state) => {
-          const updatedItems = state.items.map((item) => {
-            if (
-              item?.product?.id === id &&
-              item?.selectedSize === selectedSize
-            ) {
-              // Increment the quantity by 1
-              return { ...item, quantity: item.quantity + 1 };
-            }
-            return item;
-          });
+          let totalPriceDelta = 0;
 
-          return { items: updatedItems };
-        });
-      },
-      decreaseQuantity: (id: string, selectedSize: string | null) => {
-        set((state) => {
+          // Update the quantity of the item and calculate the change in total price
           const updatedItems = state.items.map((item) => {
             if (
               item?.product?.id === id &&
               item?.selectedSize === selectedSize
             ) {
-              // Decrease the quantity by 1, but ensure it doesn't go below 1
-              const newQuantity = Math.max(1, item.quantity - 1);
+              const newQuantity = item.quantity + 1;
+              const productPrice =
+                item.product.discount > 0
+                  ? item.product.discount
+                  : item.product.price;
+              totalPriceDelta += productPrice * (newQuantity - item.quantity);
               return { ...item, quantity: newQuantity };
             }
             return item;
           });
 
-          return { items: updatedItems };
+          // Update the state including the updated items and the new totalPrice
+          return {
+            items: updatedItems,
+            totalPrice: state.totalPrice + totalPriceDelta,
+          };
         });
       },
-      // TODO: fix
+      // Decrease the quantity of an item in the cart
+      decreaseQuantity: (id: string, selectedSize: string | null) => {
+        set((state) => {
+          let totalPriceDelta = 0;
+
+          // Update the quantity of the item and calculate the change in total price
+          const updatedItems = state.items.map((item) => {
+            if (
+              item?.product?.id === id &&
+              item?.selectedSize === selectedSize
+            ) {
+              const newQuantity = Math.max(1, item.quantity - 1);
+              const productPrice =
+                item.product.discount > 0
+                  ? item.product.discount
+                  : item.product.price;
+              totalPriceDelta += productPrice * (newQuantity - item.quantity);
+              return { ...item, quantity: newQuantity };
+            }
+            return item;
+          });
+
+          // Update the state including the updated items and the new totalPrice
+          return {
+            items: updatedItems,
+            totalPrice: state.totalPrice + totalPriceDelta,
+          };
+        });
+      },
+      // Remove an item from the cart
       removeItem: (id: string, selectedSize: string | null) => {
-        set((state) => ({
-          items: state.items.filter(
-            (item) =>
-              !(
-                item?.product?.id === id && item?.selectedSize === selectedSize
-              ),
-          ),
-        }));
+        set((state) => {
+          let totalPriceDelta = 0;
+
+          // Filter the items, calculate the change in total price when removing the item
+          const updatedItems = state.items.filter((item) => {
+            if (
+              item?.product?.id === id &&
+              item?.selectedSize === selectedSize
+            ) {
+              const productPrice =
+                item.product.discount > 0
+                  ? item.product.discount
+                  : item.product.price;
+              totalPriceDelta -= productPrice * item.quantity;
+              return false; // Do not include the removed item in the updated list
+            }
+
+            return true;
+          });
+
+          // Update the state including the updated items and the new totalPrice
+          return {
+            items: updatedItems,
+            totalPrice: state.totalPrice + totalPriceDelta,
+          };
+        });
+
         toast.success("Item removed from the cart.");
       },
+      // Remove all items from the cart
+      removeAll: () => {
+        set((state) => {
+          // Calculate the change in total price when removing all items
+          const totalPriceDelta = state.items.reduce((delta, item) => {
+            return delta - item.product.price * item.quantity;
+          }, 0);
 
-      removeAll: () => set({ items: [] }),
+          // Update the state to remove all items and adjust the totalPrice
+          return { items: [], totalPrice: state.totalPrice + totalPriceDelta };
+        });
+
+        toast.success("All items removed from the cart.");
+      },
     }),
 
+    // Configure Zustand with persistence options
     {
       name: "cart-storage",
       storage: createJSONStorage(() => localStorage),

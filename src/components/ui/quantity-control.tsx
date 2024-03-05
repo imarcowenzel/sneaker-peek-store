@@ -11,6 +11,8 @@ interface QuantityControlprops {
 
 const QuantityControl: React.FC<QuantityControlprops> = ({ value, item }) => {
   const cart = useCart();
+  console.log(item.quantity)
+  
 
   return (
     <div className="flex items-center">
@@ -18,7 +20,7 @@ const QuantityControl: React.FC<QuantityControlprops> = ({ value, item }) => {
         onClick={() =>
           cart.decreaseQuantity(item.product.id, item.selectedSize)
         }
-        className="flex h-6 w-6  cursor-pointer items-center justify-center border text-lg md:h-9 md:w-9"
+        className="flex h-6 w-6 cursor-pointer items-center justify-center border text-lg md:h-9 md:w-9"
       >
         <MinusIcon className="h-3 w-3 md:h-4 md:w-4" />
       </span>
@@ -33,7 +35,7 @@ const QuantityControl: React.FC<QuantityControlprops> = ({ value, item }) => {
         onClick={() =>
           cart.increaseQuantity(item.product.id, item.selectedSize)
         }
-        className="flex h-6 w-6  cursor-pointer items-center justify-center border text-lg md:h-9 md:w-9"
+        className="flex h-6 w-6 cursor-pointer items-center justify-center border text-lg md:h-9 md:w-9"
       >
         <PlusIcon className="h-3 w-3 md:h-4 md:w-4" />
       </span>

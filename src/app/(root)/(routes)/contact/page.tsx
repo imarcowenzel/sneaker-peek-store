@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const ContactPage = () => {
   return (
-    <section className="flex flex-col">
+    <section className="w-full">
       <Banner title="Contact Us" subtitle="get in touch" />
       <QuickAssist />
       <ContactDetails />

@@ -213,7 +213,7 @@ export const contactPhoneData = [
     description: "Shipping/Delivery",
   },
   {
-    key: 2,
+    key: 3,
     icon: Cog,
     phone: "1 800 755 60 22",
     description: "Other Queries",

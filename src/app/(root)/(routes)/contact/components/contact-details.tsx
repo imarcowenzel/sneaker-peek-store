@@ -1,5 +1,3 @@
-import { Metadata } from "next";
-
 import { contactDetailsData, contactPhoneData } from "@/utils/data";
 
 const ContactDetails = () => {
@@ -9,9 +7,9 @@ const ContactDetails = () => {
         <div className="flex w-full max-w-5xl flex-col items-center justify-evenly gap-y-12 md:flex-row">
           {contactPhoneData.map((data) => (
             <div key={data.key} className="flex flex-col items-center gap-y-2">
-              <data.icon className="h-14 w-14 text-primary" />
+              <data.icon className="h-14 w-14 text-secondary" />
               <div className="flex flex-col items-center">
-                <p className="text-xl font-bold text-gray-800 lg:text-3xl">
+                <p className="text-xl font-bold lg:text-3xl">
                   {data.phone}
                 </p>
                 <p className="text-sm">{data.description}</p>
