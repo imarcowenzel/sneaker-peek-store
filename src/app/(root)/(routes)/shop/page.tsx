@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export const revalidate = 0;
 
-const Shop = async () => {
+const ShopPage = async () => {
   const products: Product[] = await getProducts({ isArchived: false });
 
   return (
@@ -25,4 +25,4 @@ const Shop = async () => {
   );
 };
 
-export default Shop;
+export default ShopPage;

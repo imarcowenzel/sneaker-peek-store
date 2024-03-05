@@ -3,8 +3,13 @@ import Link from "next/link";
 
 import { CarouselItem } from "@/components/ui/carousel";
 import { Product } from "@/types";
+import { formatter } from "@/lib/utils";
 
 const ProductItem = async ({ product }: { product: Product }) => {
+
+  const price = formatter.format(product.price);
+  const discount = formatter.format(product.discount);
+
   return (
     <CarouselItem
       key={product.id}
@@ -17,7 +22,7 @@ const ProductItem = async ({ product }: { product: Product }) => {
           height={400}
           width={400}
         />
-        {product.discount !== "0" && (
+        {product.discount > 0 && (
           <div className="absolute left-0 top-0 flex items-center justify-center border bg-gray-500 p-3">
             <span className="text-sm text-white">Sale!</span>
           </div>
@@ -30,17 +35,17 @@ const ProductItem = async ({ product }: { product: Product }) => {
           <h2 className="text-sm font-bold">{product.name}</h2>
         </Link>
 
-        {product.discount === "0" ? (
+        {product.discount == 0 ? (
           <span className="text-xs font-medium text-green-700">
-            ${product.price}.00
+            {price}
           </span>
         ) : (
           <div className="flex gap-2">
             <span className="text-xs font-medium text-muted-foreground line-through">
-              ${product.discount}.00
+              {discount}
             </span>
             <span className="text-xs font-medium text-green-700">
-              ${product.price}.00
+              {price}
             </span>
           </div>
         )}

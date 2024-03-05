@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "A sneaker shop",
 };
 
-const Contact = () => {
+const ContactPage = () => {
   return (
     <section className="flex flex-col">
       <Banner title="Contact Us" subtitle="get in touch" />
@@ -19,4 +19,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactPage;

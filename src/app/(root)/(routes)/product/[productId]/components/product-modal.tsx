@@ -2,6 +2,7 @@
 
 import { ZoomIn } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 import {
   Dialog,
@@ -12,7 +13,16 @@ import {
 } from "@/components/ui/dialog";
 import { Product } from "@/types";
 
-const ModalProduct = ({ product }: { product: Product }) => {
+const ProductModal = ({ product }: { product: Product }) => {
+  
+  const [isMounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!isMounted) return null;
+
   return (
     <Dialog>
       <DialogTrigger className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-white">
@@ -35,4 +45,4 @@ const ModalProduct = ({ product }: { product: Product }) => {
   );
 };
 
-export default ModalProduct;
+export default ProductModal;

@@ -4,11 +4,14 @@ import Link from "next/link";
 
 import QuantityControl from "@/components/ui/quantity-control";
 import useCart, { Item } from "@/hooks/use-cart";
+import { formatter } from "@/lib/utils";
 
 const CartItem = ({ item }: { item: Item }) => {
     
   const cart = useCart();
-  const price = item.product.discount === "0" ? parseFloat(item.product.price) : parseFloat(item.product.discount)
+
+  const price = item.product.discount == 0 ? item.product.price : item.product.discount
+  const formattedPrice = formatter.format(price)
 
   return (
     <>
@@ -34,7 +37,7 @@ const CartItem = ({ item }: { item: Item }) => {
       </div>
       <div className="flex items-center justify-between border-b  p-4 text-sm">
         <p className="font-bold">Price:</p>
-        <p>${price}.00</p>
+        <p>{formattedPrice}</p>
       </div>
       <div className="flex items-center justify-between border-b  p-4 text-sm">
         <p className="font-bold">Quantity:</p>
@@ -44,7 +47,7 @@ const CartItem = ({ item }: { item: Item }) => {
       <div className="flex items-center justify-between p-4 text-sm">
         <p className="font-bold">Subtotal:</p>
         {/* TODO: dynamic */}
-        <p>${price * item.quantity}.00</p>
+        <p>{price * item.quantity}</p>
       </div>
     </>
   );

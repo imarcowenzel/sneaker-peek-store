@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "A sneaker shop",
 };
 
-const About = () => {
+const AboutPage = () => {
 
   return (
 
@@ -77,4 +77,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutPage;

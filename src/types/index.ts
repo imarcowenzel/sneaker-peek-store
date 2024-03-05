@@ -5,8 +5,8 @@ export interface Product {
   name: string;
   sku: string;
   description: string;
-  price: string;
-  discount: string;
+  price: number;
+  discount: number;
   category: string;
   sizes: string;
   isArchived: boolean;

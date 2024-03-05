@@ -12,7 +12,7 @@ const Summary: React.FC<SummaryProps> = ({ items, onCheckout }) => {
   
   // TODO: FIX ABOUT DISCOUNT
   const totalPrice = items.reduce((total, item) => {
-    return total + parseFloat(item.product.price) * item.quantity;
+    return total + item.product.price * item.quantity;
   }, 0);
 
   return (
@@ -23,7 +23,7 @@ const Summary: React.FC<SummaryProps> = ({ items, onCheckout }) => {
 
       <div className="flex items-center justify-between border-b  p-4 text-sm">
         <p className="font-bold">Total:</p>
-        <p>${totalPrice}.00</p>
+        <p>{totalPrice}</p>
       </div>
 
       <div className="flex items-center justify-center border-b  p-4 text-sm">

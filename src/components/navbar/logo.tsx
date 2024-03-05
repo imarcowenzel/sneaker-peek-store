@@ -10,7 +10,6 @@ interface LogoProps {
 }
 
 const Logo: React.FC<LogoProps> = ({ width, height, closeOnCurrent }) => {
-
   const handleClick = () => {
     if (closeOnCurrent) {
       closeOnCurrent("/");
@@ -24,6 +23,7 @@ const Logo: React.FC<LogoProps> = ({ width, height, closeOnCurrent }) => {
         width={width}
         height={height}
         alt="Sneaker Peek Logo"
+        className="h-auto w-32"
       />
     </Link>
   );

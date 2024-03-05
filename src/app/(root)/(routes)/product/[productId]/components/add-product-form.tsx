@@ -4,14 +4,12 @@ import { MinusIcon, PlusIcon } from "lucide-react";
 import { MouseEventHandler, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
 import useCart from "@/hooks/use-cart";
-import { Product } from "@/types";
 import { cn } from "@/lib/utils";
+import { Product } from "@/types";
 
-const AddProductForm = ({ product }: { product: Product }) => {
+const AddProduct = ({ product }: { product: Product }) => {
   const [quantity, setQuantity] = useState<number>(1);
   const [selectedSize, setSize] = useState<string | null>(null);
 
@@ -40,6 +38,7 @@ const AddProductForm = ({ product }: { product: Product }) => {
 
   return (
     <div className="space-y-8">
+      
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-2 pt-2">
           {sizes.map((size, i) => (
@@ -107,4 +106,4 @@ const AddProductForm = ({ product }: { product: Product }) => {
   );
 };
 
-export default AddProductForm;
+export default AddProduct;

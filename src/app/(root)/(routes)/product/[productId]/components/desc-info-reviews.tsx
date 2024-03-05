@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Product } from "@/types";
 
 const DescInfoReview = ({ product }: { product: Product }) => {
+  
   const [selected, setSelected] = useState<string>("description");
 
   function handleSelected(id: string) {
@@ -13,7 +14,7 @@ const DescInfoReview = ({ product }: { product: Product }) => {
   }
 
   return (
-    <section className="flex flex-col gap-5">
+    <article className="flex flex-col gap-5">
       <div className="flex flex-col gap-4 md:flex-row md:items-end">
         <h3
           onClick={() => handleSelected("description")}
@@ -51,7 +52,7 @@ const DescInfoReview = ({ product }: { product: Product }) => {
           </div>
         )}
       </div>
-    </section>
+    </article>
   );
 };
 

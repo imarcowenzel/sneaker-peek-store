@@ -10,7 +10,7 @@ import CartItem from "./components/cart-item";
 import EmptyCart from "./components/empty-cart";
 import Summary from "./components/summary";
 
-const Cart = () => {
+const CartPage = () => {
 
   const seachParams = useSearchParams();
   const cart = useCart();
@@ -64,4 +64,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default CartPage;
