@@ -49,7 +49,7 @@ const ShoppingCartIcon = () => {
           ) : (
             <>
               <CartItem />
-              <SheetFooter className="gap-2 sm:flex-col sm:justify-center sm:space-x-0">
+              <SheetFooter className="gap-2 flex-col sm:flex-col sm:justify-center sm:space-x-0">
                 <div className="py-2">
                   <Separator className="h-[2px]" />
                   <div className="flex justify-between py-3 text-sm md:text-base">
