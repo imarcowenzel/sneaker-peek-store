@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { menuItems } from "@/utils/data";
 import MenuItems from "./menu-items";
-import ShoppingCartIcon from "./shopping-cart-icon";
+import ShoppingCartIcon from "../cart-sheet/cart-sheet";
 
 const Menu = () => {
 

@@ -4,7 +4,7 @@ import { useCycle } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import Logo from "./logo";
-import ShoppingCartIcon from "./shopping-cart-icon";
+import ShoppingCartIcon from "../cart-sheet/cart-sheet";
 import MobileMenuButton from "./mobile-menu-button";
 import MobileMenu from "./mobile-menu";
 
