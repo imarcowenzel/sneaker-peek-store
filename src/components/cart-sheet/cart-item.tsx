@@ -3,26 +3,24 @@
 import { X } from "lucide-react";
 import Image from "next/image";
 
-import { SheetDescription } from "@/components/ui/sheet";
 import useCart from "@/hooks/use-cart";
-import QuantityControl from "../ui/quantity-control";
 import { formatter } from "../../lib/utils";
+import QuantityControl from "../ui/quantity-control";
 
 const CartItem = () => {
 
   const cart = useCart();
 
   return (
-    <SheetDescription className="flex flex-col items-center justify-center gap-5 py-2">
+
+    <div className="flex flex-col items-center justify-center gap-5 py-2">
+
       {/* TODO: customize and style the cart sheet if items are in the cart*/}
 
       {cart.items.map((item) => {
 
-        const price =
-          item.product.discount > 0
-            ? formatter.format(item.product.discount * item.quantity)
-            : formatter.format(item.product.price * item.quantity);
-
+        const price = formatter.format(item.product.totalPrice * item.quantity)
+          
         return (
           <div
             key={item.product.id}
@@ -34,19 +32,25 @@ const CartItem = () => {
                 alt=""
                 width={60}
                 height={60}
+                priority
                 className="flex-[1]"
               />
 
               <div className="flex flex-[2] flex-col justify-between gap-1">
-                <span className="text-xs font-medium md:text-sm lg:text-base">
+
+                <p className="text-xs font-medium md:text-sm lg:text-base">
                   {item?.product?.name}
-                </span>
-                <span className="text-xs font-medium md:text-sm lg:text-base">
+                </p>
+
+                <p className="text-xs font-medium md:text-sm lg:text-base">
                   Size: {item?.selectedSize}
-                </span>
-                {/* QUANTITY INPUT */}
+                </p>
+
+                
                 <QuantityControl value={item.quantity} item={item} />
+
               </div>
+
             </div>
 
             <div className="flex flex-col items-end justify-between">
@@ -58,12 +62,12 @@ const CartItem = () => {
               >
                 <X className="h-3 w-3 md:h-4 md:w-4" />
               </button>
-              <span className="text-xs md:text-sm lg:text-base">{price}</span>
+              <p className="text-xs md:text-sm lg:text-base">{price}</p>
             </div>
           </div>
         );
       })}
-    </SheetDescription>
+    </div>
   );
 };
 

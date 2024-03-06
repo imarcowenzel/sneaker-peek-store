@@ -12,6 +12,7 @@ import { Product } from "@/types";
 import ProductItem from "./carousel-item";
 
 const Carousel = ({ products }: { products: Product[] }) => {
+  
   if (!products) return null;
 
   return (

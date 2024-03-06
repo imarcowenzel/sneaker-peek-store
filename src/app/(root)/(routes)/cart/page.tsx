@@ -42,7 +42,7 @@ const CartPage = () => {
   }
 
   return (
-    <section className="flex items-center justify-center px-4 py-5 md:px-8 lg:px-9 lg:py-12 xl:px-24 xl:py-20">
+    <section className="flex w-full items-center justify-center px-4 py-5 md:px-8 lg:px-9 lg:py-12 xl:px-24 xl:py-20">
       <div className="flex h-fit w-full max-w-7xl flex-col gap-y-6 bg-white px-3 py-12 xl:px-28 xl:py-20">
         <h1 className="text-3xl font-semibold">Cart</h1>
 

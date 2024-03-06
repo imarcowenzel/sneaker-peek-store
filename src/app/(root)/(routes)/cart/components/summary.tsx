@@ -1,7 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Item } from "@/hooks/use-cart";
+import useCart, { Item } from "@/hooks/use-cart";
+import { formatter } from "@/lib/utils";
 
 interface SummaryProps {
   items: Item[];
@@ -10,10 +11,9 @@ interface SummaryProps {
 
 const Summary: React.FC<SummaryProps> = ({ items, onCheckout }) => {
   
-  // TODO: FIX ABOUT DISCOUNT
-  const totalPrice = items.reduce((total, item) => {
-    return total + item.product.price * item.quantity;
-  }, 0);
+  const cart = useCart()
+
+  const totalPrice = formatter.format(cart.totalPrice)
 
   return (
     <div className="border">

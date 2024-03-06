@@ -36,6 +36,7 @@ const ShoppingCartIcon = () => {
 
       {/* CONTENT */}
       <SheetContent className="flex flex-col justify-between">
+        
         <SheetHeader>
           <SheetTitle className="text-left text-base font-normal">
             Shopping cart

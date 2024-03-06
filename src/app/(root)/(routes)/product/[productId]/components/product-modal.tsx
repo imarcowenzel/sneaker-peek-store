@@ -36,6 +36,7 @@ const ProductModal = ({ product }: { product: Product }) => {
               alt={product.name}
               height={1200}
               width={1200}
+              priority
               className="h-full w-full"
             />
           </DialogDescription>

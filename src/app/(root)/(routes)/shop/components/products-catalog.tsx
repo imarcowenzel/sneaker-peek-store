@@ -13,7 +13,7 @@ const ProductsCatalog = ({ products }: { products: Product[] }) => {
       {products.map((product: Product) => {
         
         const price = formatter.format(product.price);
-        const discount = formatter.format(product.discount);
+        const total = formatter.format(product.totalPrice);
 
         return (
           <li
@@ -35,7 +35,7 @@ const ProductsCatalog = ({ products }: { products: Product[] }) => {
 
             <div className="flex flex-col gap-y-1 px-4">
 
-              <span className="text-xs">{product.category}</span>
+              <p className="text-xs">{product.category}</p>
 
               <Link
                 href={`/product/${product.id}`}
@@ -51,9 +51,9 @@ const ProductsCatalog = ({ products }: { products: Product[] }) => {
                     product.discount > 0 && "inline",
                   )}
                 >
-                  {discount}
+                  {price}
                 </p>
-                <p className="text-xs font-bold lg:text-sm">{price}</p>
+                <p className="text-xs font-bold lg:text-sm">{total}</p>
               </div>
             </div>
           </li>

@@ -9,7 +9,7 @@ import ProductModal from "./product-modal";
 const Product = ({ product }: { product: ProductType }) => {
   
   const price = formatter.format(product.price);
-  const discount = formatter.format(product.discount);
+  const totalPrice = formatter.format(product.totalPrice);
 
   return (
     <article className="flex w-full flex-col gap-y-4 lg:flex-row lg:gap-x-10 lg:gap-y-0">
@@ -44,7 +44,7 @@ const Product = ({ product }: { product: ProductType }) => {
             <h3 className="text-xl font-semibold text-muted-foreground line-through lg:text-2xl">
               {price}
             </h3>
-            <h3 className="text-xl font-semibold lg:text-2xl">{discount}</h3>
+            <h3 className="text-xl font-semibold lg:text-2xl">{totalPrice}</h3>
             <p className="text-sm">+ Free Shipping</p>
           </div>
         )}

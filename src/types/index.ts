@@ -7,6 +7,7 @@ export interface Product {
   description: string;
   price: number;
   discount: number;
+  totalPrice: number;
   category: string;
   sizes: string;
   isArchived: boolean;

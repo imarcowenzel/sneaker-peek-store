@@ -1,22 +1,20 @@
-"use client";
-
-import { MinusIcon, PlusIcon } from "lucide-react";
+// "use client" is not needed in the code snippet
 
 import useCart, { Item } from "@/hooks/use-cart";
-import { DetailedHTMLProps, InputHTMLAttributes, useEffect, useRef, useState } from "react";
-import { Input } from "./input";
+import { MinusIcon, PlusIcon } from "lucide-react";
 
-interface QuantityControlprops {
+interface QuantityControlProps {
   value: number;
   item: Item;
 }
 
-const QuantityControl: React.FC<QuantityControlprops> = ({ value, item }) => {
+const QuantityControl: React.FC<QuantityControlProps> = ({ value, item }) => {
 
   const cart = useCart();
 
   return (
     <div className="flex items-center">
+
       <div
         onClick={() =>
           cart.decreaseQuantity(item.product.id, item.selectedSize)
@@ -29,17 +27,7 @@ const QuantityControl: React.FC<QuantityControlprops> = ({ value, item }) => {
       <div className="flex h-6 w-6 items-center justify-center border text-center text-xs outline-none md:h-9 md:w-9 md:text-sm lg:text-base">
         {value}
       </div>
-{/* 
-      <input
-        type="number"
-        pattern="^[0-9]+$"
-        className="flex h-6 w-6 items-center justify-center border text-center text-xs outline-none md:h-9 md:w-9 md:text-sm lg:text-base"
-        value={value}
-        max={100}
-        autoFocus={false}
-        ref={inputRef}
-      /> */}
- 
+
       <div
         onClick={() =>
           cart.increaseQuantity(item.product.id, item.selectedSize)
@@ -48,6 +36,7 @@ const QuantityControl: React.FC<QuantityControlprops> = ({ value, item }) => {
       >
         <PlusIcon className="h-3 w-3 md:h-4 md:w-4" />
       </div>
+      
     </div>
   );
 };

@@ -43,21 +43,15 @@ const useCart = create(
           return toast("Item already in cart.");
         }
 
-        // Calculate the price to be used (considering discount if applicable)
-        const productPrice =
-          data.product.discount > 0
-            ? data.product.discount
-            : data.product.price;
-
         // Add the new item and update the totalPrice
         set((state) => ({
           items: [...state.items, data],
-          totalPrice: state.totalPrice + productPrice * data.quantity,
+          totalPrice:
+            state.totalPrice + data.product.totalPrice * data.quantity,
         }));
 
         toast.success("Item added to cart.");
       },
-      // Increase the quantity of an item in the cart
       increaseQuantity: (id: string, selectedSize: string | null) => {
         set((state) => {
           let totalPriceDelta = 0;
@@ -69,11 +63,10 @@ const useCart = create(
               item?.selectedSize === selectedSize
             ) {
               const newQuantity = item.quantity + 1;
-              const productPrice =
-                item.product.discount > 0
-                  ? item.product.discount
-                  : item.product.price;
-              totalPriceDelta += productPrice * (newQuantity - item.quantity);
+
+              totalPriceDelta +=
+                item.product.totalPrice * (newQuantity - item.quantity);
+
               return { ...item, quantity: newQuantity };
             }
             return item;
@@ -98,16 +91,12 @@ const useCart = create(
               item?.selectedSize === selectedSize
             ) {
               const newQuantity = Math.max(1, item.quantity - 1);
-              const productPrice =
-                item.product.discount > 0
-                  ? item.product.discount
-                  : item.product.price;
-              totalPriceDelta += productPrice * (newQuantity - item.quantity);
+              totalPriceDelta +=
+                item.product.totalPrice * (newQuantity - item.quantity);
               return { ...item, quantity: newQuantity };
             }
             return item;
           });
-
           // Update the state including the updated items and the new totalPrice
           return {
             items: updatedItems,
@@ -119,24 +108,17 @@ const useCart = create(
       removeItem: (id: string, selectedSize: string | null) => {
         set((state) => {
           let totalPriceDelta = 0;
-
           // Filter the items, calculate the change in total price when removing the item
           const updatedItems = state.items.filter((item) => {
             if (
               item?.product?.id === id &&
               item?.selectedSize === selectedSize
             ) {
-              const productPrice =
-                item.product.discount > 0
-                  ? item.product.discount
-                  : item.product.price;
-              totalPriceDelta -= productPrice * item.quantity;
+              totalPriceDelta -= item.product.totalPrice * item.quantity;
               return false; // Do not include the removed item in the updated list
             }
-
             return true;
           });
-
           // Update the state including the updated items and the new totalPrice
           return {
             items: updatedItems,

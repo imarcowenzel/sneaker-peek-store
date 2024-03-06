@@ -13,9 +13,11 @@ const EmptyCart = () => {
   const router = useRouter();
   return (
     <>
-      <SheetDescription className="flex h-full items-center justify-center">
-        <p>No products in the cart.</p>
-      </SheetDescription>
+      <div className="flex h-full items-center justify-center">
+        <div>
+          <p>No products in the cart.</p>
+        </div>
+      </div>
       <SheetFooter>
         <SheetClose asChild>
           <Button

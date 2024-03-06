@@ -8,7 +8,7 @@ import { Product } from "@/types";
 const ProductItem = ({ product }: { product: Product }) => {
   
   const price = formatter.format(product.price);
-  const discount = formatter.format(product.discount);
+  const totalPrice = formatter.format(product.totalPrice);
 
   return (
     <CarouselItem
@@ -23,6 +23,7 @@ const ProductItem = ({ product }: { product: Product }) => {
             alt={product.name}
             height={400}
             width={400}
+            priority
           />
         </Link>
         <div
@@ -31,7 +32,7 @@ const ProductItem = ({ product }: { product: Product }) => {
             product.discount > 0 && "flex",
           )}
         >
-          <span className="text-sm text-white">Sale!</span>
+          <p className="text-sm text-white">Sale!</p>
         </div>
       </div>
 
@@ -43,15 +44,15 @@ const ProductItem = ({ product }: { product: Product }) => {
         </Link>
 
         <div className="flex gap-2">
-          <span
+          <p
             className={cn(
               "hidden text-xs font-medium text-muted-foreground line-through",
               product.discount > 0 && "inline",
             )}
           >
-            {discount}
-          </span>
-          <span className="text-xs font-medium text-green-700">{price}</span>
+            {price}
+          </p>
+          <p className="text-xs font-medium text-green-700">{totalPrice}</p>
         </div>
       </div>
     </CarouselItem>

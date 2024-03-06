@@ -1,7 +1,8 @@
 "use server";
 
-import { Product } from "@/types";
 import qs from "query-string";
+
+import { Product } from "@/types";
 
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/products/`;
 
@@ -13,8 +14,7 @@ const getProducts = async (query: Query): Promise<Product[]> => {
   const url = qs.stringifyUrl({
     url: URL,
     query: {
-      isArchived: query?.isArchived,
-      
+      isArchived: query.isArchived,
     },
   });
 
