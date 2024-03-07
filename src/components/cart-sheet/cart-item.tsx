@@ -2,55 +2,46 @@
 
 import { X } from "lucide-react";
 import Image from "next/image";
+import { v4 as uuidv4 } from 'uuid';
 
 import useCart from "@/hooks/use-cart";
 import { formatter } from "../../lib/utils";
 import QuantityControl from "../ui/quantity-control";
 
 const CartItem = () => {
-
   const cart = useCart();
 
   return (
-
     <div className="flex flex-col items-center justify-center gap-5 py-2">
-
       {/* TODO: customize and style the cart sheet if items are in the cart*/}
 
       {cart.items.map((item) => {
 
-        const price = formatter.format(item.product.totalPrice * item.quantity)
-          
+        const price = formatter.format(item.product.totalPrice * item.quantity);
+
         return (
           <div
-            key={item.product.id}
+            key={uuidv4()}
             className="flex w-full justify-between gap-3"
           >
+
             <div className="flex w-full flex-nowrap justify-start gap-3">
               <Image
                 src={item?.product?.photo}
                 alt=""
-                width={60}
-                height={60}
+                width={100}
+                height={100}
                 priority
-                className="flex-[1]"
+                className="aspect-square h-16 w-16"
               />
 
-              <div className="flex flex-[2] flex-col justify-between gap-1">
-
+              <div className="flex flex-col justify-between gap-1">
                 <p className="text-xs font-medium md:text-sm lg:text-base">
-                  {item?.product?.name}
+                  {item?.product?.name} - {item?.selectedSize}
                 </p>
 
-                <p className="text-xs font-medium md:text-sm lg:text-base">
-                  Size: {item?.selectedSize}
-                </p>
-
-                
                 <QuantityControl value={item.quantity} item={item} />
-
               </div>
-
             </div>
 
             <div className="flex flex-col items-end justify-between">
