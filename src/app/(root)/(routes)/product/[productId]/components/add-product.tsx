@@ -8,6 +8,7 @@ import { Separator } from "@/components/ui/separator";
 import useCart from "@/hooks/use-cart";
 import { cn } from "@/lib/utils";
 import { Product } from "@/types";
+import Link from "next/link";
 
 const AddProduct = ({ product }: { product: Product }) => {
   const [quantity, setQuantity] = useState<number>(1);
@@ -37,8 +38,8 @@ const AddProduct = ({ product }: { product: Product }) => {
   };
 
   return (
-    <div className="space-y-8">
-      
+    <div className="flex flex-col gap-4">
+
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-2 pt-2">
           {sizes.map((size, i) => (
@@ -101,6 +102,15 @@ const AddProduct = ({ product }: { product: Product }) => {
         >
           Add to cart
         </Button>
+
+        {cart.items.length > 0 && (
+          <Link
+            href="/cart"
+            className="text-sm text-secondary hover:text-primary md:text-base"
+          >
+            <p className="w-fit whitespace-nowrap">View cart</p>
+          </Link>
+        )}
       </div>
     </div>
   );

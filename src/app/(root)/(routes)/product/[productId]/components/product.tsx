@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { formatter } from "@/lib/utils";
 import { Product as ProductType } from "@/types";
-import AddProduct from "./add-product-form";
+import AddProduct from "./add-product";
 import ProductModal from "./product-modal";
 
 const Product = ({ product }: { product: ProductType }) => {
@@ -57,6 +57,8 @@ const Product = ({ product }: { product: ProductType }) => {
           augue. Sed non neque elit sed.
         </p>
 
+        <AddProduct product={product} />
+
         <Separator />
 
         <div className="flex items-center gap-x-6 text-xs lg:text-sm">
@@ -67,8 +69,6 @@ const Product = ({ product }: { product: ProductType }) => {
             <p className="text-secondary">{product.category}</p>
           </div>
         </div>
-
-        <AddProduct product={product} />
       </div>
     </article>
   );

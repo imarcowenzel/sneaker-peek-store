@@ -79,6 +79,7 @@ const ShoppingCartIcon = () => {
             </>
           )}
         </div>
+        
       </SheetContent>
     </Sheet>
   );
