@@ -1,7 +1,7 @@
 export interface Product {
   id: string;
   storeId: string;
-  photo: string;
+  photo: Photo[];
   name: string;
   sku: string;
   description: string;
@@ -21,4 +21,9 @@ export interface Store {
   userId: string;
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface Photo {
+  id: string;
+  url: string;
 }

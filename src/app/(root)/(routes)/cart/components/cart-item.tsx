@@ -7,10 +7,12 @@ import useCart, { Item } from "@/hooks/use-cart";
 import { formatter } from "@/lib/utils";
 
 const CartItem = ({ item }: { item: Item }) => {
+
   const cart = useCart();
 
   const price = formatter.format(item.product.totalPrice)
   const subTotal = formatter.format(item.product.totalPrice * item.quantity)
+
 
   return (
     <>
@@ -22,7 +24,7 @@ const CartItem = ({ item }: { item: Item }) => {
         </button>
       </div>
       <div className="flex items-center justify-center border-b py-2">
-        <Image src={item.product.photo} alt="" height={70} width={70} priority />
+        <Image src={item.product.photo[0].url} alt="" height={70} width={70} priority />
       </div>
       <div className="flex items-center justify-between border-b  p-4 text-sm">
         <p className="font-bold">Product:</p>

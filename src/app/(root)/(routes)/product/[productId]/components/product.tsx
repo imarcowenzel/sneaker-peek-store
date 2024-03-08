@@ -18,7 +18,7 @@ const Product = ({ product }: { product: ProductType }) => {
         <ProductModal product={product} />
 
         <Image
-          src={product.photo}
+          src={product.photo[0].url}
           alt={product.name}
           height={1200}
           width={1200}

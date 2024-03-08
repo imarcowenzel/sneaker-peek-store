@@ -25,7 +25,7 @@ const ProductsCatalog = ({ products }: { products: Product[] }) => {
               className="inline-block overflow-hidden"
             >
               <Image
-                src={product.photo}
+                src={product.photo[0].url}
                 alt={product.name}
                 height={500}
                 width={500}

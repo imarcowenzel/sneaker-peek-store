@@ -27,7 +27,7 @@ const CartItem = () => {
 
             <div className="flex w-full flex-nowrap justify-start gap-3">
               <Image
-                src={item?.product?.photo}
+                src={item?.product?.photo[0].url}
                 alt=""
                 width={100}
                 height={100}

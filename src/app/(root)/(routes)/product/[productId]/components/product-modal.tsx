@@ -32,7 +32,7 @@ const ProductModal = ({ product }: { product: Product }) => {
         <DialogHeader>
           <DialogDescription>
             <Image
-              src={product.photo}
+              src={product.photo[0].url}
               alt={product.name}
               height={1200}
               width={1200}

@@ -19,7 +19,7 @@ const ProductItem = ({ product }: { product: Product }) => {
       <div className="relative w-full">
         <Link href={`/product/${product.id}`}>
           <Image
-            src={product.photo}
+            src={product.photo[0].url}
             alt={product.name}
             height={400}
             width={400}
