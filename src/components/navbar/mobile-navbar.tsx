@@ -1,17 +1,19 @@
 "use client";
 
+import { UserButton, useAuth } from "@clerk/nextjs";
 import { useCycle } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-import Logo from "./logo";
-import ShoppingCartIcon from "../cart-sheet/cart-sheet";
-import MobileMenuButton from "./mobile-menu-button";
-import MobileMenu from "./mobile-menu";
 
+import ShoppingCartIcon from "@/components/cart-sheet/cart-sheet";
+import Logo from "./logo";
+import MobileMenu from "./mobile-menu";
+import MobileMenuButton from "./mobile-menu-button";
 
 const MobileNavbar = () => {
   const [isOpen, toggleMenu] = useCycle(false, true);
   const pathname = usePathname();
+  const { isSignedIn } = useAuth();
 
   const closeMenu = () => {
     toggleMenu(0);
@@ -40,12 +42,13 @@ const MobileNavbar = () => {
   }, [isOpen]);
 
   return (
-    <header className="z-50 lg:hidden bg-white">
+    <header className="z-50 bg-white lg:hidden">
       <div className="flex items-center justify-between px-5 py-3">
         <Logo width={100} height={50} closeOnCurrent={closeOnCurrent} />
         <div className="flex items-center gap-x-4">
           <ShoppingCartIcon />
           <MobileMenuButton toggleMenu={toggleMenu} isOpen={isOpen} />
+          {isSignedIn && <UserButton />}
         </div>
       </div>
       <MobileMenu isOpen={isOpen} closeOnCurrent={closeOnCurrent} />

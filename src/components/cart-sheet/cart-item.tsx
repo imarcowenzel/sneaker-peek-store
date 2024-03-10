@@ -2,11 +2,11 @@
 
 import { X } from "lucide-react";
 import Image from "next/image";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
+import QuantityControl from "@/components/ui/quantity-control";
 import useCart from "@/hooks/use-cart";
-import { formatter } from "../../lib/utils";
-import QuantityControl from "../ui/quantity-control";
+import { formatter } from "@/lib/utils";
 
 const CartItem = () => {
   const cart = useCart();
@@ -16,15 +16,10 @@ const CartItem = () => {
       {/* TODO: customize and style the cart sheet if items are in the cart*/}
 
       {cart.items.map((item) => {
-
         const price = formatter.format(item.product.totalPrice * item.quantity);
 
         return (
-          <div
-            key={uuidv4()}
-            className="flex w-full justify-between gap-3"
-          >
-
+          <div key={uuidv4()} className="flex w-full justify-between gap-3">
             <div className="flex w-full flex-nowrap justify-start gap-3">
               <Image
                 src={item?.product?.photo[0].url}

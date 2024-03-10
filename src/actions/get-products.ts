@@ -6,8 +6,11 @@ import { Product } from "@/types";
 
 const URL = `${process.env.NEXT_PUBLIC_API_URL}/products/`;
 
-interface Query {
-  isArchived?: boolean;
+export interface Query {
+  isArchived?: true | false;
+  totalPrice?: number;
+  sortField?: "totalPrice" | "createdAt";
+  sortOrder?: "asc" | "desc";
 }
 
 const getProducts = async (query: Query): Promise<Product[]> => {
@@ -16,6 +19,9 @@ const getProducts = async (query: Query): Promise<Product[]> => {
     url: URL,
     query: {
       isArchived: query.isArchived,
+      totalPrice: query.totalPrice,
+      sortField: query.sortField,
+      sortOrder: query.sortOrder,
     },
   });
 

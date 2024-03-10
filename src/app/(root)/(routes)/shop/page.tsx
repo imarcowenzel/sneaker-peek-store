@@ -5,6 +5,7 @@ import NotFoundPage from "@/app/not-found";
 import { Product } from "@/types";
 import FilterSortBar from "./components/filter-sort-bar";
 import ProductsCatalog from "./components/products-catalog";
+import { useState } from "react";
 
 export const metadata: Metadata = {
   title: "Shop - Sneaker Peek",
@@ -15,7 +16,7 @@ export const revalidate = 0;
 
 const ShopPage = async () => {
 
-  const products: Product[] = await getProducts({ isArchived: false });
+  const products: Product[] = await getProducts({ isArchived: false, sortField: "createdAt", sortOrder: "asc"});
 
   if (!products) return <NotFoundPage />
 
