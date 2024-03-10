@@ -1,6 +1,6 @@
-# SNEAKER PEEK - Sneakers E-commerce
+# SNEAKER PEEK - A Modern Fullstack E-Commerce Marketplace
 
-EXPOSURE is a full-stack web application developed with Next.js, Clerk, MySQL, UploadThing, Tailwind CSS, shadcn/ui, Framer Motion e Zustand.
+Sneaker Peek is a full-stack web application developed with Next.js, Clerk, MySQL, UploadThing, Tailwind CSS, shadcn/ui, Framer Motion e Zustand.
 
 ## Technologies Used
 
