@@ -15,7 +15,7 @@ Sneaker Peek is a full-stack web application developed with Next.js, Clerk, MySQ
 
 ## Key Features
 
-- Authentication using credentials or Google.
+- 🛠️ Complete marketplace built from scratch in Next.js 14
 - Advanced search system.
 - Responsive and accessible UI.
 - ... and much more
