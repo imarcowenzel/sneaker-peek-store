@@ -1,4 +1,4 @@
-# SNEAKER PEEK - A Modern Fullstack E-Commerce Marketplace
+# SNEAKER PEEK - A Modern Fullstack E-Commerce
 
 Sneaker Peek is a full-stack web application developed with Next.js, Clerk, MySQL, UploadThing, Tailwind CSS, shadcn/ui, Framer Motion e Zustand.
 
