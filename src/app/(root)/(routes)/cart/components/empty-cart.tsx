@@ -16,7 +16,7 @@ const EmptyCart = () => {
 
       <Button
         onClick={() => router.push("/shop")}
-        className="rounded-full bg-gray-100 px-8 py-3 text-xs font-normal uppercase text-black lg:text-sm"
+        className="w-fit rounded-full bg-gray-100 px-8 py-3 text-xs font-normal uppercase text-primary hover:text-white lg:text-sm"
       >
         Return to shop
       </Button>
