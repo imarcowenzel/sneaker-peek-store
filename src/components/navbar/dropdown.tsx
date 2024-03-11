@@ -7,7 +7,6 @@ const Dropdown = ({ items }: { items: MenuItem }) => {
   return (
     <ul className="bg-white text-secondary shadow-lg">
       {items?.subMenu?.map((item, i) => {
-
         const isLastItem = i === (items.subMenu?.length ?? 0) - 1;
         const borderClass = isLastItem ? "" : "border-b-2";
 

@@ -1,4 +1,3 @@
-
 const Banner = ({ title, subtitle }: { title: string; subtitle: string }) => {
   return (
     <article className="px-5 pb-12 pt-20 md:p-12 md:pt-24 lg:px-0 lg:py-36 bg-white">

@@ -5,13 +5,9 @@ import { cn, formatter } from "@/lib/utils";
 import { Product } from "@/types";
 
 const ProductsCatalog = ({ products }: { products: Product[] }) => {
-
   return (
-
     <ul className="mt-8 grid grid-cols-2 gap-x-5 md:grid-cols-3 lg:grid-cols-4">
-
       {products.map((product: Product) => {
-        
         const price = formatter.format(product.price);
         const total = formatter.format(product.totalPrice);
 
@@ -34,7 +30,6 @@ const ProductsCatalog = ({ products }: { products: Product[] }) => {
             </Link>
 
             <div className="flex flex-col gap-y-1 px-4">
-
               <p className="text-xs">{product.category}</p>
 
               <Link

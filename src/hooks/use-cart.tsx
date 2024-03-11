@@ -4,14 +4,12 @@ import { createJSONStorage, persist } from "zustand/middleware";
 
 import { Product } from "@/types";
 
-// Define the interface for the structure of items in the cart
 export interface Item {
   product: Product;
   quantity: number;
   selectedSize: string | null;
 }
 
-// Define the interface for the cart state
 interface CartProps {
   items: Item[];
   totalPrice: number;
@@ -22,7 +20,6 @@ interface CartProps {
   decreaseQuantity: (id: string, selectedSize: string | null) => void;
 }
 
-// Create the cart state using Zustand with persistence middleware
 const useCart = create(
   persist<CartProps>(
     (set, get) => ({
@@ -143,8 +140,6 @@ const useCart = create(
         toast.success("All items removed from the cart.");
       },
     }),
-
-    // Configure Zustand with persistence options
     {
       name: "cart-storage",
       storage: createJSONStorage(() => localStorage),

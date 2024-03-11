@@ -3,11 +3,7 @@
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
-import {
-  SheetClose,
-  SheetDescription,
-  SheetFooter,
-} from "@/components/ui/sheet";
+import { SheetClose, SheetFooter } from "@/components/ui/sheet";
 
 const EmptyCart = () => {
   const router = useRouter();

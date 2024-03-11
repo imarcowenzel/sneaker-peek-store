@@ -5,7 +5,6 @@ import { footerMenu, footerSocialMedias } from "@/utils/data";
 const Footer = () => {
   return (
     <footer className="flex w-full flex-col gap-y-20 border-t-2 border-t-white px-5 py-12 lg:px-20 lg:py-24">
-
       <div className="flex flex-col gap-y-8 md:flex-row md:justify-between">
         {footerMenu.map((menuItem) => (
           <div className="flex flex-col gap-y-2" key={menuItem.title}>
@@ -60,7 +59,6 @@ const Footer = () => {
         </p>
       </div>
     </footer>
-    
   );
 };
 

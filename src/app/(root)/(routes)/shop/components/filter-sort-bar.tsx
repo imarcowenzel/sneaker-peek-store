@@ -16,7 +16,6 @@ import { Product } from "@/types";
 import PriceFilterForm from "./price-filter-form";
 
 const FilterSortBar = ({ products }: { products: Product[] }) => {
-
   const [sortOption, setSortOption] = useState<string | null>(null);
 
   const runningCategory = products.filter(
@@ -24,7 +23,6 @@ const FilterSortBar = ({ products }: { products: Product[] }) => {
   );
 
   const handleSortChange = async (option: string) => {
-
     setSortOption(option);
 
     let sortField: Query["sortField"];
@@ -50,7 +48,6 @@ const FilterSortBar = ({ products }: { products: Product[] }) => {
     }
 
     // TODO: setQuery
-
   };
 
   return (

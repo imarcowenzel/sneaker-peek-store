@@ -14,7 +14,6 @@ import {
 import { Product } from "@/types";
 
 const ProductModal = ({ product }: { product: Product }) => {
-  
   const [isMounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {

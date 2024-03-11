@@ -1,9 +1,10 @@
+import { motion } from "framer-motion";
+
 import {
   menuButtonBottomVariants,
   menuButtonMiddleVariants,
   menuButtonTopVariants,
 } from "@/lib/motion/variants";
-import { motion } from "framer-motion";
 
 type MobileMenuButtonProps = {
   toggleMenu: (i?: number | undefined) => void;

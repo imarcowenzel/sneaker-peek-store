@@ -1,6 +1,7 @@
 "use client";
 
 import { MinusIcon, PlusIcon } from "lucide-react";
+import Link from "next/link";
 import { MouseEventHandler, useState } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -8,7 +9,6 @@ import { Separator } from "@/components/ui/separator";
 import useCart from "@/hooks/use-cart";
 import { cn } from "@/lib/utils";
 import { Product } from "@/types";
-import Link from "next/link";
 
 const AddProduct = ({ product }: { product: Product }) => {
   const [quantity, setQuantity] = useState<number>(1);
@@ -39,7 +39,6 @@ const AddProduct = ({ product }: { product: Product }) => {
 
   return (
     <div className="flex flex-col gap-4">
-
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-2 pt-2">
           {sizes.map((size, i) => (

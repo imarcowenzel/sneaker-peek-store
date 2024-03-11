@@ -1,7 +1,8 @@
-// "use client" is not needed in the code snippet
+"use client";
+
+import { MinusIcon, PlusIcon } from "lucide-react";
 
 import useCart, { Item } from "@/hooks/use-cart";
-import { MinusIcon, PlusIcon } from "lucide-react";
 
 interface QuantityControlProps {
   value: number;
@@ -9,12 +10,10 @@ interface QuantityControlProps {
 }
 
 const QuantityControl: React.FC<QuantityControlProps> = ({ value, item }) => {
-
   const cart = useCart();
 
   return (
     <div className="flex items-center">
-
       <div
         onClick={() =>
           cart.decreaseQuantity(item.product.id, item.selectedSize)
@@ -36,7 +35,6 @@ const QuantityControl: React.FC<QuantityControlProps> = ({ value, item }) => {
       >
         <PlusIcon className="h-2 w-2 md:h-3 md:w-3" />
       </div>
-      
     </div>
   );
 };
