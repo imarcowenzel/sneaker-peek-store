@@ -17,7 +17,7 @@ Sneaker Peek is a full-stack web application developed with Next.js, Clerk, MySQ
 
 - 🛠️ Complete marketplace built from scratch in Next.js 14
 - 💻 Beautiful landing page & product pages included
-- 💳 Full admin dashboard
+- 💳 Full [admin dashboard](https://github.com/imarcowenzel/admin-dahsboard)
 - 🛍️ Users can purchase and sell their own products
 - 🛒 Locally persisted shopping cart
 - 🔑 Authentication using Clerk
@@ -30,6 +30,7 @@ Sneaker Peek is a full-stack web application developed with Next.js, Clerk, MySQ
 We are continually working on new features and improvements for Sneaker Peek. Some of the features planned for the future include:
 
 - Allowing users to complete checkout from their carts.
+- Allowing users to filter and sort the products.
 - Implementing a personalized recommendation system.
 - And many more exciting functionalities!
   
