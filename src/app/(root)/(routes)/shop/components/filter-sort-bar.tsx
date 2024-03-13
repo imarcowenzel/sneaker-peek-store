@@ -1,7 +1,7 @@
 "use client";
 
 import { Settings2 } from "lucide-react";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 import { Query } from "@/actions/get-products";
 import {
@@ -15,39 +15,40 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Product } from "@/types";
 import PriceFilterForm from "./price-filter-form";
 
-const FilterSortBar = ({ products }: { products: Product[] }) => {
-  const [sortOption, setSortOption] = useState<string | null>(null);
+interface FilterSortBarProps {
+  products: Product[];
+  setField: Dispatch<SetStateAction<"totalPrice" | "createdAt" | undefined>>;
+  setOrder: Dispatch<SetStateAction<"asc" | "desc" | undefined>>;
+}
 
+const FilterSortBar: React.FC<FilterSortBarProps> = ({
+  products,
+  setField,
+  setOrder,
+}) => {
   const runningCategory = products.filter(
     (product) => product.category.toLowerCase() === "running shoes",
   );
 
-  const handleSortChange = async (option: string) => {
-    setSortOption(option);
-
-    let sortField: Query["sortField"];
-    let sortOrder: Query["sortOrder"];
-
+  const handleSortChange = (option: string) => {
     switch (option) {
       case "latest":
-        sortField = "createdAt";
-        sortOrder = "desc";
+        setField("createdAt");
+        setOrder("desc");
         break;
       case "low":
-        sortField = "totalPrice";
-        sortOrder = "asc";
+        setField("totalPrice");
+        setOrder("asc");
         break;
       case "high":
-        sortField = "totalPrice";
-        sortOrder = "desc";
+        setField("totalPrice");
+        setOrder("desc");
         break;
       default:
-        sortField = "createdAt";
-        sortOrder = "asc";
+        setField("createdAt");
+        setOrder("asc");
         break;
     }
-
-    // TODO: setQuery
   };
 
   return (
@@ -81,26 +82,15 @@ const FilterSortBar = ({ products }: { products: Product[] }) => {
         </Sheet>
 
         <div className="flex items-center gap-x-5">
-          <Select>
+          <Select onValueChange={(e) => handleSortChange(e)}>
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Default sorting" />
+              <SelectValue placeholder="Ordenar por" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem
-                value="latest"
-                onSelect={() => handleSortChange("latest")}
-              >
-                Sort by latest
-              </SelectItem>
-              <SelectItem value="low" onSelect={() => handleSortChange("low")}>
-                Sort by price: low to high
-              </SelectItem>
-              <SelectItem
-                value="high"
-                onSelect={() => handleSortChange("high")}
-              >
-                Sort by price: high to low
-              </SelectItem>
+              <SelectItem value="latest">Sort by latest</SelectItem>
+              <SelectItem value="low">Sort by price: low to high</SelectItem>
+              <SelectItem value="high">Sort by price: high to low</SelectItem>
+              {/* Adicione mais opções conforme necessário */}
             </SelectContent>
           </Select>
         </div>
