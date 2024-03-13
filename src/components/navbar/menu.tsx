@@ -23,7 +23,7 @@ const Menu = () => {
 
       <ShoppingCartIcon />
 
-      {isSignedIn && <UserButton />}
+      {isSignedIn && <UserButton afterSignOutUrl="/auth/sign-in" />}
     </NavigationMenu>
   );
 };

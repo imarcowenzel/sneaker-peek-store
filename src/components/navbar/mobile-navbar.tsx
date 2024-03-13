@@ -48,7 +48,7 @@ const MobileNavbar = () => {
         <div className="flex items-center gap-x-4">
           <ShoppingCartIcon />
           <MobileMenuButton toggleMenu={toggleMenu} isOpen={isOpen} />
-          {isSignedIn && <UserButton />}
+          {isSignedIn && <UserButton afterSignOutUrl="/auth/sign-in" />}
         </div>
       </div>
       <MobileMenu isOpen={isOpen} closeOnCurrent={closeOnCurrent} />
