@@ -4,6 +4,7 @@ import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
+import { v4 as uuidv4 } from "uuid";
 
 import useCart from "@/hooks/use-cart";
 import CartItem from "./components/cart-item";
@@ -11,7 +12,6 @@ import EmptyCart from "./components/empty-cart";
 import Summary from "./components/summary";
 
 const CartPage = () => {
-
   const seachParams = useSearchParams();
   const cart = useCart();
   const items = useCart((state) => state.items);
@@ -32,9 +32,8 @@ const CartPage = () => {
     try {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
-        { productsIds: items.map((item) => item.product.id) },
+        {productIds: items.map(item => item.product.id)},
       );
-      console.log(response);
       window.location = response.data.url;
     } catch (error) {
       console.log(error);
@@ -52,7 +51,7 @@ const CartPage = () => {
           <div className="flex w-full flex-col gap-5 lg:flex-row">
             <div className="w-full border">
               {cart.items.map((item) => (
-                <CartItem item={item} />
+                <CartItem key={uuidv4()} item={item} />
               ))}
             </div>
 

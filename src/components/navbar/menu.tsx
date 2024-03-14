@@ -1,6 +1,6 @@
 "use client";
 
-import { UserButton, useAuth } from "@clerk/nextjs";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 import ShoppingCartIcon from "@/components/cart-sheet/cart-sheet";
 import {
@@ -11,8 +11,6 @@ import { menuItems } from "@/utils/data";
 import MenuItems from "./menu-items";
 
 const Menu = () => {
-  const { isSignedIn } = useAuth();
-
   return (
     <NavigationMenu className="hidden items-center justify-between gap-x-8 bg-white md:flex">
       <NavigationMenuList className="flex items-center gap-x-8 text-sm text-secondary">
@@ -23,7 +21,15 @@ const Menu = () => {
 
       <ShoppingCartIcon />
 
-      {isSignedIn && <UserButton afterSignOutUrl="/auth/sign-in" />}
+      <SignedIn>
+        <UserButton afterSignOutUrl="/auth/sign-in" />
+      </SignedIn>
+
+      {/* <SignedOut>
+        <SignInButton>
+          <button>Sign In</button>
+        </SignInButton>
+      </SignedOut> */}
     </NavigationMenu>
   );
 };

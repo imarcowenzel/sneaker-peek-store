@@ -25,9 +25,9 @@ const useCart = create(
     (set, get) => ({
       items: [],
       totalPrice: 0,
-
       // Add an item to the cart
       addItem: (data: Item) => {
+        
         const currentItems = get().items;
 
         const existingItem = currentItems.find(

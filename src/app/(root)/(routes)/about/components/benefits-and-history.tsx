@@ -11,7 +11,7 @@ const BenefitsAndHistory = () => {
         <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
           Lorem ipsum dolor sit amet consectetur
         </h1>
-        <p className="text-justify text-sm leading-7 md:px-12 md:text-center lg:text-base 2xl:px-64">
+        <p className="text-justify text-sm leading-7 md:px-12 md:text-center lg:text-base">
           There are many variations of Lorem Ipsum available, but the majority
           have suffered alteration in some form, by injected humour, or
           randomised words which don't look even slightly believable. If you are

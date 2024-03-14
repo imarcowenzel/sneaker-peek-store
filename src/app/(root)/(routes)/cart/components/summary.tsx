@@ -12,7 +12,6 @@ interface SummaryProps {
 const Summary: React.FC<SummaryProps> = ({ items, onCheckout }) => {
   
   const cart = useCart()
-
   const totalPrice = formatter.format(cart.totalPrice)
 
   return (
@@ -29,7 +28,7 @@ const Summary: React.FC<SummaryProps> = ({ items, onCheckout }) => {
       <div className="flex items-center justify-center border-b  p-4 text-sm">
         <Button
           onClick={onCheckout}
-          className="rounded-full bg-gray-100 px-8 py-3 text-xs font-normal uppercase text-black lg:text-sm"
+          className="rounded-full bg-gray-100 px-8 py-3 text-xs font-normal uppercase text-black lg:text-sm hover:text-white"
         >
           Proceed to checkout
         </Button>

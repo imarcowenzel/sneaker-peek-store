@@ -1,9 +1,7 @@
 "use client";
 
 import { Settings2 } from "lucide-react";
-import { Dispatch, SetStateAction, useState } from "react";
 
-import { Query } from "@/actions/get-products";
 import {
   Select,
   SelectContent,
@@ -16,43 +14,41 @@ import { Product } from "@/types";
 import PriceFilterForm from "./price-filter-form";
 
 interface FilterSortBarProps {
-  products: Product[];
-  setField: Dispatch<SetStateAction<"totalPrice" | "createdAt" | undefined>>;
-  setOrder: Dispatch<SetStateAction<"asc" | "desc" | undefined>>;
+  products?: Product[];
 }
 
-const FilterSortBar: React.FC<FilterSortBarProps> = ({
-  products,
-  setField,
-  setOrder,
-}) => {
-  const runningCategory = products.filter(
+const FilterSortBar: React.FC<FilterSortBarProps> = ({ products }) => {
+  const runningCategory = products?.filter(
     (product) => product.category.toLowerCase() === "running shoes",
   );
 
   const handleSortChange = (option: string) => {
+    const url = new URL(window.location.href);
+    const searchParams = new URLSearchParams(url.search);
+
     switch (option) {
       case "latest":
-        setField("createdAt");
-        setOrder("desc");
+        searchParams.set("sortBy", "createdAt");
+        searchParams.set("order", "asc");
         break;
       case "low":
-        setField("totalPrice");
-        setOrder("asc");
+        searchParams.set("sortBy", "totalPrice");
+        searchParams.set("order", "asc");
         break;
       case "high":
-        setField("totalPrice");
-        setOrder("desc");
+        searchParams.set("sortBy", "totalPrice");
+        searchParams.set("order", "desc");
         break;
       default:
-        setField("createdAt");
-        setOrder("asc");
         break;
     }
+
+    url.search = searchParams.toString();
+
+    window.location.href = url.toString();
   };
 
   return (
-    // TODO
     <div className="fixed bottom-0 left-0 right-0 z-40 w-full md:static ">
       <div className="flex w-full items-center justify-between border-[1px] border-black border-opacity-10 bg-[#f8f8f8] px-5 py-3 md:border-none md:bg-transparent md:p-0">
         <Sheet>
@@ -70,7 +66,7 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({
                 </h1>
                 <div className="flex w-full items-center justify-between text-sm">
                   <p className="text-secondary">Running shoes</p>
-                  <p>({runningCategory.length})</p>
+                  <p>({runningCategory?.length})</p>
                 </div>
               </div>
               <div className="flex flex-col gap-5">
@@ -84,13 +80,13 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({
         <div className="flex items-center gap-x-5">
           <Select onValueChange={(e) => handleSortChange(e)}>
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Ordenar por" />
+              {/* TODO: change placeholder */}
+              <SelectValue placeholder="Sort by" />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="latest">Sort by latest</SelectItem>
               <SelectItem value="low">Sort by price: low to high</SelectItem>
               <SelectItem value="high">Sort by price: high to low</SelectItem>
-              {/* Adicione mais opções conforme necessário */}
             </SelectContent>
           </Select>
         </div>

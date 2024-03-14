@@ -13,7 +13,6 @@ const CartItem = ({ item }: { item: Item }) => {
   const price = formatter.format(item.product.totalPrice)
   const subTotal = formatter.format(item.product.totalPrice * item.quantity)
 
-
   return (
     <>
       <div className="flex justify-end border-b p-4">

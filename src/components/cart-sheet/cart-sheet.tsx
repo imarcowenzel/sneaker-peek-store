@@ -1,7 +1,10 @@
 "use client";
 
+import axios from "axios";
 import { ShoppingBag } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -20,9 +23,37 @@ import CartItem from "./cart-item";
 import EmptyCart from "./empty-cart";
 
 const ShoppingCartIcon = () => {
+
   const cart = useCart();
   const router = useRouter();
   const total = formatter.format(cart.totalPrice);
+
+  const seachParams = useSearchParams();
+  const items = useCart((state) => state.items);
+  const removeAll = useCart((state) => state.removeAll);
+
+  useEffect(() => {
+    if (seachParams.get("success")) {
+      toast.success("Payment completed.");
+      removeAll();
+    }
+
+    if (seachParams.get("canceled")) {
+      toast.error("Something went wrong.");
+    }
+  }, [seachParams, removeAll]);
+
+  async function onCheckout() {
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
+        {productIds: items.map(item => item.product.id)},
+      );
+      window.location = response.data.url;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <Sheet>
@@ -68,7 +99,7 @@ const ShoppingCartIcon = () => {
                 </SheetClose>
                 <SheetClose asChild>
                   <Button
-                    onClick={() => router.push("/checkout")}
+                    onClick={onCheckout}
                     className="w-full uppercase text-white"
                   >
                     Checkout
