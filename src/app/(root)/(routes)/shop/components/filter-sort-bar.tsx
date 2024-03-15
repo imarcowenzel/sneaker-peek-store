@@ -14,6 +14,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Product } from "@/types";
 import PriceFilterForm from "./price-filter-form";
+import { cn } from "@/lib/utils";
 
 enum SortBy {
   Latest = "createdAt",
@@ -27,27 +28,54 @@ interface FilterSortBarProps {
 
 const FilterSortBar: React.FC<FilterSortBarProps> = ({ products }) => {
 
-  const [defaultOption, setDefaultOption] = useState<string>("Sort by");
+  const [defaultPlaceholder, setDefaultPlaceholder] = useState<string>("Sort by");
+  const [defaultValue, setDefaultValue] = useState<string>("");
+  const [showFilterSortBar, setShowFilterSortBar] = useState(true);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
   const searchParams = useSearchParams();
 
-  useEffect(() => {
+  const handleScroll = () => {
+    const scrollPosition = window.scrollY;
+    const maxScrollY =
+      document.documentElement.scrollHeight - window.innerHeight;
 
+    if (scrollPosition === maxScrollY) {
+      setShowFilterSortBar(false);
+    } else {
+      setShowFilterSortBar(true);
+    }
+
+    setPrevScrollPos(scrollPosition);
+  };
+
+  useEffect(() => {
+   
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [prevScrollPos]);
+
+  useEffect(() => {
     const sortBy = searchParams.get("sortBy");
 
     switch (sortBy) {
       case SortBy.Latest:
-        setDefaultOption("Sort by latest");
+        setDefaultPlaceholder("Sort by latest");
+        setDefaultValue("latest")
         break;
       case SortBy.Low:
-        setDefaultOption("Sort by price: low to high");
+        setDefaultPlaceholder("Sort by price: low to high");
+        setDefaultValue("low")
         break;
       case SortBy.High:
-        setDefaultOption("Sort by price: high to low");
+        setDefaultPlaceholder("Sort by price: high to low");
+        setDefaultValue("high")
         break;
       default:
         break;
     }
-
   }, [searchParams]);
 
   const runningCategory = products?.filter(
@@ -82,8 +110,12 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({ products }) => {
   };
 
   return (
-    
-    <div className="fixed bottom-0 left-0 right-0 z-40 w-full md:static ">
+    <div
+      className={cn(
+        "fixed bottom-0 left-0 right-0 z-40 w-full md:static",
+        showFilterSortBar ? "block" : "hidden",
+      )}
+    >
       <div className="flex w-full items-center justify-between border-[1px] border-black border-opacity-10 bg-[#f8f8f8] px-5 py-3 md:border-none md:bg-transparent md:p-0">
         <Sheet>
           <SheetTrigger className="flex items-center justify-between gap-x-2 rounded-full px-4 py-2 text-sm font-medium uppercase hover:bg-gray-700 hover:text-[#f2f4f6]">
@@ -111,9 +143,9 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({ products }) => {
         </Sheet>
 
         <div className="flex items-center gap-x-5">
-          <Select onValueChange={(e) => handleSortChange(e)}>
+          <Select onValueChange={(e) => handleSortChange(e)} value={defaultValue}>
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder={defaultOption} />
+              <SelectValue placeholder={defaultPlaceholder} />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="latest">Sort by latest</SelectItem>

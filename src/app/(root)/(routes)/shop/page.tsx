@@ -2,6 +2,7 @@ import getProducts from "@/actions/get-products";
 import NotFoundPage from "@/app/not-found";
 import FilterSortBar from "./components/filter-sort-bar";
 import ProductsCatalog from "./components/products-catalog";
+import { Heading1 } from "lucide-react";
 
 const ShopPage = async ({
   searchParams,
@@ -13,7 +14,6 @@ const ShopPage = async ({
     maxPrice: number;
   };
 }) => {
-  
   const { sortBy, order, minPrice, maxPrice } = searchParams;
 
   const products = await getProducts({
@@ -28,10 +28,15 @@ const ShopPage = async ({
 
   return (
     <>
-      <section className="mx-auto flex max-w-full justify-center text-center">
-        <div className="my-0 w-full p-5 lg:max-w-[1360px] lg:p-8">
+      <section className="mx-auto flex max-w-full min-h-svh w-full justify-center">
+        <div className="my-0 w-full p-5 lg:max-w-[1360px] lg:p-8 flex flex-col justify-start">
           <FilterSortBar products={products} />
           <ProductsCatalog products={products} />
+          {products.length === 0 && (
+            <div className="w-full h-1/2 flex items-center justify-center text-center">
+              <h1 className="font-bold text-4xl">No products found.</h1>
+            </div>
+          )}
         </div>
       </section>
     </>

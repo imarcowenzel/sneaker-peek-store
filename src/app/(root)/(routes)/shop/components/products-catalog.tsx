@@ -5,9 +5,13 @@ import { cn, formatter } from "@/lib/utils";
 import { Product } from "@/types";
 
 const ProductsCatalog = ({ products }: { products: Product[] }) => {
+
   return (
-    <ul className="mt-8 grid grid-cols-2 gap-x-5 md:grid-cols-3 lg:grid-cols-4">
+
+    <ul className="mt-8 grid grid-cols-2 gap-x-5 md:grid-cols-3 lg:grid-cols-4 text-center">
+
       {products.map((product: Product) => {
+
         const price = formatter.format(product.price);
         const total = formatter.format(product.totalPrice);
 
