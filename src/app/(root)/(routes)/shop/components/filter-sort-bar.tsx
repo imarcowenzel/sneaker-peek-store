@@ -39,7 +39,7 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({ products }) => {
     const scrollPosition = window.scrollY;
     const maxScrollY =
       document.documentElement.scrollHeight - window.innerHeight;
-      const marginOfError = 15;
+      const marginOfError = 10;
 
     if (scrollPosition + marginOfError === maxScrollY) {
       setShowFilterSortBar(false);
