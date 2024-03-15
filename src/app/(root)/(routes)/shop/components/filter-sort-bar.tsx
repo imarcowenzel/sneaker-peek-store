@@ -25,9 +25,8 @@ const FilterSortBar = ({ products }: { products: Product[] }) => {
     const scrollPosition = window.scrollY;
     const maxScrollY =
       document.documentElement.scrollHeight - window.innerHeight;
-    const marginOfError = 10;
 
-    if (scrollPosition + marginOfError === maxScrollY) {
+    if (scrollPosition >= maxScrollY) {
       setShowFilterSortBar(false);
     } else {
       setShowFilterSortBar(true);
@@ -35,6 +34,8 @@ const FilterSortBar = ({ products }: { products: Product[] }) => {
 
     setPrevScrollPos(scrollPosition);
   };
+
+
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -53,7 +54,7 @@ const FilterSortBar = ({ products }: { products: Product[] }) => {
         )}
       >
         <div className="flex w-full items-center justify-between border-[1px] border-black border-opacity-10 bg-[#f8f8f8] px-5 py-3 md:border-none md:bg-transparent md:p-0">
-          
+
           <Sheet>
             <SheetTrigger className="flex items-center justify-between gap-x-2 rounded-full px-4 py-2 text-sm font-medium uppercase hover:bg-gray-700 hover:text-[#f2f4f6]">
               <Settings2 size={14} />
