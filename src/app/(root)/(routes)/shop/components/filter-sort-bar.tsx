@@ -1,6 +1,8 @@
 "use client";
 
 import { Settings2 } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import {
   Select,
@@ -13,42 +15,74 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Product } from "@/types";
 import PriceFilterForm from "./price-filter-form";
 
+enum SortBy {
+  Latest = "createdAt",
+  Low = "totalPrice",
+  High = "totalPrice",
+}
+
 interface FilterSortBarProps {
-  products?: Product[];
+  products: Product[];
 }
 
 const FilterSortBar: React.FC<FilterSortBarProps> = ({ products }) => {
-  const runningCategory = products?.filter(
-    (product) => product.category.toLowerCase() === "running shoes",
-  );
 
-  const handleSortChange = (option: string) => {
-    const url = new URL(window.location.href);
-    const searchParams = new URLSearchParams(url.search);
+  const [defaultOption, setDefaultOption] = useState<string>("Sort by");
+  const searchParams = useSearchParams();
 
-    switch (option) {
-      case "latest":
-        searchParams.set("sortBy", "createdAt");
-        searchParams.set("order", "asc");
+  useEffect(() => {
+
+    const sortBy = searchParams.get("sortBy");
+
+    switch (sortBy) {
+      case SortBy.Latest:
+        setDefaultOption("Sort by latest");
         break;
-      case "low":
-        searchParams.set("sortBy", "totalPrice");
-        searchParams.set("order", "asc");
+      case SortBy.Low:
+        setDefaultOption("Sort by price: low to high");
         break;
-      case "high":
-        searchParams.set("sortBy", "totalPrice");
-        searchParams.set("order", "desc");
+      case SortBy.High:
+        setDefaultOption("Sort by price: high to low");
         break;
       default:
         break;
     }
 
-    url.search = searchParams.toString();
+  }, [searchParams]);
 
+  const runningCategory = products?.filter(
+    (product) => product.category.toLowerCase() === "running shoes",
+  );
+
+  const updateSearchParams = (sortBy: SortBy, order: string) => {
+    const url = new URL(window.location.href);
+    const searchParams = new URLSearchParams(url.search);
+    searchParams.delete("sortBy");
+    searchParams.delete("order");
+    searchParams.set("sortBy", sortBy);
+    searchParams.set("order", order);
+    url.search = searchParams.toString();
     window.location.href = url.toString();
   };
 
+  const handleSortChange = (option: string) => {
+    switch (option) {
+      case "latest":
+        updateSearchParams(SortBy.Latest, "asc");
+        break;
+      case "low":
+        updateSearchParams(SortBy.Low, "asc");
+        break;
+      case "high":
+        updateSearchParams(SortBy.High, "desc");
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
+    
     <div className="fixed bottom-0 left-0 right-0 z-40 w-full md:static ">
       <div className="flex w-full items-center justify-between border-[1px] border-black border-opacity-10 bg-[#f8f8f8] px-5 py-3 md:border-none md:bg-transparent md:p-0">
         <Sheet>
@@ -58,7 +92,6 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({ products }) => {
           </SheetTrigger>
 
           <SheetContent side={"left"}>
-            {/* TODO: customize */}
             <div className="flex flex-col gap-9 pt-5">
               <div className="flex flex-col gap-5">
                 <h1 className="text-left text-xl font-bold">
@@ -80,8 +113,7 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({ products }) => {
         <div className="flex items-center gap-x-5">
           <Select onValueChange={(e) => handleSortChange(e)}>
             <SelectTrigger className="w-[180px]">
-              {/* TODO: change placeholder */}
-              <SelectValue placeholder="Sort by" />
+              <SelectValue placeholder={defaultOption} />
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="latest">Sort by latest</SelectItem>

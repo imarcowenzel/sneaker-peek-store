@@ -13,6 +13,7 @@ const ShopPage = async ({
     maxPrice: number;
   };
 }) => {
+  
   const { sortBy, order, minPrice, maxPrice } = searchParams;
 
   const products = await getProducts({
