@@ -2,7 +2,6 @@ import getProducts from "@/actions/get-products";
 import NotFoundPage from "@/app/not-found";
 import FilterSortBar from "./components/filter-sort-bar";
 import ProductsCatalog from "./components/products-catalog";
-import { Heading1 } from "lucide-react";
 
 const ShopPage = async ({
   searchParams,
