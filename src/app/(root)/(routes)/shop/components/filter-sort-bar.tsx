@@ -39,8 +39,9 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({ products }) => {
     const scrollPosition = window.scrollY;
     const maxScrollY =
       document.documentElement.scrollHeight - window.innerHeight;
+      const marginOfError = 10;
 
-    if (scrollPosition === maxScrollY) {
+    if (scrollPosition + marginOfError >= maxScrollY) {
       setShowFilterSortBar(false);
     } else {
       setShowFilterSortBar(true);
@@ -59,22 +60,17 @@ const FilterSortBar: React.FC<FilterSortBarProps> = ({ products }) => {
 
   useEffect(() => {
     const sortBy = searchParams.get("sortBy");
+    const order = searchParams.get("order");
 
-    switch (sortBy) {
-      case SortBy.Latest:
-        setDefaultPlaceholder("Sort by latest");
-        setDefaultValue("latest");
-        break;
-      case SortBy.Low:
-        setDefaultPlaceholder("Sort by price: low to high");
-        setDefaultValue("low");
-        break;
-      case SortBy.High:
-        setDefaultPlaceholder("Sort by price: high to low");
-        setDefaultValue("high");
-        break;
-      default:
-        break;
+    if (sortBy === "createdAt" && order === "asc") {
+      setDefaultPlaceholder("Sort by latest");
+      setDefaultValue("latest");
+    } else if (sortBy === "totalPrice" && order === "asc") {
+      setDefaultPlaceholder("Sort by price: low to high");
+      setDefaultValue("low");
+    } else if (sortBy === "totalPrice" && order === "desc") {
+      setDefaultPlaceholder("Sort by price: high to low");
+      setDefaultValue("high");
     }
   }, [searchParams]);
 
