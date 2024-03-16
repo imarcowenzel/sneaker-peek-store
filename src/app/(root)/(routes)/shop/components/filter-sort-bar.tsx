@@ -9,6 +9,7 @@ import { Product } from "@/types";
 import ActiveFilter from "./active-filter";
 import PriceFilterForm from "./price-filter-form";
 import SortForm from "./sort-form";
+import SearchForm from "./search-form";
 
 const FilterSortBar = ({ products }: { products: Product[] }) => {
   const [showFilterSortBar, setShowFilterSortBar] = useState(true);
@@ -59,6 +60,12 @@ const FilterSortBar = ({ products }: { products: Product[] }) => {
 
             <SheetContent side={"left"}>
               <div className="flex flex-col gap-9 pt-5">
+                <div className="flex flex-col gap-5">
+                  <h1 className="text-left text-xl font-bold">
+                    Search products
+                  </h1>
+                  <SearchForm />
+                </div>
                 <div className="flex flex-col gap-5">
                   <h1 className="text-left text-xl font-bold">
                     Product categories

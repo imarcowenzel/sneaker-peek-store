@@ -11,9 +11,10 @@ const ShopPage = async ({
     order: string;
     minPrice: number;
     maxPrice: number;
+    query: string;
   };
 }) => {
-  const { sortBy, order, minPrice, maxPrice } = searchParams;
+  const { sortBy, order, minPrice, maxPrice, query } = searchParams;
 
   const products = await getProducts({
     isArchived: false,
@@ -21,6 +22,7 @@ const ShopPage = async ({
     order,
     minPrice,
     maxPrice,
+    query,
   });
 
   if (!products) return <NotFoundPage />;

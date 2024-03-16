@@ -13,6 +13,7 @@ export interface Query {
   order?: string;
   minPrice?: number;
   maxPrice?: number;
+  query?: string;
 }
 
 const getProducts = async (query: Query): Promise<Product[]> => {
@@ -25,6 +26,7 @@ const getProducts = async (query: Query): Promise<Product[]> => {
       order: query.order,
       minPrice: query.minPrice,
       maxPrice: query.maxPrice,
+      query: query.query
     },
   });
 
