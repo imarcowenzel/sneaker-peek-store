@@ -31,14 +31,21 @@ const PriceFilterForm = ({ products }: { products: Product[] }) => {
   const [minValue, setMinValue] = useState<number>(minPrice);
   const [maxValue, setMaxValue] = useState<number>(maxPrice);
 
-  const progressStyle = {
-    left: `${((minValue - minPrice) / (maxPrice - minPrice)) * 100}%`,
-    right: `${((maxPrice - maxValue) / (maxPrice - minPrice)) * 100}%`,
-  };
-
   const form = useForm<PriceFilterSchema>({
     resolver: zodResolver(priceFilterSchema),
   });
+
+  function handleMinInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const value = parseInt(event.target.value);
+    setMinValue(value);
+    form.setValue("minPrice", value);
+  }
+
+  function handleMaxInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const value = parseInt(event.target.value);
+    setMaxValue(value);
+    form.setValue("maxPrice", value);
+  }
 
   function onSubmit(data: PriceFilterSchema) {
     const url = new URL(window.location.href);
@@ -52,76 +59,90 @@ const PriceFilterForm = ({ products }: { products: Product[] }) => {
       searchParams.set("maxPrice", data.maxPrice.toString());
     }
     url.search = searchParams.toString();
-    // window.location.href = url.toString();
+    window.location.href = url.toString();
   }
 
   return (
     // TODO
-    <>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex gap-3">
-          <FormField
-            name="minPrice"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    {...field}
-                    type="number"
-                    value={minValue}
-                    placeholder="Min"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            name="maxPrice"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    {...field}
-                    type="number"
-                    value={maxValue}
-                    placeholder="Max"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col gap-5"
+      >
+        <div className="flex w-full items-center justify-between gap-3">
+          <div className="flex gap-3">
+            <FormField
+              name="minPrice"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="number"
+                      min={minPrice}
+                      max={maxPrice}
+                      value={minValue}
+                      placeholder="Min"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              name="maxPrice"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type="number"
+                      min={minPrice}
+                      max={maxPrice}
+                      value={maxValue}
+                      placeholder="Max"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
           <Button variant="default" className="text-white">
             Filter
           </Button>
-        </form>
-      </Form>
-      <div className="relative h-1 rounded bg-gray-300">
-        <div
-          className={cn(`absolute h-1 rounded bg-cyan-600`)}
-          style={progressStyle}
-        />
-      </div>
-      <div className="relative">
-        <input
-          type="range"
-          min={minPrice}
-          max={maxPrice}
-          defaultValue={minPrice}
-          onChange={(e) => setMinValue(parseInt(e.target.value))}
-          className="range-input"
-        />
-        <input
-          type="range"
-          min={minPrice}
-          max={maxPrice}
-          defaultValue={maxPrice}
-          onChange={(e) => setMaxValue(parseInt(e.target.value))}
-          className="range-input"
-        />
-      </div>
-    </>
+        </div>
+        <div className="relative h-1 rounded bg-gray-300">
+          <div
+            className={cn(`absolute h-1 rounded bg-cyan-600`)}
+            style={{
+              left: `${((minValue - minPrice) / (maxPrice - minPrice)) * 100}%`,
+              right: `${((maxPrice - maxValue) / (maxPrice - minPrice)) * 100}%`,
+            }}
+          />
+        </div>
+        <div className="relative">
+          <input
+            type="range"
+            name="minPriceRange"
+            min={minPrice}
+            max={maxPrice}
+            value={minValue}
+            onChange={handleMinInputChange}
+            className="range-input"
+          />
+          <input
+            type="range"
+            name="maxPriceRange"
+            min={minPrice}
+            max={maxPrice}
+            value={maxValue}
+            onChange={handleMaxInputChange}
+            className="range-input"
+          />
+        </div>
+      </form>
+    </Form>
   );
 };
 0;
