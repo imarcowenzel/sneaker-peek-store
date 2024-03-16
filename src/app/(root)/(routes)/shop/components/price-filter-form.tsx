@@ -6,14 +6,6 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { Product } from "@/types";
 
@@ -63,87 +55,55 @@ const PriceFilterForm = ({ products }: { products: Product[] }) => {
   }
 
   return (
-    // TODO
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-5"
-      >
-        <div className="flex w-full items-center justify-between gap-3">
-          <div className="flex gap-3">
-            <FormField
-              name="minPrice"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      type="number"
-                      min={minPrice}
-                      max={maxPrice}
-                      value={minValue}
-                      placeholder="Min"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              name="maxPrice"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      type="number"
-                      min={minPrice}
-                      max={maxPrice}
-                      value={maxValue}
-                      placeholder="Max"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
+    <form
+      onSubmit={form.handleSubmit(onSubmit)}
+      className="flex flex-col gap-5"
+    >
+      <div className="relative h-1 rounded bg-gray-300">
+        <div
+          className={cn(`absolute h-1 rounded bg-cyan-600`)}
+          style={{
+            left: `${((minValue - minPrice) / (maxPrice - minPrice)) * 100}%`,
+            right: `${((maxPrice - maxValue) / (maxPrice - minPrice)) * 100}%`,
+          }}
+        />
+      </div>
+      <div className="relative">
+        <input
+          {...form.register("minPrice")}
+          type="range"
+          name="minPrice"
+          min={minPrice}
+          max={maxPrice}
+          value={minValue}
+          onChange={handleMinInputChange}
+          className="range-input"
+        />
+
+        <input
+          {...form.register("maxPrice")}
+          type="range"
+          name="maxPrice"
+          min={minPrice}
+          max={maxPrice}
+          value={maxValue}
+          onChange={handleMaxInputChange}
+          className="range-input"
+        />
+
+        <div className="flex w-full items-center justify-between">
           <Button variant="default" className="text-white">
             Filter
           </Button>
+          <span className="flex items-center gap-1">
+            <p>Price:</p>
+            <p className="font-bold">${minValue}</p>-
+            <p className="font-bold">${maxValue}</p>
+          </span>
         </div>
-        <div className="relative h-1 rounded bg-gray-300">
-          <div
-            className={cn(`absolute h-1 rounded bg-cyan-600`)}
-            style={{
-              left: `${((minValue - minPrice) / (maxPrice - minPrice)) * 100}%`,
-              right: `${((maxPrice - maxValue) / (maxPrice - minPrice)) * 100}%`,
-            }}
-          />
-        </div>
-        <div className="relative">
-          <input
-            type="range"
-            name="minPriceRange"
-            min={minPrice}
-            max={maxPrice}
-            value={minValue}
-            onChange={handleMinInputChange}
-            className="range-input"
-          />
-          <input
-            type="range"
-            name="maxPriceRange"
-            min={minPrice}
-            max={maxPrice}
-            value={maxValue}
-            onChange={handleMaxInputChange}
-            className="range-input"
-          />
-        </div>
-      </form>
-    </Form>
+      </div>
+    </form>
   );
 };
-0;
+
 export default PriceFilterForm;
