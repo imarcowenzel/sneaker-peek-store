@@ -93,10 +93,10 @@ const PriceFilterForm = ({ products }: { products: Product[] }) => {
         />
 
         <div className="flex w-full items-center justify-between">
-          <Button variant="default" className="text-white">
+          <Button variant="default" className="text-white text-xs" size="sm">
             Filter
           </Button>
-          <span className="flex items-center gap-1">
+          <span className="flex items-center gap-1 text-xs lg:text-sm">
             <p>Price:</p>
             <p className="font-bold">${minValue}</p>-
             <p className="font-bold">${maxValue}</p>

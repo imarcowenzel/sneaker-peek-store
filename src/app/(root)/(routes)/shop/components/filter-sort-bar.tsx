@@ -21,7 +21,7 @@ const FilterSortBar = ({ products }: { products: Product[] }) => {
   );
 
   // Handle scroll event to show/hide the filter bar
-  const handleScroll = () => {
+  function handleScroll () {
     const scrollPosition = window.scrollY;
     const maxScrollY =
       document.documentElement.scrollHeight - window.innerHeight;

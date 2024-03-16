@@ -53,7 +53,7 @@ const SortForm = () => {
   };
 
   // Handle sort change event
-  const handleSortChange = (option: string) => {
+  function handleSortChange (option: string) {
     switch (option) {
       case "latest":
         updateSearchParams(SortBy.Latest, "asc");

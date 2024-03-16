@@ -10,7 +10,7 @@ const ActiveFilter = () => {
   const searchParams = useSearchParams();
 
   // Handle price filter deletion
-  const handleDeletePrice = (value: string) => {
+  function handleDeletePrice (value: string) {
     const url = new URL(window.location.href);
     const searchParams = new URLSearchParams(url.search);
     searchParams.delete(value);
