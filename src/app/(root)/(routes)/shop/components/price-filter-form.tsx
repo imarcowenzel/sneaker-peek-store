@@ -17,6 +17,7 @@ export const priceFilterSchema = z.object({
 type PriceFilterSchema = z.infer<typeof priceFilterSchema>;
 
 const PriceFilterForm = ({ products }: { products: Product[] }) => {
+  
   const maxPrice = Math.max(...products.map((product) => product.totalPrice));
   const minPrice = Math.min(...products.map((product) => product.totalPrice));
 

@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
@@ -10,10 +10,13 @@ import useCart from "@/hooks/use-cart";
 import CartItem from "./components/cart-item";
 import EmptyCart from "./components/empty-cart";
 import Summary from "./components/summary";
+import { SignIn, SignInButton, useAuth } from "@clerk/nextjs";
 
 const CartPage = () => {
+  const user = useAuth();
   const seachParams = useSearchParams();
   const cart = useCart();
+  const router = useRouter();
   const items = useCart((state) => state.items);
   const removeAll = useCart((state) => state.removeAll);
 
@@ -30,13 +33,20 @@ const CartPage = () => {
 
   async function onCheckout() {
     try {
+      if (!user.isSignedIn) {
+        // Armazena a URL atual do carrinho antes de redirecionar para a página de login
+        localStorage.setItem("returnTo", window.location.pathname);
+        router.push("/sign-in")
+      }
+
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
-        {productIds: items.map(item => item.product.id)},
+        { productIds: items.map((item) => item.product.id) },
       );
+
       window.location = response.data.url;
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      console.error(error);
     }
   }
 
@@ -55,7 +65,7 @@ const CartPage = () => {
               ))}
             </div>
 
-            <Summary items={items} onCheckout={onCheckout} />
+            <Summary onCheckout={onCheckout} />
           </div>
         )}
       </div>

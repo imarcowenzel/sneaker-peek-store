@@ -21,16 +21,19 @@ import useCart from "@/hooks/use-cart";
 import { formatter } from "@/lib/utils";
 import CartItem from "./cart-item";
 import EmptyCart from "./empty-cart";
+import { useAuth } from "@clerk/nextjs";
 
 const ShoppingCartIcon = () => {
 
-  const cart = useCart();
+  const user = useAuth()
   const router = useRouter();
-  const total = formatter.format(cart.totalPrice);
-
   const seachParams = useSearchParams();
+
+  const cart = useCart();
   const items = useCart((state) => state.items);
   const removeAll = useCart((state) => state.removeAll);
+
+  const total = formatter.format(cart.totalPrice);
 
   useEffect(() => {
     if (seachParams.get("success")) {
@@ -45,13 +48,19 @@ const ShoppingCartIcon = () => {
 
   async function onCheckout() {
     try {
+      if (!user.isSignedIn) {
+        localStorage.setItem("returnTo", window.location.pathname);
+        router.push("/sign-in");
+      }
+
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
-        {productIds: items.map(item => item.product.id)},
+        { productIds: items.map((item) => item.product.id) },
       );
+
       window.location = response.data.url;
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      console.error(error);
     }
   }
 
