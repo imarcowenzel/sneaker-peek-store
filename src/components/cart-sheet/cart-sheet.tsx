@@ -35,16 +35,16 @@ const ShoppingCartIcon = () => {
 
   const total = formatter.format(cart.totalPrice);
 
-  useEffect(() => {
-    if (seachParams.get("success")) {
-      toast.success("Payment completed.");
-      removeAll();
-    }
+  // useEffect(() => {
+  //   if (seachParams.get("success")) {
+  //     toast.success("Payment completed.");
+  //     removeAll();
+  //   }
 
-    if (seachParams.get("canceled")) {
-      toast.error("Something went wrong.");
-    }
-  }, [seachParams, removeAll]);
+  //   if (seachParams.get("canceled")) {
+  //     toast.error("Something went wrong.");
+  //   }
+  // }, [seachParams]);
 
   async function onCheckout() {
     try {

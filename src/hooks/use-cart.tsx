@@ -27,7 +27,6 @@ const useCart = create(
       totalPrice: 0,
       // Add an item to the cart
       addItem: (data: Item) => {
-        
         const currentItems = get().items;
 
         const existingItem = currentItems.find(
@@ -126,19 +125,7 @@ const useCart = create(
         toast.success("Item removed from the cart.");
       },
       // Remove all items from the cart
-      removeAll: () => {
-        set((state) => {
-          // Calculate the change in total price when removing all items
-          const totalPriceDelta = state.items.reduce((delta, item) => {
-            return delta - item.product.price * item.quantity;
-          }, 0);
-
-          // Update the state to remove all items and adjust the totalPrice
-          return { items: [], totalPrice: state.totalPrice + totalPriceDelta };
-        });
-
-        toast.success("All items removed from the cart.");
-      },
+      removeAll: () => set({ items: [], totalPrice: 0 }),
     }),
     {
       name: "cart-storage",

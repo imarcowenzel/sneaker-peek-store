@@ -28,6 +28,21 @@ const PriceFilterForm = ({ products }: { products: Product[] }) => {
     resolver: zodResolver(priceFilterSchema),
   });
 
+  const updateUrlSearchParams = (data: PriceFilterSchema) => {
+    const url = new URL(window.location.href);
+    const searchParams = new URLSearchParams(url.search);
+    searchParams.delete("minPrice");
+    searchParams.delete("maxPrice");
+    if (data.minPrice) {
+      searchParams.set("minPrice", data.minPrice.toString());
+    }
+    if (data.maxPrice) {
+      searchParams.set("maxPrice", data.maxPrice.toString());
+    }
+    url.search = searchParams.toString();
+    window.location.href = url.toString();
+  };
+
   function handleMinInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     const value = parseInt(event.target.value);
     setMinValue(value);
@@ -41,18 +56,7 @@ const PriceFilterForm = ({ products }: { products: Product[] }) => {
   }
 
   function onSubmit(data: PriceFilterSchema) {
-    const url = new URL(window.location.href);
-    const searchParams = new URLSearchParams(url.search);
-    searchParams.delete("minPrice");
-    searchParams.delete("maxPrice");
-    if (data.minPrice) {
-      searchParams.set("minPrice", data.minPrice.toString());
-    }
-    if (data.maxPrice) {
-      searchParams.set("maxPrice", data.maxPrice.toString());
-    }
-    url.search = searchParams.toString();
-    window.location.href = url.toString();
+    updateUrlSearchParams(data)
   }
 
   return (
@@ -79,6 +83,7 @@ const PriceFilterForm = ({ products }: { products: Product[] }) => {
           value={minValue}
           onChange={handleMinInputChange}
           className="range-input"
+          aria-label="Minimum price range"
         />
 
         <input
@@ -90,6 +95,7 @@ const PriceFilterForm = ({ products }: { products: Product[] }) => {
           value={maxValue}
           onChange={handleMaxInputChange}
           className="range-input"
+          aria-label="Maximum price range"
         />
 
         <div className="flex w-full items-center justify-between">
