@@ -23,6 +23,7 @@ const Summary = () => {
 
   async function onCheckout() {
     try {
+      
       if (!user.isSignedIn) {
         localStorage.setItem("returnTo", window.location.pathname);
         router.push("/sign-in");
