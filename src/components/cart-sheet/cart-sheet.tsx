@@ -1,10 +1,7 @@
 "use client";
 
-import axios from "axios";
 import { ShoppingBag } from "lucide-react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
-import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -21,38 +18,12 @@ import useCart from "@/hooks/use-cart";
 import { formatter } from "@/lib/utils";
 import CartItem from "./cart-item";
 import EmptyCart from "./empty-cart";
-import { useAuth } from "@clerk/nextjs";
 
 const ShoppingCartIcon = () => {
-
-  const user = useAuth()
   const router = useRouter();
-  const seachParams = useSearchParams();
 
   const cart = useCart();
-  const items = useCart((state) => state.items);
-  const removeAll = useCart((state) => state.removeAll);
-
   const total = formatter.format(cart.totalPrice);
-
-  async function onCheckout() {
-    try {
-
-      if (!user.isSignedIn) {
-        localStorage.setItem("returnTo", window.location.pathname);
-        router.push("/sign-in");
-      }
-
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
-        { productIds: items.map((item) => item.product.id) },
-      );
-
-      window.location = response.data.url;
-    } catch (error: any) {
-      console.error(error);
-    }
-  }
 
   return (
     <Sheet>
@@ -94,14 +65,6 @@ const ShoppingCartIcon = () => {
                     className="w-full uppercase text-white"
                   >
                     View cart
-                  </Button>
-                </SheetClose>
-                <SheetClose asChild>
-                  <Button
-                    onClick={onCheckout}
-                    className="w-full uppercase text-white"
-                  >
-                    Checkout
                   </Button>
                 </SheetClose>
               </SheetFooter>
