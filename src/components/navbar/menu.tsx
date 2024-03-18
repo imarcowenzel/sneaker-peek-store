@@ -1,6 +1,6 @@
 "use client";
 
-import { SignedIn, UserButton } from "@clerk/nextjs";
+import { SignedIn, UserButton, useAuth } from "@clerk/nextjs";
 
 import ShoppingCartIcon from "@/components/cart-sheet/cart-sheet";
 import {
@@ -11,12 +11,18 @@ import { menuItems } from "@/utils/data";
 import MenuItems from "./menu-items";
 
 const Menu = () => {
+  const { isSignedIn } = useAuth();
+
   return (
     <NavigationMenu className="hidden items-center justify-between gap-x-8 bg-white md:flex">
       <NavigationMenuList className="flex items-center gap-x-8 text-sm text-secondary">
-        {menuItems.map((item) => {
-          return <MenuItems key={item.key} items={item} />;
-        })}
+        {isSignedIn
+          ? menuItems.signedIn.map((item) => (
+              <MenuItems key={item.key} items={item} />
+            ))
+          : menuItems.notSignedIn.map((item) => (
+              <MenuItems key={item.key} items={item} />
+            ))}
       </NavigationMenuList>
 
       <ShoppingCartIcon />
@@ -24,12 +30,6 @@ const Menu = () => {
       <SignedIn>
         <UserButton afterSignOutUrl="/auth/sign-in" />
       </SignedIn>
-
-      {/* <SignedOut>
-        <SignInButton>
-          <button>Sign In</button>
-        </SignInButton>
-      </SignedOut> */}
     </NavigationMenu>
   );
 };

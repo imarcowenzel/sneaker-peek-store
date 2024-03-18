@@ -1,21 +1,31 @@
 import { Cog, CreditCard, Truck } from "lucide-react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
-export const menuItems = [
-  { key: 1, label: "HOME", href: "/" },
-  { key: 2, label: "SHOP", href: "/shop" },
-  {
-    key: 3,
-    label: "MY ACCOUNT",
-    href: "/my-account",
-    subMenu: [
-      { key: 31, label: "ACCOUNT", href: "/my-account/account-details" },
-      { key: 32, label: "ORDERS", href: "/my-account/orders" },
-    ],
-  },
-  { key: 4, label: "ABOUT", href: "/about" },
-  { key: 5, label: "CONTACT", href: "/contact" },
-];
+export const menuItems = {
+  signedIn: [
+    { key: 1, label: "HOME", href: "/" },
+    { key: 2, label: "SHOP", href: "/shop" },
+    {
+      key: 3,
+      label: "MY ACCOUNT",
+      href: "/my-account",
+      subMenu: [
+        { key: 31, label: "ACCOUNT", href: "/my-account/account-details" },
+        { key: 32, label: "ORDERS", href: "/my-account/orders" },
+      ],
+    },
+    { key: 4, label: "ABOUT", href: "/about" },
+    { key: 5, label: "CONTACT", href: "/contact" },
+  ],
+  notSignedIn: [
+    { key: 1, label: "HOME", href: "/" },
+    { key: 2, label: "SHOP", href: "/shop" },
+    { key: 4, label: "ABOUT", href: "/about" },
+    { key: 5, label: "CONTACT", href: "/contact" },
+    { key: 6, label: "SIGN IN", href: "/sign-in" },
+    { key: 7, label: "SIGN UP", href: "/sign-up" },
+  ],
+};
 
 export const footerMenu = [
   {
@@ -67,81 +77,6 @@ export const footerSocialMedias = [
   { key: 1, label: FaInstagram, href: "https://instagram.com" },
   { key: 2, label: FaTwitter, href: "https://twitter.com" },
   { key: 3, label: FaYoutube, href: "https://youtube.com" },
-];
-
-export const shoesData = [
-  {
-    key: 1,
-    photo: "/aqua-shoes.jpg",
-    title: "Air Prox X3 Aqua",
-    href: "/",
-    category: "Running Shoes",
-    price: 58.0,
-    sizes: [10, 7, 8, 9],
-  },
-  {
-    key: 2,
-    photo: "/orange-shoes.jpg",
-    title: "Air Prox X3 Orange",
-    href: "/",
-    category: "Running Shoes",
-    price: 62.0,
-    sizes: [10, 7, 8, 9],
-  },
-  {
-    key: 3,
-    photo: "/whole-blue-shoes.jpg",
-    title: "Air Prox X3 Whole Blue",
-    href: "/",
-    category: "Running Shoes",
-    price: 62.0,
-    sizes: [10, 7, 8, 9],
-  },
-  {
-    key: 4,
-    photo: "/yellow-shoes.jpg",
-    title: "Air Prox X3 Yellow",
-    href: "/",
-    category: "Running Shoes",
-    price: 58.0,
-    sizes: [10, 7, 8, 9],
-  },
-  {
-    key: 5,
-    photo: "/whole-green-shoes.jpg",
-    title: "Air Prox X3 Whole Green",
-    href: "/",
-    category: "Running Shoes",
-    price: 58.0,
-    sizes: [10, 7, 8, 9],
-  },
-  {
-    key: 6,
-    photo: "/green-shoes.jpg",
-    title: "Air Prox X3 Green",
-    href: "/",
-    category: "Running Shoes",
-    price: 58.0,
-    sizes: [10, 7, 8, 9],
-  },
-  {
-    key: 7,
-    photo: "/red-shoes.jpg",
-    title: "Air Prox X3 Red",
-    href: "/",
-    category: "Running Shoes",
-    price: 62.0,
-    sizes: [10, 7, 8, 9],
-  },
-  {
-    key: 8,
-    photo: "/blue-shoes.jpg",
-    title: "Air Prox X3 Blue",
-    href: "/",
-    category: "Running Shoes",
-    price: 55.0,
-    sizes: [10, 7, 8, 9],
-  },
 ];
 
 export const benefitsData = [

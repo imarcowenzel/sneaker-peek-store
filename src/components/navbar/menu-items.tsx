@@ -17,6 +17,7 @@ export interface MenuItem {
 }
 
 const MenuItems = ({ items }: { items: MenuItem }) => {
+  
   const pathname = usePathname();
 
   if (!items.subMenu) {

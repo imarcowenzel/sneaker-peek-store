@@ -1,3 +1,6 @@
+"use client";
+
+import { useAuth } from "@clerk/nextjs";
 import { AnimatePresence, MotionConfig, motion } from "framer-motion";
 
 import {
@@ -12,7 +15,9 @@ type MobileMenuProps = {
   closeOnCurrent: (href: string) => void;
 };
 
-const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, closeOnCurrent }) => {
+const MobileMenu = ({ isOpen, closeOnCurrent }: MobileMenuProps) => {
+  const { isSignedIn } = useAuth();
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -33,13 +38,21 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, closeOnCurrent }) => {
               variants={menuItemContentVariants}
               className="flex flex-col gap-y-6 "
             >
-              {menuItems.map((item) => (
-                <MobileMenuItems
-                  key={item.key}
-                  item={item}
-                  closeOnCurrent={closeOnCurrent}
-                />
-              ))}
+              {isSignedIn
+                ? menuItems.signedIn.map((item) => (
+                    <MobileMenuItems
+                      key={item.key}
+                      item={item}
+                      closeOnCurrent={closeOnCurrent}
+                    />
+                  ))
+                : menuItems.notSignedIn.map((item) => (
+                    <MobileMenuItems
+                      key={item.key}
+                      item={item}
+                      closeOnCurrent={closeOnCurrent}
+                    />
+                  ))}
             </motion.ul>
           </motion.nav>
         </MotionConfig>
