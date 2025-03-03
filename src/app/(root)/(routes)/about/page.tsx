@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 const AboutPage = () => {
   return (
-    <section>
+    <section className="w-full">
       <Banner title="About Us" subtitle="know us more" />
       <Hero />
       <BenefitsAndHistory />
